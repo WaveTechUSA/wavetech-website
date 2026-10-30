@@ -162,6 +162,11 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 .rv{animation:rvUp ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
 }}
 </style>
+<style>
+/* break out of the builder's centered column: full-bleed, own background */
+html,body{background:#090916!important;overflow-x:hidden}
+#app{position:relative;width:100vw;margin-left:calc(50% - 50vw);box-sizing:border-box}
+</style>
 <template id="dc-tpl">
 
 <div style="background: #090916; color: #EEEEF8; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.55">
