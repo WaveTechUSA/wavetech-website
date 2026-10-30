@@ -164,8 +164,12 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 </style>
 <style>
 /* break out of the builder's centered column: full-bleed, own background */
-html,body{background:#090916!important;overflow-x:hidden}
+html,body{background:#090916!important}
+html{overflow-x:clip}
 #app{position:relative;width:100vw;margin-left:calc(50% - 50vw);box-sizing:border-box}
+/* the scroll scenes pin with position:sticky; no ancestor may clip or scroll */
+#app *{overflow-anchor:auto}
+.c-section,.c-row,.c-column,.c-wrapper,.hl_page-creator--section,.hl_page-creator--row,.hl_page-creator--col{overflow:visible!important}
 </style>
 <template id="dc-tpl">
 
