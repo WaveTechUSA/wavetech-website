@@ -1,0 +1,586 @@
+<!-- ============================================================================
+  OLD WEBSITE — ARCHIVED 2026-10-30. DO NOT DEPLOY.
+  This is the previous wavetech-usa.com home page (GoHighLevel custom-code block),
+  kept for reference only. Its CSS/JS live in KevinDuranBruno/WTWP-Resources (jsDelivr).
+  The current site is the set of pages in the repo root and ghl/.
+============================================================================ -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WaveTech Innovations — AV Integration & LED Systems</title>
+
+<!-- Preconnect for fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<!-- Async font loading — non-blocking -->
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" rel="stylesheet">
+</noscript>
+
+<link rel="preload" as="image" href="https://blogger.googleusercontent.com/img/a/AVvXsEiSxPhQLpNUFpLNdN1WtG88WUVhS2Z7Tvrqd2XdXyRSEisxNTM1xwld0ZvLHxjP6BZWiZemLJpsQtBFca_7Ri-ApGo03Hd6PHFMmgl7-Ay7p5-2iExJ3jjB0H3Ix1Ijio_CyRVS7RgbGTCxd5CC4Ma0e2yOZj-Gx15wrimOZjAdw0DjgUeTDcAiQGdMl9k">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/css/style.css">
+</head>
+<body>
+<canvas id="wt-canvas"></canvas>
+<div class="wt-vig"></div>
+<div class="wt-grain"></div>
+<div id="prog"></div>
+
+<!-- SIDEBAR -->
+<nav id="sb">
+  <div class="sb-logo">
+    <div class="sb-mark">
+      <img src="https://blogger.googleusercontent.com/img/a/AVvXsEg1KvXZv8wECAlY27KpecBigaIiJwyFyI1bQh7R99-qzzNwoCGp53-HJTkjddOkb76L5QpiX0h4HmL6-z_AzE3m3WAEWbXlT4TmnXbm-vNlQR3fY6BrdM73xHKQlKbPUtYxkyTZMpTMWy4Uv3331M7oLNlnRU3V4mvAq3KY4xfST_zlbep-xBTHMN607Ss" alt="WaveTech WT" width="44" height="44" loading="eager">
+    </div>
+    <span class="sb-name">WaveTech<br>Innovations</span>
+  </div>
+  <div class="sb-scroll">
+    <div class="sb-item"><button class="sb-btn act" data-s="hero"><span class="ms sb-icon">home</span><span class="sb-lbl">Home</span></button></div>
+    <div class="sb-item">
+      <button class="sb-btn" data-s="services"><span class="ms sb-icon">settings_input_hdmi</span><span class="sb-lbl">Services</span><span class="ms sb-chev">chevron_right</span></button>
+      <div class="sb-sub">
+        <button class="sb-sub-btn" data-m="av"><span class="ms ms-sm" style="margin-right:5px">sensors</span>AV Integration</button>
+        <button class="sb-sub-btn" data-m="led"><span class="ms ms-sm" style="margin-right:5px">light_mode</span>LED Systems</button>
+        <button class="sb-sub-btn" data-m="sig"><span class="ms ms-sm" style="margin-right:5px">tv</span>Digital Signage</button>
+        <button class="sb-sub-btn" data-m="eme"><span class="ms ms-sm" style="margin-right:5px">emergency</span>Emergency AV</button>
+        <button class="sb-sub-btn" data-m="mai"><span class="ms ms-sm" style="margin-right:5px">build</span>Maintenance</button>
+      </div>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-item">
+      <button class="sb-btn" data-s="assist"><span class="ms sb-icon">shield</span><span class="sb-lbl">WT Assist</span><span class="ms sb-chev">chevron_right</span></button>
+      <div class="sb-sub">
+        <button class="sb-sub-btn" data-m="pro"><span class="ms ms-sm" style="margin-right:5px">search</span>Proactive Care</button>
+        <button class="sb-sub-btn" data-m="rap"><span class="ms ms-sm" style="margin-right:5px">bolt</span>Rapid Response</button>
+        <button class="sb-sub-btn" data-m="lon"><span class="ms ms-sm" style="margin-right:5px">trending_up</span>Long-Term Plans</button>
+      </div>
+    </div>
+    <div class="sb-item">
+      <button class="sb-btn" data-s="industries"><span class="ms sb-icon">domain</span><span class="sb-lbl">Industries</span><span class="ms sb-chev">chevron_right</span></button>
+      <div class="sb-sub">
+        <button class="sb-sub-btn" data-m="icp"><span class="ms ms-sm" style="margin-right:5px">business</span>Corporate</button>
+        <button class="sb-sub-btn" data-m="iwo"><span class="ms ms-sm" style="margin-right:5px">church</span>House of Worship</button>
+        <button class="sb-sub-btn" data-m="ied"><span class="ms ms-sm" style="margin-right:5px">school</span>Education</button>
+        <button class="sb-sub-btn" data-m="iho"><span class="ms ms-sm" style="margin-right:5px">hotel</span>Hospitality</button>
+      </div>
+    </div>
+    <div class="sb-div"></div>
+    <div class="sb-item"><button class="sb-btn" data-s="instagram"><span class="ms sb-icon">share</span><span class="sb-lbl">Social Media</span></button></div>
+    <div class="sb-item"><button class="sb-btn" data-s="about"><span class="ms sb-icon">info</span><span class="sb-lbl">About Us</span></button></div>
+    <!-- Partners nav hidden while section is disabled -->
+    <!-- <div class="sb-item"><button class="sb-btn" data-s="partners"><span class="ms sb-icon">handshake</span><span class="sb-lbl">Partners</span></button></div> -->
+    <div class="sb-item"><button class="sb-btn" data-s="contact"><span class="ms sb-icon">mail</span><span class="sb-lbl">Contact</span></button></div>
+  </div>
+  <div style="flex:1"></div>
+  <div class="sb-ver"><div class="sb-ver-pip"></div><span class="sb-ver-txt">v2026 · USA</span></div>
+</nav>
+
+<!-- DOCK (mobile bottom nav + desktop floating nav) -->
+<nav id="dock">
+  <button class="dk-btn act" data-s="hero"><span class="ms dk-ico">home</span><span class="dk-lbl">Home</span></button>
+  <div class="dk-sep"></div>
+  <button class="dk-btn" data-s="services"><span class="ms dk-ico">settings_input_hdmi</span><span class="dk-lbl">Services</span></button>
+  <button class="dk-btn" data-s="assist"><span class="ms dk-ico">shield</span><span class="dk-lbl">Assist</span></button>
+  <button class="dk-btn" data-s="industries"><span class="ms dk-ico">domain</span><span class="dk-lbl">Industries</span></button>
+  <div class="dk-sep"></div>
+  <button class="dk-btn" data-s="about"><span class="ms dk-ico">info</span><span class="dk-lbl">About</span></button>
+  <button class="dk-btn" data-s="contact"><span class="ms dk-ico">mail</span><span class="dk-lbl">Contact</span></button>
+</nav>
+
+<!-- MODAL -->
+<div id="moverlay" role="dialog" aria-modal="true">
+  <div class="modal">
+    <div class="m-img" id="mimg"><div class="m-img-ph"><span class="ms ms-xl" id="mico-bg">image</span></div></div>
+    <button class="m-cls" id="mcls" aria-label="Close"><span class="ms ms-sm">close</span></button>
+    <div class="m-content">
+      <div class="m-tag" id="mtag"></div>
+      <h3 class="m-title" id="mtitle"></h3>
+      <p class="m-body" id="mbody"></p>
+      <button class="m-cta" id="m-cta">Request This Service <span class="ms ms-sm">arrow_forward</span></button>
+    </div>
+  </div>
+</div>
+
+<div id="snap">
+
+<!-- HERO -->
+<section class="sec" id="hero">
+  <div class="hero-l">
+    <div class="eyebrow"><span class="e-dot"></span>End-to-End AV Solutions · USA</div>
+    <h1 class="hero-h1"><span class="h1-line">AV Integration.</span><span class="gr h1-line">LED Systems.</span><span class="sub-line">Delivered Onsite.</span></h1>
+    <p class="hero-desc">From full AV installations to rapid field support — WaveTech keeps your audiovisual infrastructure running at peak performance, nationwide.</p>
+    <div class="hero-actions">
+      <button class="btn btn-fill" onclick="navTo('contact')"><span class="ms ms-sm">rocket_launch</span> Start a Project</button>
+      <button class="btn btn-ghost" onclick="navTo('services')">View Solutions <span class="ms ms-sm">arrow_forward</span></button>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-n">500+</span><span class="stat-l">Projects Delivered</span></div>
+      <div class="stat"><span class="stat-n">48hr</span><span class="stat-l">Avg Response</span></div>
+      <div class="stat"><span class="stat-n">99%</span><span class="stat-l">Uptime SLA</span></div>
+      <div class="stat"><span class="stat-n">12+</span><span class="stat-l">Industries Served</span></div>
+    </div>
+  </div>
+  <div class="hero-r">
+    <div class="hero-photo" data-bg="https://blogger.googleusercontent.com/img/a/AVvXsEiSxPhQLpNUFpLNdN1WtG88WUVhS2Z7Tvrqd2XdXyRSEisxNTM1xwld0ZvLHxjP6BZWiZemLJpsQtBFca_7Ri-ApGo03Hd6PHFMmgl7-Ay7p5-2iExJ3jjB0H3Ix1Ijio_CyRVS7RgbGTCxd5CC4Ma0e2yOZj-Gx15wrimOZjAdw0DjgUeTDcAiQGdMl9k" style="background-image:url('https://blogger.googleusercontent.com/img/a/AVvXsEiSxPhQLpNUFpLNdN1WtG88WUVhS2Z7Tvrqd2XdXyRSEisxNTM1xwld0ZvLHxjP6BZWiZemLJpsQtBFca_7Ri-ApGo03Hd6PHFMmgl7-Ay7p5-2iExJ3jjB0H3Ix1Ijio_CyRVS7RgbGTCxd5CC4Ma0e2yOZj-Gx15wrimOZjAdw0DjgUeTDcAiQGdMl9k')"></div>
+  </div>
+  <div class="scroll-hint"><div class="sh-line"></div>Scroll to explore</div>
+</section>
+
+<!-- SERVICES -->
+<section class="sec" id="services">
+  <div class="wrap">
+    <div class="srv-hdr">
+      <div><div class="lbl rv">Our Services</div><h2 class="h2 rv d1">Comprehensive<br><span class="gr">AV Capabilities</span></h2></div>
+      <button class="btn btn-ghost rv d2" onclick="navTo('contact')">Get a Quote</button>
+    </div>
+    <div class="srv-grid">
+      <div class="sc rv" data-m="av">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-av.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">AV Integration</div><div class="sc-tag">Full-Scope</div></div>
+      </div>
+      <div class="sc rv d1" data-m="sig">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-signage.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">Digital Signage &amp; Video Walls</div><div class="sc-tag">Display</div></div>
+      </div>
+      <div class="sc rv d2" data-m="led">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-led.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">LED Installation &amp; Support</div><div class="sc-tag">LED Systems</div></div>
+      </div>
+      <div class="sc rv d3" data-m="eme">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-emergency.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">Emergency AV Services</div><div class="sc-tag">24/7</div></div>
+      </div>
+      <div class="sc rv" data-m="mai">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-maintenance.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">Preventive Maintenance</div><div class="sc-tag">Ongoing</div></div>
+      </div>
+      <div class="sc rv d1" data-m="con">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-consulting.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">AV Engineering Consulting</div><div class="sc-tag">Strategy</div></div>
+      </div>
+      <div class="sc rv d2" data-m="dep">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-deployment.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">Project Planning &amp; Deployment</div><div class="sc-tag">End-to-End</div></div>
+      </div>
+      <div class="sc rv d3" data-m="doo">
+        <div class="sc-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-dooh.jpg"></div>
+        <div class="sc-img-ov"></div>
+        <div class="sc-body"><div class="sc-name">DOOH &amp; Digital Media Networks</div><div class="sc-tag">Media</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="sec" id="stats">
+  <div class="wrap">
+    <div class="stats-grid rv-left">
+      <div class="rv">
+        <div class="lbl">Why WaveTech</div>
+        <h2 class="h2">Built for<br><span class="gr">Real-World</span><br>Environments</h2>
+        <p class="body">Every deployment is backed by expert field teams, proactive maintenance, and a commitment to performance that goes beyond installation day.</p>
+        <div class="feat-list">
+          <div class="feat-item"><div class="feat-ico"><span class="ms ms-sm">cell_tower</span></div><div><div class="feat-t">Nationwide Coverage</div><div class="feat-s">Field teams across the continental US</div></div></div>
+          <div class="feat-item"><div class="feat-ico"><span class="ms ms-sm">sync</span></div><div><div class="feat-t">WaveTech Assist™ Programs</div><div class="feat-s">Managed AV services, post-install</div></div></div>
+          <div class="feat-item"><div class="feat-ico"><span class="ms ms-sm">workspace_premium</span></div><div><div class="feat-t">Certified Technicians</div><div class="feat-s">Factory-trained on leading platforms</div></div></div>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="num-grid">
+          <div class="num-cell"><span class="num-val" data-target="500" data-suf="+">0</span><div class="num-lbl">Projects Delivered</div></div>
+          <div class="num-cell"><span class="num-val" data-target="48" data-suf="hr">0</span><div class="num-lbl">Avg Response</div></div>
+          <div class="num-cell"><span class="num-val" data-target="99" data-suf="%">0</span><div class="num-lbl">Uptime Guarantee</div></div>
+          <div class="num-cell"><span class="num-val" data-target="12" data-suf="+">0</span><div class="num-lbl">Industries Served</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ASSIST -->
+<section class="sec" id="assist">
+  <div class="wrap">
+    <div class="assist-grid rv-scale">
+      <div class="avis rv">
+        <div class="avis-dots"></div><div class="avis-glow"></div>
+        <div class="avis-badge">WaveTech Assist™</div>
+        <div class="avis-pills">
+          <div class="avis-pill" onclick="openM('pro')"><div class="pill-ico pi1"><span class="ms ms-sm">search</span></div><div><div class="pill-name">Proactive Maintenance</div><div class="pill-hint">Prevent issues before they start</div></div></div>
+          <div class="avis-pill" onclick="openM('rap')"><div class="pill-ico pi2"><span class="ms ms-sm">bolt</span></div><div><div class="pill-name">Rapid Field Response</div><div class="pill-hint">48hr average deployment</div></div></div>
+          <div class="avis-pill" onclick="openM('lon')"><div class="pill-ico pi3"><span class="ms ms-sm">trending_up</span></div><div><div class="pill-name">Long-Term Reliability</div><div class="pill-hint">Managed AV performance</div></div></div>
+        </div>
+      </div>
+      <div class="rv d1">
+        <div class="lbl">WaveTech Assist</div>
+        <h2 class="h2">Ongoing AV Support —<br><span class="gr">When You Need It</span></h2>
+        <p class="body">WaveTech Assist is our managed services program — keeping your systems optimized long after installation day with proactive care and priority response.</p>
+        <button class="btn btn-fill" onclick="openM('ass')">Learn About Assist</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="sec" id="industries">
+  <div class="wrap" style="width:100%">
+    <div class="lbl rv">Who We Serve</div>
+    <h2 class="h2 rv d1">Specialized for<br><span class="gr">Every Environment</span></h2>
+    <p class="body rv d2">From Fortune 500 boardrooms to houses of worship — our solutions adapt to the demands of every space and organization.</p>
+    <div class="ind-grid rv d3">
+      <div class="ind-card" onclick="openM('icp')"><div class="ind-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-corporate.jpg"></div><div class="ind-img-ov"></div><div class="ind-body"><div class="ind-name">Corporate</div></div><span class="ms ind-arr">arrow_outward</span></div>
+      <div class="ind-card" onclick="openM('iwo')"><div class="ind-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-worship.jpg"></div><div class="ind-img-ov"></div><div class="ind-body"><div class="ind-name">House of Worship</div></div><span class="ms ind-arr">arrow_outward</span></div>
+      <div class="ind-card" onclick="openM('irt')"><div class="ind-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-retail.jpg"></div><div class="ind-img-ov"></div><div class="ind-body"><div class="ind-name">Retail</div></div><span class="ms ind-arr">arrow_outward</span></div>
+      <div class="ind-card" onclick="openM('ied')"><div class="ind-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-education.jpg"></div><div class="ind-img-ov"></div><div class="ind-body"><div class="ind-name">Education</div></div><span class="ms ind-arr">arrow_outward</span></div>
+      <div class="ind-card" onclick="openM('iho')"><div class="ind-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-hospitality.jpg"></div><div class="ind-img-ov"></div><div class="ind-body"><div class="ind-name">Hospitality</div></div><span class="ms ind-arr">arrow_outward</span></div>
+      <div class="ind-card" onclick="openM('irs')"><div class="ind-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-residential.jpg"></div><div class="ind-img-ov"></div><div class="ind-body"><div class="ind-name">Residential</div></div><span class="ms ind-arr">arrow_outward</span></div>
+      <div class="ind-card" onclick="openM('doo')"><div class="ind-img" data-bg="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-dooh.jpg"></div><div class="ind-img-ov"></div><div class="ind-body"><div class="ind-name">DOOH Networks</div></div><span class="ms ind-arr">arrow_outward</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="sec" id="instagram">
+  <div class="ig-split wrap">
+    <div class="ig-left">
+      <div class="ig-logo rv"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEg1KvXZv8wECAlY27KpecBigaIiJwyFyI1bQh7R99-qzzNwoCGp53-HJTkjddOkb76L5QpiX0h4HmL6-z_AzE3m3WAEWbXlT4TmnXbm-vNlQR3fY6BrdM73xHKQlKbPUtYxkyTZMpTMWy4Uv3331M7oLNlnRU3V4mvAq3KY4xfST_zlbep-xBTHMN607Ss" alt="WaveTech" style="height:36px;object-fit:contain"></div>
+      <div class="lbl rv" style="margin-top:1rem">Follow Us</div>
+      <h2 class="h2 rv d1">Stay Connected<br><span class="gr">Across Platforms</span></h2>
+      <p class="body rv d2">Real installs. Real results. Follow our latest projects, team deployments, and behind-the-scenes from jobsites nationwide.</p>
+      <div class="ig-social-btns rv d3">
+        <a href="https://www.instagram.com/wavetech.inn" target="_blank" rel="noopener" class="ig-follow-btn">
+          <span class="ms" style="font-size:18px">photo_camera</span> Instagram
+        </a>
+        <a href="https://www.linkedin.com/company/wavetech-innovations/" target="_blank" rel="noopener" class="ig-follow-btn ig-follow-btn--li">
+          <span class="ms" style="font-size:18px">work</span> LinkedIn
+        </a>
+        <a href="https://www.facebook.com/WaveTechInnovations" target="_blank" rel="noopener" class="ig-follow-btn ig-follow-btn--fb">
+          <span class="ms" style="font-size:18px">thumb_up</span> Facebook
+        </a>
+      </div>
+    </div>
+    <div class="ig-right rv d2">
+      <div class="ig-phone-outer">
+        <div class="ig-phone">
+          <div class="ig-phone-notch"><div class="ig-phone-cam"></div></div>
+          <div class="ig-phone-vol"></div>
+          <div class="ig-phone-vol2"></div>
+          <div class="ig-phone-pwr"></div>
+          <div class="ig-phone-screen">
+            <div class="ig-phone-status">
+              <span>9:41</span>
+              <div class="ig-phone-status-icons">
+                <span class="ms" style="font-size:13px">signal_cellular_alt</span>
+                <span class="ms" style="font-size:13px">wifi</span>
+                <span class="ms" style="font-size:13px">battery_full</span>
+              </div>
+            </div>
+            <div class="ig-phone-igbar">
+              <div class="ig-phone-igname">
+                <span class="ms" style="font-size:20px">arrow_back_ios</span>
+                <span>wavetech.inn</span>
+              </div>
+              <div class="ig-phone-igicons">
+                <span class="ms" style="font-size:22px">notifications_none</span>
+                <span class="ms" style="font-size:22px">more_vert</span>
+              </div>
+            </div>
+            <!-- IG Profile -->
+            <div class="ig-prof">
+              <div class="ig-prof-top">
+                <div class="ig-prof-av"><div class="ig-prof-av-inner"><img src="https://blogger.googleusercontent.com/img/a/AVvXsEg1KvXZv8wECAlY27KpecBigaIiJwyFyI1bQh7R99-qzzNwoCGp53-HJTkjddOkb76L5QpiX0h4HmL6-z_AzE3m3WAEWbXlT4TmnXbm-vNlQR3fY6BrdM73xHKQlKbPUtYxkyTZMpTMWy4Uv3331M7oLNlnRU3V4mvAq3KY4xfST_zlbep-xBTHMN607Ss" alt="WaveTech" style="width:40px;height:40px;object-fit:contain;border-radius:50%"></div></div>
+                <div class="ig-prof-stats">
+                  <div class="ig-prof-stat"><span class="ig-prof-stat-n">152</span><span class="ig-prof-stat-l">posts</span></div>
+                  <div class="ig-prof-stat"><span class="ig-prof-stat-n">2,847</span><span class="ig-prof-stat-l">followers</span></div>
+                  <div class="ig-prof-stat"><span class="ig-prof-stat-n">184</span><span class="ig-prof-stat-l">following</span></div>
+                </div>
+              </div>
+              <div class="ig-prof-name">WaveTech Innovations</div>
+              <div class="ig-prof-desc">📺 Pro AV &amp; Digital Signage<br>🔊 Commercial Audio Visual Installs<br>📍 Nationwide Deployments</div>
+              <div class="ig-prof-link"><span class="ms" style="font-size:12px">link</span>wavetech-usa.com</div>
+              <div class="ig-prof-btns">
+                <a href="https://www.instagram.com/wavetech.inn" target="_blank" rel="noopener" class="ig-prof-btn ig-prof-btn-f" style="text-decoration:none;display:flex;align-items:center;justify-content:center">Follow</a>
+                <div class="ig-prof-btn ig-prof-btn-m">Message</div>
+                <div class="ig-prof-btn-s"><span class="ms" style="font-size:16px">expand_more</span></div>
+              </div>
+              <div class="ig-prof-hl">
+                <div class="ig-prof-hl-item"><div class="ig-prof-hl-ring"><span class="ms" style="font-size:20px">build</span></div><span class="ig-prof-hl-lbl">Installs</span></div>
+                <div class="ig-prof-hl-item"><div class="ig-prof-hl-ring"><span class="ms" style="font-size:20px">campaign</span></div><span class="ig-prof-hl-lbl">DOOH</span></div>
+                <div class="ig-prof-hl-item"><div class="ig-prof-hl-ring"><span class="ms" style="font-size:20px">groups</span></div><span class="ig-prof-hl-lbl">Team</span></div>
+                <div class="ig-prof-hl-item"><div class="ig-prof-hl-ring"><span class="ms" style="font-size:20px">workspace_premium</span></div><span class="ig-prof-hl-lbl">Awards</span></div>
+                <div class="ig-prof-hl-item"><div class="ig-prof-hl-ring"><span class="ms" style="font-size:20px">location_on</span></div><span class="ig-prof-hl-lbl">Jobsites</span></div>
+              </div>
+              <div class="ig-prof-tabs">
+                <div class="ig-prof-tab ig-act"><span class="ms" style="font-size:22px">grid_on</span></div>
+                <div class="ig-prof-tab"><span class="ms" style="font-size:22px">video_library</span></div>
+                <div class="ig-prof-tab"><span class="ms" style="font-size:22px">person_pin</span></div>
+              </div>
+            </div>
+            <!-- SnapWidget: direct iframe so CSS transform:scale applies via class -->
+            <div class="ig-phone-widget-wrap">
+              <iframe src="https://snapwidget.com/embed/1120103" class="snapwidget-widget" loading="lazy" allowtransparency="true" frameborder="0" scrolling="no" title="WaveTech Instagram feed"></iframe>
+            </div>
+            <div class="ig-phone-home"><div class="ig-phone-home-bar"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="wrap" style="width:100%">
+    <div class="ab-grid rv-scale">
+      <div class="rv">
+        <div class="lbl">Our Story</div>
+        <h2 class="h2">Purpose-Built<br><span class="gr">AV for America</span></h2>
+        <p class="body">WaveTech Innovations is a full-service AV integration and LED systems company serving clients across the United States. We design, deploy, and maintain technology ecosystems that elevate every space — from corporate boardrooms to houses of worship.</p>
+        <div class="ab-vals">
+          <div class="feat-item rv d1">
+            <div class="feat-ico"><span class="ms ms-sm">public</span></div>
+            <div><div class="feat-t">Nationwide Presence</div><div class="feat-s">Serving clients across the United States</div></div>
+          </div>
+          <div class="feat-item rv d2">
+            <div class="feat-ico"><span class="ms ms-sm">workspace_premium</span></div>
+            <div><div class="feat-t">Certified Integrators</div><div class="feat-s">Factory-trained on every platform we deploy</div></div>
+          </div>
+          <div class="feat-item rv d3">
+            <div class="feat-ico"><span class="ms ms-sm">handyman</span></div>
+            <div><div class="feat-t">End-to-End Ownership</div><div class="feat-s">Design, install, and maintain — one team</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:.7rem;margin-top:1.8rem;flex-wrap:wrap" class="rv d4">
+          <button class="btn btn-fill" onclick="navTo('contact')"><span class="ms ms-sm">mail</span>Work With Us</button>
+          <button class="btn btn-ghost" onclick="navTo('services')"><span class="ms ms-sm">arrow_forward</span>Our Services</button>
+        </div>
+      </div>
+      <div class="rv d2">
+        <div class="ab-card">
+          <div class="ab-card-top">
+            <div class="ab-av">EL</div>
+            <div>
+              <div class="ab-founder-name">Erick Leon</div>
+              <div class="ab-founder-role">CEO &amp; Founder</div>
+            </div>
+          </div>
+          <p class="ab-mission">WaveTech was built to deliver enterprise-grade AV systems to organizations that demand reliability. Every project is a commitment — we don't just install technology, we ensure it performs flawlessly for years to come.</p>
+          <div class="ab-nums">
+            <div class="ab-num"><span class="ab-num-val">500+</span><div class="ab-num-lbl">Projects</div></div>
+            <div class="ab-num"><span class="ab-num-val">12+</span><div class="ab-num-lbl">Years</div></div>
+            <div class="ab-num"><span class="ab-num-val">99%</span><div class="ab-num-lbl">Uptime</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="sec" id="founder">
+  <div class="fq-inner rv">
+    <span class="qmark">"</span>
+    <blockquote class="fq-text">"At WaveTech Innovations, every project is a commitment to excellence. Your AV systems aren't just technology — they're powerful tools that <span class="gr">communicate your brand's professionalism</span> and attention to detail."</blockquote>
+    <div class="fq-attr"><div class="fq-av">EL</div><div><div class="fq-name">Erick Leon</div><div class="fq-role">CEO &amp; Founder, WaveTech Innovations</div></div></div>
+  </div>
+</section>
+
+<!-- PARTNERS (hidden — restore when ready) -->
+<section class="sec" id="partners" style="display:none">
+  <div class="wrap" style="text-align:center">
+    <div class="lbl rv" style="justify-content:center">Trusted Partners</div>
+    <h2 class="h2 rv d1" style="text-align:center">Backed by<br><span class="gr">Industry Leaders</span></h2>
+    <p class="body rv d2" style="text-align:center;margin:0 auto">We deploy systems built on proven, enterprise-grade technology from the world's leading AV brands.</p>
+    <div class="mq-wrap rv d3"><div class="mq"><div class="p-chip">Sharp</div><div class="p-chip">PTG</div><div class="p-chip">Microsoft</div><div class="p-chip">UNILUMIN</div><div class="p-chip">AOTO</div><div class="p-chip">DesignLED</div><div class="p-chip">JCDecaux</div><div class="p-chip">Sharp</div><div class="p-chip">PTG</div><div class="p-chip">Microsoft</div><div class="p-chip">UNILUMIN</div><div class="p-chip">AOTO</div><div class="p-chip">DesignLED</div><div class="p-chip">JCDecaux</div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="wrap" style="width:100%">
+    <div class="ct-grid rv-scale">
+      <div class="ct-left rv">
+        <div class="lbl">Get In Touch</div>
+        <h2 class="h2">Let's Build<br><span class="gr">Something<br>Extraordinary.</span></h2>
+        <p class="body">Ready to elevate your AV infrastructure? Our team is standing by to scope your project and deliver a solution that exceeds expectations.</p>
+        <div class="ct-details">
+          <div class="ct-d"><div class="ct-d-ico"><span class="ms ms-sm">language</span></div>wavetech-usa.com</div>
+          <div class="ct-d"><div class="ct-d-ico"><span class="ms ms-sm">location_on</span></div>Nationwide Field Service</div>
+          <div class="ct-d"><div class="ct-d-ico"><span class="ms ms-sm">schedule</span></div>48hr Avg Response Time</div>
+          <div class="ct-d"><div class="ct-d-ico"><span class="ms ms-sm">public</span></div>Nationwide Operations</div>
+        </div>
+        <div class="socs">
+          <a href="https://www.instagram.com/wavetech.inn" target="_blank" rel="noopener noreferrer" class="soc" title="Instagram">IG</a>
+          <a href="https://www.linkedin.com/company/wavetech-innovations/" target="_blank" rel="noopener noreferrer" class="soc" title="LinkedIn">in</a>
+          <a href="https://www.facebook.com/WaveTechInnovations" target="_blank" rel="noopener noreferrer" class="soc" title="Facebook">f</a>
+        </div>
+      </div>
+      <div class="rv d1">
+        <div class="ct-form-inline">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/form/ir9Hi5bSDTWJiR6Zbaoo"
+            id="inline-ir9Hi5bSDTWJiR6Zbaoo"
+            data-layout='{"id":"INLINE"}'
+            data-trigger-type="alwaysShow"
+            data-activation-type="alwaysActivated"
+            data-deactivation-type="neverDeactivate"
+            data-form-name="Get In Touch"
+            data-height="520"
+            data-layout-iframe-id="inline-ir9Hi5bSDTWJiR6Zbaoo"
+            data-form-id="ir9Hi5bSDTWJiR6Zbaoo"
+            height="520" style="width:100%;border:none;display:block;min-height:520px;height:520px"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="f-logo">WaveTech Innovations</div>
+  <div class="f-copy">© 2026 Wavetech Innovations North America LLC. All Rights Reserved.</div>
+  <div class="f-links"><a href="#">Privacy Policy</a><a href="#">Terms of Use</a></div>
+</footer>
+
+</div><!-- /#snap -->
+
+<!-- Scripts: inline -->
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+<script>
+// Modal data — images via Unsplash CDN (no base64, fully cached by browser)
+const MD = {
+  av:{
+    tag:'Full-Scope AV', ico:'sensors',
+    title:'AV Integration',
+    body:'From boardrooms to broadcast studios, WaveTech delivers end-to-end AV integration — system design, cabling, equipment installation, and commissioning. We work with the industry\'s top brands to build reliable, scalable audiovisual infrastructure tailored to your space.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-av.jpg'
+  },
+  led:{
+    tag:'LED Systems', ico:'light_mode',
+    title:'LED Installation & Support',
+    body:'WaveTech specializes in fine-pitch LED display installation for indoor and outdoor environments. Whether it\'s a massive video wall or a dynamic retail display, our certified technicians handle every aspect — from structural mounting to pixel-perfect calibration.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-led.jpg'
+  },
+  sig:{
+    tag:'Display', ico:'tv',
+    title:'Digital Signage & Video Walls',
+    body:'Transform any space with dynamic digital signage solutions. WaveTech designs, installs, and manages content delivery systems for single displays up to multi-screen video walls — driving engagement in retail, corporate, and hospitality environments.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-signage.jpg'
+  },
+  eme:{
+    tag:'24/7 Support', ico:'emergency',
+    title:'Emergency AV Services',
+    body:'When your AV systems fail during a critical event, every minute counts. WaveTech\'s emergency response team provides rapid on-site support with a 48-hour average deployment time, backed by nationwide field coverage to minimize downtime.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-emergency.jpg'
+  },
+  mai:{
+    tag:'Ongoing', ico:'build',
+    title:'Preventive Maintenance',
+    body:'Proactive maintenance is the key to long-term AV performance. WaveTech\'s maintenance programs include scheduled inspections, firmware updates, component testing, and detailed reporting — ensuring your systems are always ready when you need them.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-maintenance.jpg'
+  },
+  con:{
+    tag:'Strategy', ico:'architecture',
+    title:'AV Engineering Consulting',
+    body:'Planning a new facility or upgrading an existing system? WaveTech\'s engineering consultants provide technology assessments, system design, vendor-neutral recommendations, and project scoping — ensuring your AV investment aligns with operational goals.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-consulting.jpg'
+  },
+  dep:{
+    tag:'End-to-End', ico:'rocket_launch',
+    title:'Project Planning & Deployment',
+    body:'Complex AV projects demand precise coordination. WaveTech manages every phase — site surveys, logistics, equipment staging, installation, testing, and client training. We deliver on schedule and on budget, no matter the scale.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-deployment.jpg'
+  },
+  doo:{
+    tag:'Media Networks', ico:'campaign',
+    title:'DOOH & Digital Media Networks',
+    body:'WaveTech designs and deploys Digital Out-of-Home advertising networks at scale — from single venue installations to multi-site rollouts. We handle display infrastructure, content management systems, and network connectivity for measurable audience engagement.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-dooh.jpg'
+  },
+  pro:{
+    tag:'WaveTech Assist™', ico:'search',
+    title:'Proactive Care',
+    body:'WaveTech Assist Proactive Care monitors your AV infrastructure continuously, catching issues before they disrupt operations. Regular health checks, performance reports, and scheduled maintenance visits keep your systems running at peak efficiency year-round.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-maintenance.jpg'
+  },
+  rap:{
+    tag:'WaveTech Assist™', ico:'bolt',
+    title:'Rapid Field Response',
+    body:'When something goes wrong, WaveTech Assist members receive priority dispatch with a 48-hour average response time nationwide. Our field technicians arrive ready to diagnose and resolve issues on the spot, backed by a fully stocked service fleet.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-emergency.jpg'
+  },
+  lon:{
+    tag:'WaveTech Assist™', ico:'trending_up',
+    title:'Long-Term Reliability',
+    body:'WaveTech Assist Long-Term plans provide multi-year coverage with predictable costs, priority labor rates, and dedicated account management. Build a lasting AV partnership that evolves with your organization\'s growth and technology needs.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-deployment.jpg'
+  },
+  ass:{
+    tag:'Managed Services', ico:'shield',
+    title:'WaveTech Assist™ Program',
+    body:'WaveTech Assist is our comprehensive managed AV services program — combining proactive monitoring, rapid response, and long-term planning into a single, flexible agreement. Choose the tier that fits your organization and let WaveTech handle the rest.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/svc-consulting.jpg'
+  },
+  icp:{
+    tag:'Industry', ico:'business',
+    title:'Corporate',
+    body:'From executive conference rooms to multi-floor office campuses, WaveTech delivers AV solutions that power productivity. We design unified communication systems, video conferencing infrastructure, and digital signage that reflect your brand\'s professionalism.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-corporate.jpg'
+  },
+  iwo:{
+    tag:'Industry', ico:'church',
+    title:'House of Worship',
+    body:'WaveTech understands that AV in houses of worship must serve the congregation and the message. We design and install sound reinforcement, livestreaming systems, LED displays, and lighting controls that enhance the worship experience for every attendee.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-worship.jpg'
+  },
+  irt:{
+    tag:'Industry', ico:'storefront',
+    title:'Retail',
+    body:'Capture attention and drive sales with WaveTech\'s retail AV solutions. From interactive kiosks and digital menu boards to immersive window displays and in-store audio, we create environments that engage customers and reinforce your brand at every touchpoint.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-retail.jpg'
+  },
+  ied:{
+    tag:'Industry', ico:'school',
+    title:'Education',
+    body:'WaveTech transforms classrooms, auditoriums, and campus-wide facilities with modern AV technology. Interactive displays, lecture capture, paging systems, and emergency notification integration — solutions built to support today\'s hybrid learning environments.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-education.jpg'
+  },
+  iho:{
+    tag:'Industry', ico:'hotel',
+    title:'Hospitality',
+    body:'Elevate the guest experience with WaveTech\'s hospitality AV solutions. From lobby digital signage and ballroom AV systems to poolside audio and in-room entertainment, we deliver seamless technology that matches the standards of your brand.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-hospitality.jpg'
+  },
+  irs:{
+    tag:'Industry', ico:'home',
+    title:'Residential',
+    body:'WaveTech brings enterprise-grade AV expertise to luxury residential projects. Home theaters, whole-home audio distribution, smart lighting control, and outdoor entertainment systems — designed and installed with the precision your home deserves.',
+    img:'https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/img/ind-residential.jpg'
+  }
+};
+
+window.MD = MD;
+
+</script>
+<script src="https://cdn.jsdelivr.net/gh/KevinDuranBruno/WTWP-Resources@main/js/main.js"></script>
+<!-- Chat Widget -->
+<script
+  src="https://widgets.leadconnectorhq.com/loader.js"
+  data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+  data-widget-id="6884425581758b06703c08b1">
+</script>
+</body>
+</html>
