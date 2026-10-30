@@ -175,6 +175,7 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 @keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 .rv{animation:rvUp ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
 
+@media (max-width:760px){.bleedph{background-image:var(--ph-m)!important}}
 /* phones: the two 3D scenes become pre-rendered frames that crossfade with scroll */
 .mframes{display:none;position:absolute;inset:0}
 .mf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0}
@@ -224,7 +225,7 @@ html{overflow-x:clip}
 
   <!-- PAGE HERO -->
   <section aria-label="Introduction" style="position: relative; overflow: hidden; background: #090916; border-bottom: 1px solid #1A1733">
-    <div class="bleedph" aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; width: 72%; background: url(https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/svc-cabinet-work.jpg) 50% 38% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%)"></div>
+    <div class="bleedph" aria-hidden="true" style="--ph-m: url(https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/svc-cabinet-work.jpg); position: absolute; top: 0; right: 0; bottom: 0; width: 72%; background: url(https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/svc-cabinet-work-wide.jpg) 50% 50% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%)"></div>
     <div class="bleedovl" aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #090916 0%, rgba(9,9,22,.9) 28%, rgba(9,9,22,.35) 50%, rgba(9,9,22,0) 70%), linear-gradient(180deg, rgba(9,9,22,.5), transparent 25%, transparent 75%, #090916)"></div>
     <img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/svc-cabinet-work.jpg" alt="A WaveTech technician working inside an open LED cabinet" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none">
     <div class="bleedtxt" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 620px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
