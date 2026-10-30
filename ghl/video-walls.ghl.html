@@ -511,7 +511,10 @@ html{overflow-x:clip}
     if (!app.firstChild) { app.appendChild(frag); if (inst.componentDidMount) inst.componentDidMount(); return; }
     var fresh = document.createElement('div');
     fresh.appendChild(frag);
-    morph(app, fresh);
+    // morph children only: the #app root keeps its id, attributes and styles untouched
+    var i, ac = Array.prototype.slice.call(app.childNodes), bc = Array.prototype.slice.call(fresh.childNodes);
+    for (i = 0; i < bc.length; i++) { if (i < ac.length) morph(ac[i], bc[i]); else app.appendChild(bc[i]); }
+    for (i = bc.length; i < ac.length; i++) ac[i].remove();
   }
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(draw); } }
 
