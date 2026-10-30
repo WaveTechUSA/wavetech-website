@@ -80,6 +80,20 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 @keyframes offOn42{0%,42%{background:#1E1A38;color:#C9C9DB}46%,100%{background:#0DB5EC;color:#090916}}
 @keyframes offOn56{0%,56%{background:#1E1A38;color:#C9C9DB}60%,100%{background:#0DB5EC;color:#090916}}
 @keyframes muteBtn{0%,66%{background:#1E1A38;color:#C9C9DB}70%,84%{background:#FF3B3B;color:#FFFFFF}88%,100%{background:#1E1A38;color:#C9C9DB}}
+
+/* phones: the two fixed-size 3D scenes scale down instead of overflowing */
+.xwrap{overflow-x:clip}
+@media (max-width:1000px){.xwrap{zoom:.8}.roomwrap{zoom:.85}}
+@media (max-width:760px){.xwrap{zoom:.62}.roomwrap{zoom:.62}}
+@media (max-width:520px){.xwrap{zoom:.52}.roomwrap{zoom:.46}}
+/* no scroll-driven animation (unsupported browser, or Reduce Motion on): show each scene finished, nothing stacked */
+.lit{clip-path:inset(0 0 0 0)}
+.cap-a{opacity:0}.cap-b{opacity:1}
+.lA,.rA,.badge,.pgR,.pgC{opacity:0}.lC,.rB,.pgA{opacity:1}
+.bL0,.bR0,.bMute{background:#1E1A38;color:#C9C9DB}.bL1,.bR2,.bP2{background:#0DB5EC;color:#090916}
+.pan1{transform:rotateY(16deg)}.tilt1{transform:rotateX(-28deg)}.pan2{transform:rotateY(-14deg)}.tilt2{transform:rotateX(-30deg)}
+.rx1,.rx2,.rx3,.rx4,.rx5,.flag{opacity:0}.ok{opacity:1}
+.ev1,.ev2,.ev3,.ev4,.ev5,.st1,.st2,.st3,.st4,.st5,.lab{opacity:1}
 @media (prefers-reduced-motion: no-preference){
 @supports (animation-timeline: view()){
 .track-hero{height:290vh;view-timeline-name:--hero}
@@ -162,6 +176,13 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 .gal .cap{position:absolute;right:32px;bottom:28px;padding:6px 12px;border-radius:999px;background:rgba(9,9,22,.72);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#B9B9CC;opacity:0}
 .gal .sl,.gal .cap{animation:xf var(--T) linear infinite;animation-delay:var(--d)}
 @media (prefers-reduced-motion: reduce){.gal .sl,.gal .cap{animation:none}.gal .sl:first-of-type,.gal .cap:first-of-type{opacity:1}}
+/* phones: full-bleed photo panels stack — photo on top fading down, text below */
+@media (max-width:760px){
+.bleedph,.gal .sl{width:100%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%);mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%)}
+.bleedovl,.gal .ovl{background:linear-gradient(180deg,rgba(9,9,22,.25),rgba(9,9,22,.1) 30%,rgba(9,9,22,.85) 70%,#090916 85%)!important}
+.bleedtxt,.galtxt{justify-content:flex-end!important;min-height:0!important;padding-top:58vh!important;padding-bottom:56px!important}
+.gal .cap{right:auto;left:16px;bottom:auto;top:14px}
+}
 @keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: no-preference){
 @supports (animation-timeline: view()){
@@ -190,10 +211,10 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 
   <!-- PAGE HERO -->
   <section aria-label="Introduction" style="position: relative; overflow: hidden; background: #090916; border-bottom: 1px solid #1A1733">
-    <div aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; width: 72%; background: url(assets/svc-cabinet-work.jpg) 50% 38% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%)"></div>
-    <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #090916 0%, rgba(9,9,22,.9) 28%, rgba(9,9,22,.35) 50%, rgba(9,9,22,0) 70%), linear-gradient(180deg, rgba(9,9,22,.5), transparent 25%, transparent 75%, #090916)"></div>
+    <div class="bleedph" aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; width: 72%; background: url(assets/svc-cabinet-work.jpg) 50% 38% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%)"></div>
+    <div class="bleedovl" aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #090916 0%, rgba(9,9,22,.9) 28%, rgba(9,9,22,.35) 50%, rgba(9,9,22,0) 70%), linear-gradient(180deg, rgba(9,9,22,.5), transparent 25%, transparent 75%, #090916)"></div>
     <img src="assets/svc-cabinet-work.jpg" alt="A WaveTech technician working inside an open LED cabinet" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none">
-    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 620px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+    <div class="bleedtxt" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 620px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
       <div class="lbl">EMERGENCY &amp; MAINTENANCE</div>
       <h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(44px, 5.6vw, 76px); line-height: 0.98; letter-spacing: -0.02em; max-width: 9.5em">Something’s dark.<br><span class="grad">We’ll have it back.</span></h1>
       <p style="margin: 0; color: #B9B9CC; font-size: 18px; max-width: 30em">Video walls and rooms kept running, including systems we didn’t install. Scheduled maintenance, spares on hand, remote diagnostics and on-site response.</p>
@@ -271,7 +292,7 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
   <section class="gal" aria-label="ON A SERVICE CALL" style="border-top: 1px solid #1A1733; border-bottom: 1px solid #1A1733; --T: 20.0s">
     <div class="sl" style="--d: -1.4s"><img src="assets/svc-module-pulled.jpg" alt="A technician pulling an LED module from the wall" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 3.6s"><img src="assets/svc-module-seated.jpg" alt="Hands seating a new LED module with a red test pattern" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 8.6s"><img src="assets/svc-mapping-test.jpg" alt="A video wall showing its mapping test pattern" loading="eager" style="object-position: 50% 40%"></div><div class="sl" style="--d: 13.6s"><img src="assets/svc-remote-diagnostics.jpg" alt="A technician at a laptop running diagnostics in a dark room" loading="eager" style="object-position: 60% 50%"></div>
     <div class="ovl" aria-hidden="true"></div>
-    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 720px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+    <div class="galtxt" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 720px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
       <div class="lbl">ON A SERVICE CALL</div>
       <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(40px, 4.8vw, 64px); line-height: 1.0; letter-spacing: -0.02em; max-width: 9.5em">Found it, fixed it,<br><span class="grad">proved it.</span></h2>
       <p style="margin: 0; color: #B9B9CC; font-size: 18px; max-width: 28em">Remote diagnostics first, a truck when it needs one, and a test pattern on the wall before we leave.</p>

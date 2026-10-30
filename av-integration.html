@@ -80,6 +80,20 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 @keyframes offOn42{0%,42%{background:#1E1A38;color:#C9C9DB}46%,100%{background:#0DB5EC;color:#090916}}
 @keyframes offOn56{0%,56%{background:#1E1A38;color:#C9C9DB}60%,100%{background:#0DB5EC;color:#090916}}
 @keyframes muteBtn{0%,66%{background:#1E1A38;color:#C9C9DB}70%,84%{background:#FF3B3B;color:#FFFFFF}88%,100%{background:#1E1A38;color:#C9C9DB}}
+
+/* phones: the two fixed-size 3D scenes scale down instead of overflowing */
+.xwrap{overflow-x:clip}
+@media (max-width:1000px){.xwrap{zoom:.8}.roomwrap{zoom:.85}}
+@media (max-width:760px){.xwrap{zoom:.62}.roomwrap{zoom:.62}}
+@media (max-width:520px){.xwrap{zoom:.52}.roomwrap{zoom:.46}}
+/* no scroll-driven animation (unsupported browser, or Reduce Motion on): show each scene finished, nothing stacked */
+.lit{clip-path:inset(0 0 0 0)}
+.cap-a{opacity:0}.cap-b{opacity:1}
+.lA,.rA,.badge,.pgR,.pgC{opacity:0}.lC,.rB,.pgA{opacity:1}
+.bL0,.bR0,.bMute{background:#1E1A38;color:#C9C9DB}.bL1,.bR2,.bP2{background:#0DB5EC;color:#090916}
+.pan1{transform:rotateY(16deg)}.tilt1{transform:rotateX(-28deg)}.pan2{transform:rotateY(-14deg)}.tilt2{transform:rotateX(-30deg)}
+.rx1,.rx2,.rx3,.rx4,.rx5,.flag{opacity:0}.ok{opacity:1}
+.ev1,.ev2,.ev3,.ev4,.ev5,.st1,.st2,.st3,.st4,.st5,.lab{opacity:1}
 @media (prefers-reduced-motion: no-preference){
 @supports (animation-timeline: view()){
 .track-hero{height:290vh;view-timeline-name:--hero}
@@ -162,6 +176,13 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 .gal .cap{position:absolute;right:32px;bottom:28px;padding:6px 12px;border-radius:999px;background:rgba(9,9,22,.72);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#B9B9CC;opacity:0}
 .gal .sl,.gal .cap{animation:xf var(--T) linear infinite;animation-delay:var(--d)}
 @media (prefers-reduced-motion: reduce){.gal .sl,.gal .cap{animation:none}.gal .sl:first-of-type,.gal .cap:first-of-type{opacity:1}}
+/* phones: full-bleed photo panels stack — photo on top fading down, text below */
+@media (max-width:760px){
+.bleedph,.gal .sl{width:100%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%);mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%)}
+.bleedovl,.gal .ovl{background:linear-gradient(180deg,rgba(9,9,22,.25),rgba(9,9,22,.1) 30%,rgba(9,9,22,.85) 70%,#090916 85%)!important}
+.bleedtxt,.galtxt{justify-content:flex-end!important;min-height:0!important;padding-top:58vh!important;padding-bottom:56px!important}
+.gal .cap{right:auto;left:16px;bottom:auto;top:14px}
+}
 @keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: no-preference){
 @supports (animation-timeline: view()){
@@ -190,10 +211,10 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 
   <!-- PAGE HERO -->
   <section aria-label="Introduction" style="position: relative; overflow: hidden; background: #090916; border-bottom: 1px solid #1A1733">
-    <div aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; width: 72%; background: url(assets/av-ladder-cable.jpg) 55% 30% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%)"></div>
-    <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #090916 0%, rgba(9,9,22,.9) 28%, rgba(9,9,22,.35) 50%, rgba(9,9,22,0) 70%), linear-gradient(180deg, rgba(9,9,22,.5), transparent 25%, transparent 75%, #090916)"></div>
+    <div class="bleedph" aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; width: 72%; background: url(assets/av-ladder-cable.jpg) 55% 30% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%)"></div>
+    <div class="bleedovl" aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #090916 0%, rgba(9,9,22,.9) 28%, rgba(9,9,22,.35) 50%, rgba(9,9,22,0) 70%), linear-gradient(180deg, rgba(9,9,22,.5), transparent 25%, transparent 75%, #090916)"></div>
     <img src="assets/av-ladder-cable.jpg" alt="A technician running cable at a display from a ladder" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none">
-    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 620px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+    <div class="bleedtxt" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 620px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
       <div class="lbl">AV INTEGRATION</div>
       <h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(44px, 5.6vw, 76px); line-height: 0.98; letter-spacing: -0.02em; max-width: 9.5em">The whole room,<br><span class="grad">one touch panel.</span></h1>
       <p style="margin: 0; color: #B9B9CC; font-size: 18px; max-width: 30em">Displays, cameras, microphones and conferencing designed as one system, programmed by the same team that installs it.</p>
@@ -205,7 +226,7 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
   <section id="integration" class="track-av glow-c" aria-label="A room system at work" style="border-bottom: 1px solid #1A1733">
     <div class="stage" style="max-width: 1280px; margin: 0 auto; padding: 32px 32px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 24px 44px; align-items: flex-start">
       <figure aria-label="A conference room: two video walls, two ceiling PTZ cameras, ceiling speakers and microphone arrays, a table with a touch panel and a laptop. As the page scrolls, the walls change source, the cameras move and the microphones mute and unmute." style="flex: 1 1 100%; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px">
-        <div style="position: relative; height: 820px; perspective: 2200px; perspective-origin: 50% 40%; overflow: hidden; border: 1px solid #1A1733; background: radial-gradient(600px 340px at 50% 60%, #161027, #090916 70%); box-shadow: 0 30px 80px rgba(0,0,0,.6)">
+        <div class="roomwrap" style="position: relative; height: 820px; perspective: 2200px; perspective-origin: 50% 40%; overflow: hidden; border: 1px solid #1A1733; background: radial-gradient(600px 340px at 50% 60%, #161027, #090916 70%); box-shadow: 0 30px 80px rgba(0,0,0,.6)">
           <div aria-hidden="true" style="position: absolute; left: 14px; top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #00C4EC; letter-spacing: .08em">ROOM SYSTEM</div>
           <div aria-hidden="true" style="position: absolute; right: 14px; top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #7A7A90">SCROLL TO RUN THE ROOM</div>
 
@@ -388,7 +409,7 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
   <section class="gal" aria-label="ON SITE" style="border-top: 1px solid #1A1733; border-bottom: 1px solid #1A1733; --T: 45.0s">
     <div class="sl" style="--d: -1.4s"><img src="assets/av-ptz-closeup.jpg" alt="A ceiling-mounted PTZ camera, installed and aimed" loading="eager" style="object-position: 50% 40%"></div><div class="sl" style="--d: 3.6s"><img src="assets/av-bench-test.jpg" alt="Cameras and processing laid out for bench testing" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 8.6s"><img src="assets/av-camera-mount.jpg" alt="A camera mount being fixed to the wall" loading="eager" style="object-position: 55% 50%"></div><div class="sl" style="--d: 13.6s"><img src="assets/av-terminating.jpg" alt="A technician terminating a cable" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 18.6s"><img src="assets/av-rack-build.jpg" alt="Cabling being dressed inside the rack" loading="eager" style="object-position: 50% 45%"></div><div class="sl" style="--d: 23.6s"><img src="assets/av-ceiling-panel.jpg" alt="A technician fitting a ceiling panel overhead" loading="eager" style="object-position: 50% 35%"></div><div class="sl" style="--d: 28.6s"><img src="assets/av-above-ceiling.jpg" alt="A technician on a ladder working above the ceiling grid" loading="eager" style="object-position: 45% 40%"></div><div class="sl" style="--d: 33.6s"><img src="assets/av-cable-behind-display.jpg" alt="A hand guiding a cable behind a display" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 38.6s"><img src="assets/av-ladders.jpg" alt="Ladders set up in the room" loading="eager" style="object-position: 50% 55%"></div>
     <div class="ovl" aria-hidden="true"></div>
-    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 720px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+    <div class="galtxt" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 720px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
       <div class="lbl">ON SITE</div>
       <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(40px, 4.8vw, 64px); line-height: 1.0; letter-spacing: -0.02em; max-width: 9.5em">The same crew,<br><span class="grad">start to finish.</span></h2>
       <p style="margin: 0; color: #B9B9CC; font-size: 18px; max-width: 28em">No subcontracted install. The people who drew the room are the ones on the ladder, in the rack and behind the camera presets.</p>

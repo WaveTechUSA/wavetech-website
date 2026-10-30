@@ -74,6 +74,20 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 @keyframes offOn42{0%,42%{background:#1E1A38;color:#C9C9DB}46%,100%{background:#0DB5EC;color:#090916}}
 @keyframes offOn56{0%,56%{background:#1E1A38;color:#C9C9DB}60%,100%{background:#0DB5EC;color:#090916}}
 @keyframes muteBtn{0%,66%{background:#1E1A38;color:#C9C9DB}70%,84%{background:#FF3B3B;color:#FFFFFF}88%,100%{background:#1E1A38;color:#C9C9DB}}
+
+/* phones: the two fixed-size 3D scenes scale down instead of overflowing */
+.xwrap{overflow-x:clip}
+@media (max-width:1000px){.xwrap{zoom:.8}.roomwrap{zoom:.85}}
+@media (max-width:760px){.xwrap{zoom:.62}.roomwrap{zoom:.62}}
+@media (max-width:520px){.xwrap{zoom:.52}.roomwrap{zoom:.46}}
+/* no scroll-driven animation (unsupported browser, or Reduce Motion on): show each scene finished, nothing stacked */
+.lit{clip-path:inset(0 0 0 0)}
+.cap-a{opacity:0}.cap-b{opacity:1}
+.lA,.rA,.badge,.pgR,.pgC{opacity:0}.lC,.rB,.pgA{opacity:1}
+.bL0,.bR0,.bMute{background:#1E1A38;color:#C9C9DB}.bL1,.bR2,.bP2{background:#0DB5EC;color:#090916}
+.pan1{transform:rotateY(16deg)}.tilt1{transform:rotateX(-28deg)}.pan2{transform:rotateY(-14deg)}.tilt2{transform:rotateX(-30deg)}
+.rx1,.rx2,.rx3,.rx4,.rx5,.flag{opacity:0}.ok{opacity:1}
+.ev1,.ev2,.ev3,.ev4,.ev5,.st1,.st2,.st3,.st4,.st5,.lab{opacity:1}
 @media (prefers-reduced-motion: no-preference){
 @supports (animation-timeline: view()){
 .track-hero{height:290vh;view-timeline-name:--hero}
@@ -156,6 +170,13 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 .gal .cap{position:absolute;right:32px;bottom:28px;padding:6px 12px;border-radius:999px;background:rgba(9,9,22,.72);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#B9B9CC;opacity:0}
 .gal .sl,.gal .cap{animation:xf var(--T) linear infinite;animation-delay:var(--d)}
 @media (prefers-reduced-motion: reduce){.gal .sl,.gal .cap{animation:none}.gal .sl:first-of-type,.gal .cap:first-of-type{opacity:1}}
+/* phones: full-bleed photo panels stack — photo on top fading down, text below */
+@media (max-width:760px){
+.bleedph,.gal .sl{width:100%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%);mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%)}
+.bleedovl,.gal .ovl{background:linear-gradient(180deg,rgba(9,9,22,.25),rgba(9,9,22,.1) 30%,rgba(9,9,22,.85) 70%,#090916 85%)!important}
+.bleedtxt,.galtxt{justify-content:flex-end!important;min-height:0!important;padding-top:58vh!important;padding-bottom:56px!important}
+.gal .cap{right:auto;left:16px;bottom:auto;top:14px}
+}
 @keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion: no-preference){
 @supports (animation-timeline: view()){
@@ -166,7 +187,7 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 /* break out of the builder's centered column: full-bleed, own background */
 html,body{background:#090916!important}
 html{overflow-x:clip}
-#app{position:relative;width:100vw;margin-left:calc(50% - 50vw);box-sizing:border-box}
+#app{position:relative;width:100vw;margin-left:calc(50% - 50vw);box-sizing:border-box;overflow-x:clip}
 /* the scroll scenes pin with position:sticky; no ancestor may clip or scroll */
 #app *{overflow-anchor:auto}
 .c-section,.c-row,.c-column,.c-wrapper,.hl_page-creator--section,.hl_page-creator--row,.hl_page-creator--col{overflow:visible!important}
@@ -208,7 +229,7 @@ html{overflow-x:clip}
                 <div class="leds" style="box-shadow: inset 0 0 0 1px #141A28"></div>
               </sc-for>
             </div>
-            <div class="lit" aria-hidden="true" style="position: absolute; inset: 0; clip-path: inset(100% 0 0 0); overflow: hidden">
+            <div class="lit" aria-hidden="true" style="position: absolute; inset: 0; overflow: hidden">
               <img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/wall-content.jpg" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block">
             </div>
           </div>
@@ -242,7 +263,7 @@ html{overflow-x:clip}
       </div>
 
       <figure aria-label="Exploded view of an LED cabinet: chassis, power supplies, receiving cards, hub board and pixel cards, with the cables between them" style="flex: 1 1 560px; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 12px">
-        <div style="position: relative; padding: 300px 0 70px; perspective: 1900px; display: flex; justify-content: center">
+        <div class="xwrap" style="position: relative; padding: 300px 0 70px; perspective: 1900px; display: flex; justify-content: center">
           <div class="iso" style="position: relative; width: 560px; height: 315px; flex: none; transform: scale(.92) rotateX(56deg) rotateZ(-36deg)">
             <span class="zline" aria-hidden="true" style="left: 0; top: 0"></span>
             <span class="zline" aria-hidden="true" style="left: 100%; top: 0"></span>
@@ -324,7 +345,7 @@ html{overflow-x:clip}
   <section class="gal" aria-label="INSTALLED" style="border-top: 1px solid #1A1733; border-bottom: 1px solid #1A1733; --T: 15.0s">
     <div class="sl" style="--d: -1.4s"><img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/vw-boardroom.jpg" alt="A seamless LED video wall in a boardroom with PTZ cameras either side" loading="eager" style="object-position: 50% 45%"></div><div class="sl" style="--d: 3.6s"><img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/vw-lobby.jpg" alt="A large LED video wall in a lobby" loading="eager" style="object-position: 50% 45%"></div><div class="sl" style="--d: 8.6s"><img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/vw-summerfest.jpg" alt="An outdoor-facing LED wall showing a festival poster" loading="eager" style="object-position: 50% 40%"></div>
     <div class="ovl" aria-hidden="true"></div>
-    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 720px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+    <div class="galtxt" style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 720px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
       <div class="lbl">INSTALLED</div>
       <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(40px, 4.8vw, 64px); line-height: 1.0; letter-spacing: -0.02em; max-width: 9.5em">Hung flat, matched,<br><span class="grad">handed over lit.</span></h2>
       <p style="margin: 0; color: #B9B9CC; font-size: 18px; max-width: 28em">Lobbies, boardrooms and venues. Every wall is mapped, seam-matched and colour-calibrated before anyone sees it.</p>
