@@ -20,7 +20,7 @@ ghl/           Paste blocks for GoHighLevel — one Custom HTML/Javascript eleme
 - Social: instagram.com/wavetech.inn · linkedin.com/company/wavetech-innovations · facebook.com/WaveTechInnovations
 
 ## Placeholders still to fill
-`[PHONE]`, `[EMAIL]`, `[SERVICE AREA]` (contact block + footer, every page) and the profile stats in the Home Instagram mock.
+Profile stats in the Home Instagram mock (152 / 2,847 / 184).
 
 ## Updating
 Edit the design, re-export, commit. jsDelivr caches `@main` for up to 12 hours; to force a refresh after
