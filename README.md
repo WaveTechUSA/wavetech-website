@@ -26,4 +26,4 @@ ghl/           Paste blocks for GoHighLevel — one Custom HTML/Javascript eleme
 Edit the design, re-export, commit. jsDelivr caches `@main` for up to 12 hours; to force a refresh after
 changing an image, reference a commit or tag instead of `@main`, or purge via https://www.jsdelivr.com/tools/purge.
 
-Scroll-driven scenes use CSS scroll timelines: full motion in Chrome/Edge; Safari/Firefox show each scene's finished state.
+Scroll-driven scenes use CSS scroll timelines where the browser has them (Chrome, Edge, Safari 26+); everywhere else `site.js` drives the same keyframes from scroll position. On phones the two 3D scenes are replaced by pre-rendered frames (`assets/m-*.jpg`) that crossfade with scroll.

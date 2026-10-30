@@ -1,5 +1,4 @@
 <!-- WaveTech Innovations — /home — paste into one Custom HTML/Javascript element -->
-<script src="https://cdn.jsdelivr.net/npm/scroll-timeline-polyfill@1.1.0/dist/scroll-timeline.js"></script>
 <link rel="icon" href="assets/wt-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -174,6 +173,29 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 }
 @keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
 .rv{animation:rvUp ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+
+/* phones: the two 3D scenes become pre-rendered frames that crossfade with scroll */
+.mframes{display:none;position:absolute;inset:0}
+.mf{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0}
+@keyframes mfA{0%,32%{opacity:1}40%,100%{opacity:0}}
+@keyframes mfB{0%,32%{opacity:0}40%,64%{opacity:1}72%,100%{opacity:0}}
+@keyframes mfC{0%,64%{opacity:0}72%,100%{opacity:1}}
+@keyframes mcA{0%,10%{opacity:1}56%,100%{opacity:0}}
+@keyframes mcB{0%,10%{opacity:0}56%,100%{opacity:1}}
+.mfr1{animation:mfA linear both;animation-timeline:--av;animation-range:contain 0% contain 100%}
+.mfr2{animation:mfB linear both;animation-timeline:--av;animation-range:contain 0% contain 100%}
+.mfr3{animation:mfC linear both;animation-timeline:--av;animation-range:contain 0% contain 100%}
+.mfc1{animation:mcA linear both;animation-timeline:--x;animation-range:contain 0% contain 100%}
+.mfc2{animation:mcB linear both;animation-timeline:--x;animation-range:contain 0% contain 100%}
+@media (max-width:760px){
+.roomwrap>*:not(.mframes),.xwrap>*:not(.mframes){display:none!important}
+.mframes{display:block}
+.roomwrap{zoom:1!important;height:auto!important;aspect-ratio:1216/822}
+.xwrap{zoom:1!important;padding:0!important;aspect-ratio:674/685}
+}
+
+/* browsers without scroll-driven animation: the runtime drives these from scroll position */
+.no-sda .lit,.no-sda .cap-a,.no-sda .cap-b,.no-sda .lay,.no-sda .rib,.no-sda .lift,.no-sda .zline,.no-sda .lab,.no-sda .pan1,.no-sda .tilt1,.no-sda .pan2,.no-sda .tilt2,.no-sda .lA,.no-sda .lC,.no-sda .rA,.no-sda .rB,.no-sda .ring,.no-sda .badge,.no-sda .pgR,.no-sda .pgC,.no-sda .pgA,.no-sda .bL0,.no-sda .bL1,.no-sda .bR0,.no-sda .bR2,.no-sda .bP2,.no-sda .bMute,.no-sda .ev1,.no-sda .ev2,.no-sda .ev3,.no-sda .ev4,.no-sda .ev5,.no-sda .rx1,.no-sda .rx2,.no-sda .rx3,.no-sda .rx4,.no-sda .rx5,.no-sda .flag,.no-sda .ok,.no-sda .st1,.no-sda .st2,.no-sda .st3,.no-sda .st4,.no-sda .st5,.no-sda .zoomin,.no-sda .dp1,.no-sda .dp2,.no-sda .dp4,.no-sda .dp5,.no-sda .ovl,.no-sda .dim,.no-sda .ck1,.no-sda .ck2,.no-sda .ck3,.no-sda .ck4,.no-sda .ck5,.no-sda .sg1,.no-sda .sg2,.no-sda .sg3,.no-sda .sg4,.no-sda .sg5,.no-sda .mon1,.no-sda .mon3,.no-sda .sl1,.no-sda .sl2,.no-sda .sl3,.no-sda .sl4,.no-sda .sl5,.no-sda .rv,.no-sda .mfr1,.no-sda .mfr2,.no-sda .mfr3,.no-sda .mfc1,.no-sda .mfc2{animation-timeline:auto;animation-duration:1s;animation-play-state:paused;animation-delay:0s}
 </style>
 <style>
 /* break out of the builder's centered column: full-bleed, own background */
@@ -466,6 +488,7 @@ html{overflow-x:clip}
     var i, ac = Array.prototype.slice.call(app.childNodes), bc = Array.prototype.slice.call(fresh.childNodes);
     for (i = 0; i < bc.length; i++) { if (i < ac.length) morph(ac[i], bc[i]); else app.appendChild(bc[i]); }
     for (i = bc.length; i < ac.length; i++) ac[i].remove();
+    if (scrollEngine.schedule) scrollEngine.schedule();
   }
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(draw); } }
 
@@ -473,13 +496,63 @@ html{overflow-x:clip}
   DCLogic.prototype.setState = function (patch) { for (var k in patch) this.state[k] = patch[k]; schedule(); };
   DCLogic.prototype.forceUpdate = schedule;
 
+  /* Scroll engine for browsers without CSS scroll-driven animations (Safari < 26, Firefox):
+     every scroll-driven keyframe animation is paused at 1s duration and its negative
+     animation-delay is set from scroll position, so the exact same keyframes run anywhere. */
+  function clamp(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function scrollEngine(table) {
+    var native = !window.__forceNoSDA && window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
+    if (native) return;
+    document.documentElement.classList.add('no-sda');
+    var tracks = {}, k;
+    for (k in table.tracks) tracks[k] = table.tracks[k];
+    var ticking = false;
+    function pos(kind, pct, r, vh) { // position of a range edge in "cover" coordinates (0 = top enters bottom, 1 = bottom leaves top)
+      var total = vh + r.height;
+      if (kind === 'cover') return pct;
+      if (kind === 'entry') return pct * r.height / total;
+      if (kind === 'exit') return (vh + pct * r.height) / total;
+      if (kind === 'contain') { var c0 = Math.min(r.height, vh) / total, c1 = Math.max(r.height, vh) / total; return c0 + pct * (c1 - c0); }
+      return pct;
+    }
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight, tp = {}, t, r, i, j, it, nodes, p, n;
+      for (k in tracks) {
+        t = document.querySelector(tracks[k]); if (!t) continue;
+        r = t.getBoundingClientRect();
+        tp[k] = { r: r };
+      }
+      for (i = 0; i < table.items.length; i++) {
+        it = table.items[i];
+        nodes = document.querySelectorAll(it.sel);
+        for (j = 0; j < nodes.length; j++) {
+          n = nodes[j];
+          if (it.tl === 'view()') r = n.getBoundingClientRect(); else { if (!tp[it.tl]) continue; r = tp[it.tl].r; }
+          var cover = clamp((vh - r.top) / (vh + r.height));
+          var a = pos(it.k0, it.a, r, vh), b = pos(it.k1, it.b, r, vh);
+          p = b > a ? clamp((cover - a) / (b - a)) : (cover >= a ? 1 : 0);
+          var d = (-p * 0.999).toFixed(4) + 's';
+          if (n.__d !== d) { n.__d = d; n.style.animationDelay = d; }
+        }
+      }
+    }
+    function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    window.addEventListener('load', schedule);
+    update();
+    scrollEngine.schedule = schedule;
+  }
+
   window.DC = {
     mount: function (Component, props) {
       tpl = document.getElementById('dc-tpl').content;
       app = document.getElementById('app');
       inst = new Component(props || {});
       draw();
-    }
+    },
+    scroll: scrollEngine
   };
 })();
 </script>
@@ -793,6 +866,8 @@ class Component extends DCLogic {
   }
 }
 DC.mount(Component, {});
+DC.scroll({"tracks": {"--hero": ".track-hero", "--x": ".track-x", "--av": ".track-av", "--svc": ".track-s", "--sg": ".track-sg"}, "items": [{"sel": ".lit", "tl": "--hero", "k0": "contain", "a": 0.08, "k1": "contain", "b": 0.85}, {"sel": ".cap-a", "tl": "--hero", "k0": "contain", "a": 0.4, "k1": "contain", "b": 0.55}, {"sel": ".cap-b", "tl": "--hero", "k0": "contain", "a": 0.55, "k1": "contain", "b": 0.7}, {"sel": ".lay", "tl": "--x", "k0": "contain", "a": 0.08, "k1": "contain", "b": 0.58}, {"sel": ".rib", "tl": "--x", "k0": "contain", "a": 0.08, "k1": "contain", "b": 0.58}, {"sel": ".lift", "tl": "--x", "k0": "contain", "a": 0.4, "k1": "contain", "b": 0.7}, {"sel": ".zline", "tl": "--x", "k0": "contain", "a": 0.08, "k1": "contain", "b": 0.58}, {"sel": ".lab", "tl": "--x", "k0": "contain", "a": 0.48, "k1": "contain", "b": 0.66}, {"sel": ".pan1", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".tilt1", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".pan2", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".tilt2", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".lA", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".lC", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".rA", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".rB", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ring", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".badge", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".pgR", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".pgC", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".pgA", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".bL0", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".bL1", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".bR0", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".bR2", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".bP2", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".bMute", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ev1", "tl": "--av", "k0": "contain", "a": 0.02, "k1": "contain", "b": 0.2}, {"sel": ".ev2", "tl": "--av", "k0": "contain", "a": 0.3, "k1": "contain", "b": 0.48}, {"sel": ".ev3", "tl": "--av", "k0": "contain", "a": 0.54, "k1": "contain", "b": 0.62}, {"sel": ".ev4", "tl": "--av", "k0": "contain", "a": 0.66, "k1": "contain", "b": 0.76}, {"sel": ".ev5", "tl": "--av", "k0": "contain", "a": 0.86, "k1": "contain", "b": 0.96}, {"sel": ".rx1", "tl": "--svc", "k0": "contain", "a": 0.08, "k1": "contain", "b": 0.14}, {"sel": ".rx2", "tl": "--svc", "k0": "contain", "a": 0.16, "k1": "contain", "b": 0.22}, {"sel": ".rx3", "tl": "--svc", "k0": "contain", "a": 0.24, "k1": "contain", "b": 0.3}, {"sel": ".rx4", "tl": "--svc", "k0": "contain", "a": 0.32, "k1": "contain", "b": 0.38}, {"sel": ".rx5", "tl": "--svc", "k0": "contain", "a": 0.4, "k1": "contain", "b": 0.46}, {"sel": ".flag", "tl": "--svc", "k0": "contain", "a": 0.48, "k1": "contain", "b": 0.54}, {"sel": ".ok", "tl": "--svc", "k0": "contain", "a": 0.52, "k1": "contain", "b": 0.6}, {"sel": ".st1", "tl": "--svc", "k0": "contain", "a": 0.0, "k1": "contain", "b": 0.06}, {"sel": ".st2", "tl": "--svc", "k0": "contain", "a": 0.06, "k1": "contain", "b": 0.14}, {"sel": ".st3", "tl": "--svc", "k0": "contain", "a": 0.14, "k1": "contain", "b": 0.26}, {"sel": ".st4", "tl": "--svc", "k0": "contain", "a": 0.4, "k1": "contain", "b": 0.52}, {"sel": ".st5", "tl": "--svc", "k0": "contain", "a": 0.56, "k1": "contain", "b": 0.66}, {"sel": ".zoomin", "tl": "view()", "k0": "entry", "a": 0.1, "k1": "cover", "b": 0.42}, {"sel": ".dp1", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".dp2", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".dp4", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".dp5", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ovl", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".dim", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ck1", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ck2", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ck3", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ck4", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".ck5", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".sg1", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".sg2", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".sg3", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".sg4", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".sg5", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".mon1", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".mon3", "tl": "--sg", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".sl1", "tl": "--sg", "k0": "contain", "a": 0.02, "k1": "contain", "b": 0.18}, {"sel": ".sl2", "tl": "--sg", "k0": "contain", "a": 0.24, "k1": "contain", "b": 0.4}, {"sel": ".sl3", "tl": "--sg", "k0": "contain", "a": 0.42, "k1": "contain", "b": 0.5}, {"sel": ".sl4", "tl": "--sg", "k0": "contain", "a": 0.52, "k1": "contain", "b": 0.62}, {"sel": ".sl5", "tl": "--sg", "k0": "contain", "a": 0.66, "k1": "contain", "b": 0.84}, {"sel": ".rv", "tl": "view()", "k0": "entry", "a": 0.0, "k1": "entry", "b": 0.45}, {"sel": ".mfr1", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".mfr2", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".mfr3", "tl": "--av", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".mfc1", "tl": "--x", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}, {"sel": ".mfc2", "tl": "--x", "k0": "contain", "a": 0.0, "k1": "contain", "b": 1.0}]});
+
 </script>
 <script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
 <script src="https://snapwidget.com/js/snapwidget.js" defer></script>

@@ -122,6 +122,7 @@
     var i, ac = Array.prototype.slice.call(app.childNodes), bc = Array.prototype.slice.call(fresh.childNodes);
     for (i = 0; i < bc.length; i++) { if (i < ac.length) morph(ac[i], bc[i]); else app.appendChild(bc[i]); }
     for (i = bc.length; i < ac.length; i++) ac[i].remove();
+    if (scrollEngine.schedule) scrollEngine.schedule();
   }
   function schedule() { if (!pending) { pending = true; requestAnimationFrame(draw); } }
 
@@ -129,12 +130,62 @@
   DCLogic.prototype.setState = function (patch) { for (var k in patch) this.state[k] = patch[k]; schedule(); };
   DCLogic.prototype.forceUpdate = schedule;
 
+  /* Scroll engine for browsers without CSS scroll-driven animations (Safari < 26, Firefox):
+     every scroll-driven keyframe animation is paused at 1s duration and its negative
+     animation-delay is set from scroll position, so the exact same keyframes run anywhere. */
+  function clamp(x) { return x < 0 ? 0 : x > 1 ? 1 : x; }
+  function scrollEngine(table) {
+    var native = !window.__forceNoSDA && window.CSS && CSS.supports && CSS.supports('animation-timeline: view()');
+    if (native) return;
+    document.documentElement.classList.add('no-sda');
+    var tracks = {}, k;
+    for (k in table.tracks) tracks[k] = table.tracks[k];
+    var ticking = false;
+    function pos(kind, pct, r, vh) { // position of a range edge in "cover" coordinates (0 = top enters bottom, 1 = bottom leaves top)
+      var total = vh + r.height;
+      if (kind === 'cover') return pct;
+      if (kind === 'entry') return pct * r.height / total;
+      if (kind === 'exit') return (vh + pct * r.height) / total;
+      if (kind === 'contain') { var c0 = Math.min(r.height, vh) / total, c1 = Math.max(r.height, vh) / total; return c0 + pct * (c1 - c0); }
+      return pct;
+    }
+    function update() {
+      ticking = false;
+      var vh = window.innerHeight, tp = {}, t, r, i, j, it, nodes, p, n;
+      for (k in tracks) {
+        t = document.querySelector(tracks[k]); if (!t) continue;
+        r = t.getBoundingClientRect();
+        tp[k] = { r: r };
+      }
+      for (i = 0; i < table.items.length; i++) {
+        it = table.items[i];
+        nodes = document.querySelectorAll(it.sel);
+        for (j = 0; j < nodes.length; j++) {
+          n = nodes[j];
+          if (it.tl === 'view()') r = n.getBoundingClientRect(); else { if (!tp[it.tl]) continue; r = tp[it.tl].r; }
+          var cover = clamp((vh - r.top) / (vh + r.height));
+          var a = pos(it.k0, it.a, r, vh), b = pos(it.k1, it.b, r, vh);
+          p = b > a ? clamp((cover - a) / (b - a)) : (cover >= a ? 1 : 0);
+          var d = (-p * 0.999).toFixed(4) + 's';
+          if (n.__d !== d) { n.__d = d; n.style.animationDelay = d; }
+        }
+      }
+    }
+    function schedule() { if (!ticking) { ticking = true; requestAnimationFrame(update); } }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    window.addEventListener('load', schedule);
+    update();
+    scrollEngine.schedule = schedule;
+  }
+
   window.DC = {
     mount: function (Component, props) {
       tpl = document.getElementById('dc-tpl').content;
       app = document.getElementById('app');
       inst = new Component(props || {});
       draw();
-    }
+    },
+    scroll: scrollEngine
   };
 })();
