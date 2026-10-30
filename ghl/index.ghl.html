@@ -166,9 +166,10 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 .gal .sl,.gal .cap{animation:xf var(--T) linear infinite;animation-delay:var(--d)}
 /* phones: full-bleed photo panels stack — photo on top fading down, text below */
 @media (max-width:760px){
-.bleedph,.gal .sl{width:100%;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%);mask-image:linear-gradient(180deg,#000 0%,#000 38%,transparent 78%)}
-.bleedovl,.gal .ovl{background:linear-gradient(180deg,rgba(9,9,22,.25),rgba(9,9,22,.1) 30%,rgba(9,9,22,.85) 70%,#090916 85%)!important}
-.bleedtxt,.galtxt{justify-content:flex-end!important;min-height:0!important;padding-top:58vh!important;padding-bottom:56px!important}
+.bleedph,.gal .sl{width:100%;bottom:auto;height:62vh;-webkit-mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 96%);mask-image:linear-gradient(180deg,#000 0%,#000 55%,transparent 96%)}
+.bleedph{background-position:center 35%!important}
+.bleedovl,.gal .ovl{background:linear-gradient(180deg,rgba(9,9,22,.2),rgba(9,9,22,.05) 25%,rgba(9,9,22,.6) 50%,#090916 62%)!important}
+.bleedtxt,.galtxt{justify-content:flex-end!important;min-height:0!important;padding-top:46vh!important;padding-bottom:56px!important}
 .gal .cap{right:auto;left:16px;bottom:auto;top:14px}
 }
 @keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
