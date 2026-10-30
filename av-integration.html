@@ -1,0 +1,769 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WaveTech Innovations — AV &amp; Video Walls, Engineered</title>
+<meta name="description" content="WaveTech Innovations: LED video wall installation, AV integration and emergency maintenance, designed, installed and supported by one team.">
+<link rel="icon" href="assets/wt-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#090916}
+a{color:#00C4EC}a:hover{color:#5FDCFF}
+input,textarea,button{font:inherit}
+input::placeholder,textarea::placeholder{color:#5E5E74}
+.glow{background-color:#090916;background-image:radial-gradient(90% 70% at 50% 50%,rgba(70,45,140,.26),transparent 70%)}
+.glow-r{background-color:#090916;background-image:radial-gradient(90% 70% at 60% 40%,rgba(70,45,140,.24),transparent 70%)}
+.glow-c{background-color:#090916;background-image:radial-gradient(90% 70% at 50% 45%,rgba(70,45,140,.26),transparent 70%)}
+.leds{background-color:#0A0F18;background-image:radial-gradient(circle,#3A5078 0 1.1px,transparent 1.4px);background-size:5px 5px}
+.pcb{background-color:#14504D;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.07) 0 1px,transparent 1px 9px),repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 1px,transparent 1px 13px)}
+.pcb-b{background-color:#1C3E86;background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.08) 0 1px,transparent 1px 7px)}
+.vents{background-image:radial-gradient(circle,#4A5262 0 1.3px,transparent 1.8px);background-size:5px 5px}
+.perf{background-image:radial-gradient(circle,#10141C 0 1.9px,transparent 2.4px);background-size:9px 9px}
+.pp{transform-style:preserve-3d;box-shadow:0 10px 18px rgba(0,0,0,.55)}
+.gold{background-image:repeating-linear-gradient(90deg,#C9A44A 0 2px,transparent 2px 4px)}
+.hatch-w{background-image:repeating-linear-gradient(45deg,rgba(220,220,240,.5) 0 1px,transparent 1px 5px)}
+.ribs{background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 2px,transparent 2px 18px)}
+.screw{position:absolute;border-radius:50%;border:1px solid #090916;transform:translate(-50%,-50%);background:linear-gradient(45deg,transparent 42%,#090916 42% 58%,transparent 58%),linear-gradient(-45deg,transparent 42%,#090916 42% 58%,transparent 58%),#B9C2CF}
+.pin{position:absolute;border:1.5px solid #090916;background:linear-gradient(45deg,transparent 46%,#090916 46% 54%,transparent 54%),#D5DBE3}
+.px{background-color:#05070B;background-image:radial-gradient(circle at 38% 40%,#FF5A4E 0 7%,transparent 9%),radial-gradient(circle at 62% 40%,#3BD27A 0 7%,transparent 9%),radial-gradient(circle at 50% 63%,#4F7BFF 0 7%,transparent 9%),radial-gradient(circle at 50% 50%,#1C2433 0 33%,transparent 35%)}
+.iso{transform:rotateX(56deg) rotateZ(-36deg);transform-style:preserve-3d}
+.lay{position:absolute;inset:0;transform-style:preserve-3d;will-change:transform}
+.rib{position:absolute;inset:0;transform-style:preserve-3d}
+@keyframes liftUp{from{transform:translateZ(0)}to{transform:translateZ(40px)}}
+@keyframes ribgrow{from{transform:scaleZ(.24);opacity:0}35%{opacity:1}to{transform:scaleZ(1);opacity:1}}
+.plate{transform-style:preserve-3d;box-shadow:0 40px 70px rgba(0,0,0,.6)}
+.e{position:absolute;background:var(--ec);backface-visibility:hidden}
+.eL{left:0;top:0;width:var(--t);height:100%;transform-origin:left center;transform:rotateY(90deg)}
+.eR{right:0;top:0;width:var(--t);height:100%;transform-origin:right center;transform:rotateY(-90deg)}
+.eT{left:0;top:0;width:100%;height:var(--t);transform-origin:center top;transform:rotateX(-90deg)}
+.eB{left:0;bottom:0;width:100%;height:var(--t);transform-origin:center bottom;transform:rotateX(90deg)}
+.zline{position:absolute;width:0;height:330px;border-left:1px dashed #00C4EC;transform-origin:top;transform:rotateX(90deg)}
+.p3{position:absolute;left:0;top:0;width:0;height:0;transform-style:preserve-3d}
+.face{position:absolute;left:0;top:0;box-sizing:border-box;backface-visibility:hidden;transform-origin:50% 50%}
+.face2{position:absolute;left:0;top:0;box-sizing:border-box;transform-origin:50% 50%}
+.view{position:absolute;left:50%;top:57%;width:0;height:0;transform-style:preserve-3d;transform:scale(1.12) rotateX(-20deg) rotateY(-18deg)}
+.pan1{transform:rotateY(8deg)}.tilt1{transform:rotateX(-24deg)}
+.pan2{transform:rotateY(-8deg)}.tilt2{transform:rotateX(-24deg)}
+.lC,.rB,.pgC,.pgA,.badge{opacity:0}
+.ring{border:3px solid #22D36B;box-shadow:0 0 10px #22D36B}
+.bidle{background:#1E1A38;color:#C9C9DB}.bon{background:#0DB5EC;color:#090916}
+.pill{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid #03485A;color:#00C4EC;text-decoration:none;font-family:'Archivo',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;box-sizing:border-box}
+.cta{display:inline-flex;align-items:center;min-height:46px;padding:0 24px;border-radius:999px;background:linear-gradient(90deg,#0DB5EC,#543BB9);color:#FFFFFF;text-decoration:none;font-family:'Archivo',sans-serif;font-weight:700;font-size:14px;letter-spacing:.04em;box-sizing:border-box}
+.grad{background:linear-gradient(90deg,#0DB5EC 0%,#543BB9 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lbl{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;color:#00C4EC}
+.lbl::before{content:"";width:22px;height:2px;background:#00C4EC}
+@keyframes litUp{from{clip-path:inset(100% 0 0 0)}to{clip-path:inset(0 0 0 0)}}
+@keyframes fadeOut{from{opacity:1}to{opacity:0}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes explode{from{transform:translateZ(var(--z0))}to{transform:translateZ(var(--z))}}
+@keyframes zgrow{from{transform:rotateX(90deg) scaleY(0)}to{transform:rotateX(90deg) scaleY(1)}}
+@keyframes stepOn{from{opacity:.28}to{opacity:1}}
+@keyframes zoomIn{from{transform:scale(.5);opacity:.35}to{transform:scale(1);opacity:1}}
+@keyframes pan1{0%,16%{transform:rotateY(8deg)}26%,48%{transform:rotateY(44deg)}58%,74%{transform:rotateY(-36deg)}84%,100%{transform:rotateY(16deg)}}
+@keyframes tilt1{0%,16%{transform:rotateX(-24deg)}26%,48%{transform:rotateX(-12deg)}58%,74%{transform:rotateX(-42deg)}84%,100%{transform:rotateX(-28deg)}}
+@keyframes pan2{0%,16%{transform:rotateY(-8deg)}26%,48%{transform:rotateY(-46deg)}58%,74%{transform:rotateY(34deg)}84%,100%{transform:rotateY(-14deg)}}
+@keyframes tilt2{0%,16%{transform:rotateX(-24deg)}26%,48%{transform:rotateX(-14deg)}58%,74%{transform:rotateX(-44deg)}84%,100%{transform:rotateX(-30deg)}}
+@keyframes lA{0%,30%{opacity:1}40%,100%{opacity:0}}
+@keyframes lC{0%,30%{opacity:0}40%,100%{opacity:1}}
+@keyframes rA{0%,42%{opacity:1}52%,100%{opacity:0}}
+@keyframes rB{0%,42%{opacity:0}52%,100%{opacity:1}}
+@keyframes micRing{0%,66%{border-color:#22D36B;box-shadow:0 0 10px #22D36B}70%,84%{border-color:#FF3B3B;box-shadow:0 0 12px #FF3B3B}88%,100%{border-color:#22D36B;box-shadow:0 0 10px #22D36B}}
+@keyframes badge{0%,68%{opacity:0}71%,84%{opacity:1}88%,100%{opacity:0}}
+@keyframes pgR{0%,50%{opacity:1}54%,100%{opacity:0}}
+@keyframes pgC{0%,50%{opacity:0}54%,62%{opacity:1}66%,100%{opacity:0}}
+@keyframes pgA{0%,62%{opacity:0}66%,100%{opacity:1}}
+@keyframes onOff30{0%,30%{background:#0DB5EC;color:#090916}34%,100%{background:#1E1A38;color:#C9C9DB}}
+@keyframes offOn30{0%,30%{background:#1E1A38;color:#C9C9DB}34%,100%{background:#0DB5EC;color:#090916}}
+@keyframes onOff42{0%,42%{background:#0DB5EC;color:#090916}46%,100%{background:#1E1A38;color:#C9C9DB}}
+@keyframes offOn42{0%,42%{background:#1E1A38;color:#C9C9DB}46%,100%{background:#0DB5EC;color:#090916}}
+@keyframes offOn56{0%,56%{background:#1E1A38;color:#C9C9DB}60%,100%{background:#0DB5EC;color:#090916}}
+@keyframes muteBtn{0%,66%{background:#1E1A38;color:#C9C9DB}70%,84%{background:#FF3B3B;color:#FFFFFF}88%,100%{background:#1E1A38;color:#C9C9DB}}
+@media (prefers-reduced-motion: no-preference){
+@supports (animation-timeline: view()){
+.track-hero{height:2600px;view-timeline-name:--hero}
+.track-x{height:1500px;view-timeline-name:--x}
+.track-av{height:2600px;view-timeline-name:--av}
+.track-s{height:2000px;view-timeline-name:--svc}
+.stage{position:sticky;top:0}
+.lit{animation:litUp linear both;animation-timeline:--hero;animation-range:contain 8% contain 85%}
+.cap-a{animation:fadeOut linear both;animation-timeline:--hero;animation-range:contain 40% contain 55%}
+.cap-b{opacity:0;animation:fadeIn linear both;animation-timeline:--hero;animation-range:contain 55% contain 70%}
+.lay{animation:explode linear both;animation-timeline:--x;animation-range:contain 8% contain 58%}
+.rib{animation:ribgrow linear both;animation-timeline:--x;animation-range:contain 8% contain 58%}
+.lift{animation:liftUp linear both;animation-timeline:--x;animation-range:contain 40% contain 70%}
+.zline{animation:zgrow linear both;animation-timeline:--x;animation-range:contain 8% contain 58%}
+.lab{animation:fadeIn linear both;animation-timeline:--x;animation-range:contain 48% contain 66%}
+.pan1,.tilt1,.pan2,.tilt2,.lA,.lC,.rA,.rB,.ring,.badge,.pgR,.pgC,.pgA,.bL0,.bL1,.bR0,.bR2,.bP2,.bMute{animation-timing-function:linear;animation-fill-mode:both;animation-timeline:--av;animation-range:contain 0% contain 100%}
+.pan1{animation-name:pan1}.tilt1{animation-name:tilt1}.pan2{animation-name:pan2}.tilt2{animation-name:tilt2}
+.lA{animation-name:lA}.lC{animation-name:lC}.rA{animation-name:rA}.rB{animation-name:rB}.ring{animation-name:micRing}.badge{animation-name:badge}
+.pgR{animation-name:pgR}.pgC{animation-name:pgC}.pgA{animation-name:pgA}
+.bL0{animation-name:onOff30}.bL1{animation-name:offOn30}.bR0{animation-name:onOff42}.bR2{animation-name:offOn42}.bP2{animation-name:offOn56}.bMute{animation-name:muteBtn}
+.ev1{animation:stepOn linear both;animation-timeline:--av;animation-range:contain 2% contain 20%}
+.ev2{animation:stepOn linear both;animation-timeline:--av;animation-range:contain 30% contain 48%}
+.ev3{animation:stepOn linear both;animation-timeline:--av;animation-range:contain 54% contain 62%}
+.ev4{animation:stepOn linear both;animation-timeline:--av;animation-range:contain 66% contain 76%}
+.ev5{animation:stepOn linear both;animation-timeline:--av;animation-range:contain 86% contain 96%}
+.rx1{animation:fadeOut linear both;animation-timeline:--svc;animation-range:contain 8% contain 14%}
+.rx2{animation:fadeOut linear both;animation-timeline:--svc;animation-range:contain 16% contain 22%}
+.rx3{animation:fadeOut linear both;animation-timeline:--svc;animation-range:contain 24% contain 30%}
+.rx4{animation:fadeOut linear both;animation-timeline:--svc;animation-range:contain 32% contain 38%}
+.rx5{animation:fadeOut linear both;animation-timeline:--svc;animation-range:contain 40% contain 46%}
+.flag{animation:fadeOut linear both;animation-timeline:--svc;animation-range:contain 48% contain 54%}
+.ok{opacity:0;animation:fadeIn linear both;animation-timeline:--svc;animation-range:contain 52% contain 60%}
+.st1{animation:stepOn linear both;animation-timeline:--svc;animation-range:contain 0% contain 6%}
+.st2{animation:stepOn linear both;animation-timeline:--svc;animation-range:contain 6% contain 14%}
+.st3{animation:stepOn linear both;animation-timeline:--svc;animation-range:contain 14% contain 26%}
+.st4{animation:stepOn linear both;animation-timeline:--svc;animation-range:contain 40% contain 52%}
+.st5{animation:stepOn linear both;animation-timeline:--svc;animation-range:contain 56% contain 66%}
+.zoomin{animation:zoomIn linear both;animation-timeline:view();animation-range:entry 10% cover 42%}
+}}
+
+.sgw{position:relative;border:1px solid #211D3A;background:radial-gradient(70% 60% at 50% 30%,#2A1C38,#120C1C 70%);box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden}
+.scr{position:relative;background:#000;border:6px solid #0C0C14;border-radius:4px;box-shadow:0 20px 50px rgba(0,0,0,.6),0 0 0 1px #211D3A;overflow:hidden}
+.dp{position:absolute;inset:0;opacity:0}
+.dp1{opacity:1}
+.ovl,.dim{position:absolute;inset:0;opacity:0}
+.ck{position:absolute;left:0;top:0;opacity:0}.ck1{opacity:1}
+.sg{flex:1;padding:8px 10px;border-radius:4px;background:#161027;color:#B9B9CC;display:flex;flex-direction:column;gap:2px}
+.mon{position:absolute;opacity:0}.mon1{opacity:1}
+@keyframes w1{0%,20%{opacity:1}24%,100%{opacity:0}}
+@keyframes w2{0%,20%{opacity:0}24%,60%{opacity:1}64%,100%{opacity:0}}
+@keyframes w3{0%,48%{opacity:0}51%,60%{opacity:1}63%,100%{opacity:0}}
+@keyframes w4{0%,62%{opacity:0}66%,84%{opacity:1}88%,100%{opacity:0}}
+@keyframes w5{0%,84%{opacity:0}88%,100%{opacity:1}}
+@keyframes wdim{0%,84%{opacity:0}88%,100%{opacity:.6}}
+@keyframes sgon1{0%,20%{background:#0DB5EC;color:#090916}24%,100%{background:#161027;color:#B9B9CC}}
+@keyframes sgon2{0%,20%{background:#161027;color:#B9B9CC}24%,46%{background:#0DB5EC;color:#090916}50%,100%{background:#161027;color:#B9B9CC}}
+@keyframes sgon3{0%,48%{background:#161027;color:#B9B9CC}51%,60%{background:#E2A33A;color:#090916}63%,100%{background:#161027;color:#B9B9CC}}
+@keyframes sgon4{0%,62%{background:#161027;color:#B9B9CC}66%,84%{background:#0DB5EC;color:#090916}88%,100%{background:#161027;color:#B9B9CC}}
+@keyframes sgon5{0%,84%{background:#161027;color:#B9B9CC}88%,100%{background:#543BB9;color:#FFFFFF}}
+@media (prefers-reduced-motion: no-preference){
+@supports (animation-timeline: view()){
+.track-sg{height:3000px;view-timeline-name:--sg}
+.dp1,.dp2,.dp4,.dp5,.ovl,.dim,.ck1,.ck2,.ck3,.ck4,.ck5,.sg1,.sg2,.sg3,.sg4,.sg5,.mon1,.mon3{animation-timing-function:linear;animation-fill-mode:both;animation-timeline:--sg;animation-range:contain 0% contain 100%}
+.dp1,.ck1,.mon1{animation-name:w1}.dp2,.ck2{animation-name:w2}.ovl,.ck3,.mon3{animation-name:w3}.dp4,.ck4{animation-name:w4}.dp5,.ck5{animation-name:w5}.dim{animation-name:wdim}
+.mon1{animation-name:none;opacity:1}
+.sg1{animation-name:sgon1}.sg2{animation-name:sgon2}.sg3{animation-name:sgon3}.sg4{animation-name:sgon4}.sg5{animation-name:sgon5}
+.sl1{animation:stepOn linear both;animation-timeline:--sg;animation-range:contain 2% contain 18%}
+.sl2{animation:stepOn linear both;animation-timeline:--sg;animation-range:contain 24% contain 40%}
+.sl3{animation:stepOn linear both;animation-timeline:--sg;animation-range:contain 42% contain 50%}
+.sl4{animation:stepOn linear both;animation-timeline:--sg;animation-range:contain 52% contain 62%}
+.sl5{animation:stepOn linear both;animation-timeline:--sg;animation-range:contain 66% contain 84%}
+}}
+
+.rimg{border-radius:22px;overflow:hidden;border:1px solid #211D3A;background:#0E0C1E}
+.rimg img{width:100%;height:100%;object-fit:cover;display:block}
+.gal{position:relative;overflow:hidden;background:#090916}
+.gal .sl{position:absolute;top:0;right:0;bottom:0;width:72%;opacity:0;will-change:opacity;-webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 30%,#000 55%);mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.55) 30%,#000 55%)}
+.gal .sl img{width:100%;height:100%;object-fit:cover;display:block}
+.gal .ovl{position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,#090916 0%,rgba(9,9,22,.9) 28%,rgba(9,9,22,.35) 50%,rgba(9,9,22,0) 70%),linear-gradient(180deg,rgba(9,9,22,.5),transparent 25%,transparent 75%,#090916)}
+.gal .cap{position:absolute;right:32px;bottom:28px;padding:6px 12px;border-radius:999px;background:rgba(9,9,22,.72);font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#B9B9CC;opacity:0}
+.gal .sl,.gal .cap{animation:xf var(--T) linear infinite;animation-delay:var(--d)}
+@media (prefers-reduced-motion: reduce){.gal .sl,.gal .cap{animation:none}.gal .sl:first-of-type,.gal .cap:first-of-type{opacity:1}}
+@keyframes rvUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: no-preference){
+@supports (animation-timeline: view()){
+.rv{animation:rvUp ease-out both;animation-timeline:view();animation-range:entry 0% entry 45%}
+}}
+</style>
+<script src="site.js"></script>
+<script src="https://link.msgsndr.com/js/form_embed.js" defer></script>
+<script src="https://snapwidget.com/js/snapwidget.js" defer></script>
+</head>
+<body>
+<template id="dc-tpl">
+
+<div style="background: #090916; color: #EEEEF8; font-family: 'IBM Plex Sans', system-ui, sans-serif; font-size: 17px; line-height: 1.55">
+
+  <!-- NAV -->
+  <header style="background: rgba(9,9,22,.94); border-bottom: 1px solid #1A1733; position: relative; z-index: 5">
+    <nav aria-label="Main" style="max-width: 1280px; margin: 0 auto; padding: 18px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px">
+      <a href="index.html" aria-label="WaveTech Innovations home" style="display: flex; align-items: center"><img src="assets/wavetech-innovations.png" alt="WaveTech Innovations" style="height: 40px; width: auto; display: block"></a>
+      <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 26px; font-size: 15px; font-weight: 500">
+        <a href="video-walls.html" style="color: #B9B9CC; text-decoration: none">Video Walls</a> <a href="av-integration.html" style="color: #EEEEF8; text-decoration: none">AV Integration</a> <a href="emergency-maintenance.html" style="color: #B9B9CC; text-decoration: none">Emergency &amp; Maintenance</a>
+        <a href="#contact" class="cta">Get a site survey</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- PAGE HERO -->
+  <section aria-label="Introduction" style="position: relative; overflow: hidden; background: #090916; border-bottom: 1px solid #1A1733">
+    <div aria-hidden="true" style="position: absolute; top: 0; right: 0; bottom: 0; width: 72%; background: url(assets/av-ladder-cable.jpg) 55% 30% / cover no-repeat; -webkit-mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%); mask-image: linear-gradient(90deg, transparent 0%, rgba(0,0,0,.55) 30%, #000 55%)"></div>
+    <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, #090916 0%, rgba(9,9,22,.9) 28%, rgba(9,9,22,.35) 50%, rgba(9,9,22,0) 70%), linear-gradient(180deg, rgba(9,9,22,.5), transparent 25%, transparent 75%, #090916)"></div>
+    <img src="assets/av-ladder-cable.jpg" alt="A technician running cable at a display from a ladder" style="position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none">
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 620px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+      <div class="lbl">AV INTEGRATION</div>
+      <h1 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(44px, 5.6vw, 76px); line-height: 0.98; letter-spacing: -0.02em; max-width: 9.5em">The whole room,<br><span class="grad">one touch panel.</span></h1>
+      <p style="margin: 0; color: #B9B9CC; font-size: 18px; max-width: 30em">Displays, cameras, microphones and conferencing designed as one system, programmed by the same team that installs it.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px"><a href="#contact" class="cta">Get a site survey</a><a href="index.html" class="pill">All services</a></div>
+    </div>
+  </section>
+
+  <!-- 3 · THE ROOM: equipment at work -->
+  <section id="integration" class="track-av glow-c" aria-label="A room system at work" style="border-bottom: 1px solid #1A1733">
+    <div class="stage" style="max-width: 1280px; margin: 0 auto; padding: 32px 32px 40px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 24px 44px; align-items: flex-start">
+      <figure aria-label="A conference room: two video walls, two ceiling PTZ cameras, ceiling speakers and microphone arrays, a table with a touch panel and a laptop. As the page scrolls, the walls change source, the cameras move and the microphones mute and unmute." style="flex: 1 1 100%; min-width: 0; margin: 0; display: flex; flex-direction: column; gap: 10px">
+        <div style="position: relative; height: 820px; perspective: 2200px; perspective-origin: 50% 40%; overflow: hidden; border: 1px solid #1A1733; background: radial-gradient(600px 340px at 50% 60%, #161027, #090916 70%); box-shadow: 0 30px 80px rgba(0,0,0,.6)">
+          <div aria-hidden="true" style="position: absolute; left: 14px; top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #00C4EC; letter-spacing: .08em">ROOM SYSTEM</div>
+          <div aria-hidden="true" style="position: absolute; right: 14px; top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #7A7A90">SCROLL TO RUN THE ROOM</div>
+
+          <div class="view">
+            <div class="p3">
+
+              <sc-for list="{{roomFaces}}" as="f" hint-placeholder-count="120">
+                <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+              </sc-for>
+              <div class="face2" style="width: 760px; height: 560px; background: rgba(120,120,170,.05); border: 1px solid rgba(180,180,220,.12); transform: {{ceilTf}}"></div>
+
+              <!-- LEFT DISPLAY -->
+              <div class="face" style="width: 304px; height: 172px; background: #000; overflow: hidden; transform: {{leftScreenTf}}">
+                <div class="lA" style="position: absolute; inset: 0; background: radial-gradient(70% 90% at 20% 80%, rgba(176,82,43,.75), transparent 60%), radial-gradient(60% 80% at 45% 40%, rgba(107,45,92,.9), transparent 65%), radial-gradient(70% 70% at 90% 20%, rgba(30,58,138,.8), transparent 60%), linear-gradient(135deg, #1A0F2E, #2E1A4A 50%, #15213F)">
+                  <div style="position: absolute; left: 14px; top: 12px; width: 118px; padding: 8px 9px; box-sizing: border-box; border-radius: 6px; background: rgba(20,12,30,.72); display: flex; gap: 8px">
+                    <div style="width: 30px; height: 30px; flex: none; background: repeating-conic-gradient(#F2F2F7 0 25%, #1A1A24 0 50%) 0 0 / 6px 6px; border: 2px solid #F2F2F7; box-sizing: border-box"></div>
+                    <div style="display: flex; flex-direction: column; gap: 1px; color: #F2F2F7; font-family: 'IBM Plex Sans', sans-serif">
+                      <span style="font-size: 5px; letter-spacing: .04em; opacity: .85">MONDAY, JUNE 12</span>
+                      <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 15px; line-height: 1">8:41 AM</span>
+                      <span style="font-size: 5.5px; margin-top: 2px">Conference Room A</span>
+                      <span style="font-size: 5px; opacity: .8">Join your meeting with this room</span>
+                    </div>
+                  </div>
+                  <div style="position: absolute; left: 14px; bottom: 12px; display: flex; align-items: center; gap: 5px; color: #F2F2F7; font-family: 'IBM Plex Sans', sans-serif; font-size: 5.5px"><span style="width: 9px; height: 9px; border-radius: 50%; background: #F2F2F7"></span>Add this room to a meeting from your device</div>
+                </div>
+                <div class="lC" style="position: absolute; inset: 0; background: #0B0B14; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 6px 6px 22px; box-sizing: border-box">
+                  <sc-for list="{{tiles}}" as="t" hint-placeholder-count="4">
+                    <div style="position: relative; background: {{t.bg}}; border-radius: 3px; overflow: hidden">
+                      <span style="position: absolute; left: 50%; top: 42%; width: 30px; height: 30px; border-radius: 50%; background: {{t.av}}; transform: translate(-50%, -50%)"></span>
+                      <span style="position: absolute; left: 50%; top: 42%; width: 56px; height: 56px; border-radius: 50% 50% 0 0; background: {{t.av}}; transform: translate(-50%, 10px)"></span>
+                      <span style="position: absolute; left: 5px; bottom: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #EEEEF8; background: rgba(0,0,0,.5); padding: 0 3px">{{t.name}}</span>
+                    </div>
+                  </sc-for>
+                  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 18px; background: #1A1733; display: flex; align-items: center; justify-content: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #B9B9CC"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #B9B9CC"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF3B3B"></span></div>
+                  <div class="badge" style="position: absolute; left: 50%; top: 6px; transform: translateX(-50%); background: #FF3B3B; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 3px">ROOM MUTED</div>
+                </div>
+              </div>
+
+              <!-- RIGHT DISPLAY -->
+              <div class="face" style="width: 304px; height: 172px; background: #000; overflow: hidden; transform: {{rightScreenTf}}">
+                <div class="rA" style="position: absolute; inset: 0; background: radial-gradient(70% 90% at 10% 90%, rgba(176,82,43,.45), transparent 60%), radial-gradient(60% 80% at 35% 50%, rgba(107,45,92,.8), transparent 65%), radial-gradient(70% 70% at 85% 25%, rgba(30,58,138,.9), transparent 60%), linear-gradient(135deg, #1A0F2E, #2E1A4A 50%, #15213F)">
+                  <div style="position: absolute; right: 12px; top: 12px; bottom: 12px; width: 78px; display: flex; flex-direction: column; gap: 4px; font-family: 'IBM Plex Sans', sans-serif; color: #F2F2F7">
+                    <div style="padding: 7px 8px; border-radius: 5px; background: rgba(20,12,30,.72); border-left: 3px solid #22D36B; display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 9px">Available</span><span style="font-size: 5px; opacity: .8">9:00 AM – 10:00 AM</span></div>
+                    <div style="padding: 6px 8px; border-radius: 5px; background: rgba(20,12,30,.55); display: flex; flex-direction: column; gap: 1px"><span style="font-size: 6px; font-weight: 600">Daily standup</span><span style="font-size: 5px; opacity: .8">10:00 AM – 10:30 AM</span></div>
+                    <div style="padding: 6px 8px; border-radius: 5px; background: rgba(20,12,30,.55); display: flex; flex-direction: column; gap: 1px"><span style="font-size: 6px; font-weight: 600">Design review</span><span style="font-size: 5px; opacity: .8">11:00 AM – 12:00 PM</span></div>
+                    <div style="padding: 6px 8px; border-radius: 5px; background: rgba(20,12,30,.55); display: flex; flex-direction: column; gap: 1px"><span style="font-size: 6px; font-weight: 600">Client call</span><span style="font-size: 5px; opacity: .8">2:00 PM – 3:00 PM</span></div>
+                  </div>
+                </div>
+                <div class="rB" style="position: absolute; inset: 0; background: #0B0B14; padding: 14px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px">
+                  <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; color: #EEEEF8">QUARTERLY REVIEW</span>
+                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #00C4EC">LAPTOP</span>
+                  <div style="flex: 1; display: flex; align-items: flex-end; gap: 6px; padding-top: 4px">
+                    <span style="flex: 1; height: 30%; background: #543BB9"></span><span style="flex: 1; height: 55%; background: #0DB5EC"></span><span style="flex: 1; height: 42%; background: #543BB9"></span><span style="flex: 1; height: 78%; background: #0DB5EC"></span><span style="flex: 1; height: 64%; background: #543BB9"></span><span style="flex: 1; height: 92%; background: #0DB5EC"></span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CEILING PTZ CAMERA 1 -->
+              <div class="p3" style="transform: {{cam1Tf}}">
+                <sc-for list="{{baseFaces}}" as="f" hint-placeholder-count="40">
+                  <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                </sc-for>
+                <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 5px #22D36B; transform: translate3d(8px, -37px, 24.4px)"></div>
+                <div class="p3 pan1">
+                  <sc-for list="{{armFaces}}" as="f" hint-placeholder-count="12">
+                    <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                  </sc-for>
+                  <div class="p3 tilt1">
+                    <sc-for list="{{headFaces}}" as="f" hint-placeholder-count="30">
+                      <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                    </sc-for>
+                    <div class="face" style="width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 40% 36%, #5A74A8 0 7%, #0E1726 20%, #090916 58%, #3A4A6C 68%, #0A0F18 76%); transform: translate3d(-9px, -9px, 29.2px)"></div>
+                    <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #FF3B3B; box-shadow: 0 0 5px #FF3B3B; transform: translate3d(10px, -9px, 15.2px)"></div>
+                  </div>
+                </div>
+              </div>
+              <!-- CEILING PTZ CAMERA 2 -->
+              <div class="p3" style="transform: {{cam2Tf}}">
+                <sc-for list="{{baseFaces}}" as="f" hint-placeholder-count="40">
+                  <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                </sc-for>
+                <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 5px #22D36B; transform: translate3d(8px, -37px, 24.4px)"></div>
+                <div class="p3 pan2">
+                  <sc-for list="{{armFaces}}" as="f" hint-placeholder-count="12">
+                    <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                  </sc-for>
+                  <div class="p3 tilt2">
+                    <sc-for list="{{headFaces}}" as="f" hint-placeholder-count="30">
+                      <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                    </sc-for>
+                    <div class="face" style="width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 40% 36%, #5A74A8 0 7%, #0E1726 20%, #090916 58%, #3A4A6C 68%, #0A0F18 76%); transform: translate3d(-9px, -9px, 29.2px)"></div>
+                    <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #FF3B3B; box-shadow: 0 0 5px #FF3B3B; transform: translate3d(10px, -9px, 15.2px)"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CEILING MIC rings -->
+              <div class="face2 ring" style="width: 50px; height: 50px; border-radius: 50%; transform: {{mic1RingTf}}"></div>
+              <div class="face2 ring" style="width: 50px; height: 50px; border-radius: 50%; transform: {{mic2RingTf}}"></div>
+
+              <!-- TOUCH PANEL -->
+              <div class="p3" style="transform: {{panelTf}}">
+                <sc-for list="{{panelFaces}}" as="f" hint-placeholder-count="6">
+                  <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                </sc-for>
+                <div class="face" style="width: 70px; height: 48px; background: #12102A; border-radius: 3px; overflow: hidden; transform: {{panelScreenTf}}">
+                  <div style="position: absolute; left: 0; right: 0; top: 0; height: 9px; background: #1A1733; display: flex; align-items: center; gap: 5px; padding: 0 4px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px; color: #B9B9CC"><span class="pgR" style="position: absolute; left: 4px; color: #00C4EC">ROUTING</span><span class="pgC" style="position: absolute; left: 4px; color: #00C4EC">CAMERAS</span><span class="pgA" style="position: absolute; left: 4px; color: #00C4EC">AUDIO</span><span style="margin-left: auto">WAVETECH</span></div>
+                  <div class="pgR" style="position: absolute; left: 0; right: 0; top: 9px; bottom: 0; padding: 3px 4px; display: flex; flex-direction: column; gap: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px">
+                    <div style="display: flex; align-items: center; gap: 2px"><span style="width: 16px; color: #B9B9CC">L WALL</span><span class="bL0 bon" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">MEET</span><span class="bL1 bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CALL</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">LAPTOP</span></div>
+                    <div style="display: flex; align-items: center; gap: 2px"><span style="width: 16px; color: #B9B9CC">R WALL</span><span class="bR0 bon" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">MEET</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CALL</span><span class="bR2 bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">LAPTOP</span></div>
+                    <div style="display: flex; align-items: center; gap: 2px; margin-top: auto"><span class="bidle" style="flex: 1; height: 8px; border-radius: 2px; display: flex; align-items: center; justify-content: center; color: #FF6B6B">SHUTDOWN</span></div>
+                  </div>
+                  <div class="pgC" style="position: absolute; left: 0; right: 0; top: 9px; bottom: 0; padding: 3px 4px; display: flex; flex-direction: column; gap: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px">
+                    <div style="display: flex; gap: 2px"><span class="bon" style="flex: 1; height: 9px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CAM 1</span><span class="bidle" style="flex: 1; height: 9px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CAM 2</span></div>
+                    <div style="display: flex; gap: 2px"><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P1</span><span class="bP2 bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P2</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P3</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P4</span></div>
+                    <div style="margin-top: auto; color: #B9B9CC">HOLD TO SAVE A PRESET</div>
+                  </div>
+                  <div class="pgA" style="position: absolute; left: 0; right: 0; top: 9px; bottom: 0; padding: 3px 4px; display: flex; gap: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px">
+                    <div style="flex: 1; display: flex; flex-direction: column; gap: 2px">
+                      <div style="display: flex; align-items: center; gap: 2px"><span style="width: 14px; color: #B9B9CC">CEIL</span><span style="flex: 1; height: 4px; background: #1A1733; border-radius: 2px"><span style="display: block; width: 70%; height: 100%; background: #0DB5EC; border-radius: 2px"></span></span></div>
+                      <div style="display: flex; align-items: center; gap: 2px"><span style="width: 14px; color: #B9B9CC">FOH</span><span style="flex: 1; height: 4px; background: #1A1733; border-radius: 2px"><span style="display: block; width: 55%; height: 100%; background: #0DB5EC; border-radius: 2px"></span></span></div>
+                      <div style="display: flex; align-items: center; gap: 2px"><span style="width: 14px; color: #B9B9CC">MIC</span><span style="flex: 1; height: 4px; background: #1A1733; border-radius: 2px"><span style="display: block; width: 62%; height: 100%; background: #0DB5EC; border-radius: 2px"></span></span></div>
+                    </div>
+                    <span class="bMute bidle" style="width: 22px; border-radius: 2px; display: flex; align-items: center; justify-content: center; text-align: center">ROOM MUTE</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- LAPTOP lid -->
+              <div class="p3" style="transform: {{lidTf}}">
+                <sc-for list="{{lidFaces}}" as="f" hint-placeholder-count="6">
+                  <div class="face" style="width: {{f.w}}px; height: {{f.h}}px; background: {{f.bg}}; border-radius: {{f.r}}px; transform: {{f.tf}}"></div>
+                </sc-for>
+                <div class="face" style="width: 56px; height: 34px; background: #0B0B14; overflow: hidden; transform: {{lidScreenTf}}; padding: 4px 5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px">
+                  <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 5px; color: #EEEEF8">QUARTERLY REVIEW</span>
+                  <div style="flex: 1; display: flex; align-items: flex-end; gap: 2px"><span style="flex: 1; height: 30%; background: #543BB9"></span><span style="flex: 1; height: 55%; background: #0DB5EC"></span><span style="flex: 1; height: 42%; background: #543BB9"></span><span style="flex: 1; height: 78%; background: #0DB5EC"></span><span style="flex: 1; height: 64%; background: #543BB9"></span><span style="flex: 1; height: 92%; background: #0DB5EC"></span></div>
+                </div>
+              </div>
+
+              <!-- CREDENZA: rack behind a glass door -->
+              <div class="face" style="width: 92px; height: 44px; background: rgba(10,10,20,.92); border: 1px solid #2A2A44; border-radius: 2px; transform: {{rackTf}}">
+                <span style="position: absolute; left: 5px; top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 5px; color: #00C4EC">CORE · DSP · SWITCH</span>
+                <span style="position: absolute; left: 5px; top: 13px; width: 80px; height: 5px; background: #1A1733; border-radius: 1px"></span>
+                <span style="position: absolute; left: 5px; top: 20px; width: 80px; height: 5px; background: #1A1733; border-radius: 1px"></span>
+                <span style="position: absolute; left: 5px; top: 27px; width: 80px; height: 5px; background: #1A1733; border-radius: 1px"></span>
+                <span style="position: absolute; left: 5px; bottom: 4px; display: flex; gap: 3px"><span style="width: 4px; height: 4px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 4px #22D36B"></span><span style="width: 4px; height: 4px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 4px #22D36B"></span><span style="width: 4px; height: 4px; border-radius: 50%; background: #0DB5EC; box-shadow: 0 0 4px #0DB5EC"></span><span style="width: 4px; height: 4px; border-radius: 50%; background: #0DB5EC; box-shadow: 0 0 4px #0DB5EC"></span></span>
+                <span style="position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.08), transparent 45%)"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #7A7A90">
+          <span>TWO VIDEO WALLS · TWO CEILING CAMERAS · CEILING MICS AND SPEAKERS · ONE TOUCH PANEL</span><span>EVERY TAP CHANGES THE ROOM</span>
+        </figcaption>
+      </figure>
+
+      <div style="flex: 1 1 100%; min-width: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px 40px; align-items: start">
+        <div style="display: flex; flex-direction: column; gap: 12px">
+        <div class="lbl">THE ROOM</div>
+        <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(32px, 3.6vw, 46px); line-height: 1.02; letter-spacing: -0.01em">The wall is one output. <span class="grad">We build the whole room.</span></h2>
+        <p style="margin: 0; color: #B9B9CC; font-size: 16px">Cameras that find the presenter, mics that hear the room, walls that switch on a tap. Designed, programmed and commissioned by the same team that hung them.</p>
+        </div>
+        <ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; border-top: 1px solid #1A1733">
+          <sc-for list="{{events}}" as="a" hint-placeholder-count="5">
+            <li class="{{a.cls}}" style="padding: 13px 0; border-bottom: 1px solid #1A1733; display: flex; gap: 14px; align-items: flex-start">
+              <span style="flex: none; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8C7BE0; padding-top: 4px">{{a.n}}</span>
+              <span style="display: flex; flex-direction: column; gap: 3px; min-width: 0">
+                <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 18px">{{a.t}}</span>
+                <span style="font-size: 15px; color: #B9B9CC; line-height: 1.45">{{a.b}}</span>
+              </span>
+            </li>
+          </sc-for>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <style>@keyframes xf{0%{opacity:0}3.11%{opacity:1}11.11%{opacity:1}14.22%{opacity:0}100%{opacity:0}}</style>
+  <section class="gal" aria-label="ON SITE" style="border-top: 1px solid #1A1733; border-bottom: 1px solid #1A1733; --T: 45.0s">
+    <div class="sl" style="--d: -1.4s"><img src="assets/av-ptz-closeup.jpg" alt="A ceiling-mounted PTZ camera, installed and aimed" loading="eager" style="object-position: 50% 40%"></div><div class="sl" style="--d: 3.6s"><img src="assets/av-bench-test.jpg" alt="Cameras and processing laid out for bench testing" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 8.6s"><img src="assets/av-camera-mount.jpg" alt="A camera mount being fixed to the wall" loading="eager" style="object-position: 55% 50%"></div><div class="sl" style="--d: 13.6s"><img src="assets/av-terminating.jpg" alt="A technician terminating a cable" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 18.6s"><img src="assets/av-rack-build.jpg" alt="Cabling being dressed inside the rack" loading="eager" style="object-position: 50% 45%"></div><div class="sl" style="--d: 23.6s"><img src="assets/av-ceiling-panel.jpg" alt="A technician fitting a ceiling panel overhead" loading="eager" style="object-position: 50% 35%"></div><div class="sl" style="--d: 28.6s"><img src="assets/av-above-ceiling.jpg" alt="A technician on a ladder working above the ceiling grid" loading="eager" style="object-position: 45% 40%"></div><div class="sl" style="--d: 33.6s"><img src="assets/av-cable-behind-display.jpg" alt="A hand guiding a cable behind a display" loading="eager" style="object-position: 50% 50%"></div><div class="sl" style="--d: 38.6s"><img src="assets/av-ladders.jpg" alt="Ladders set up in the room" loading="eager" style="object-position: 50% 55%"></div>
+    <div class="ovl" aria-hidden="true"></div>
+    <div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 120px 32px 128px; min-height: 720px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; gap: 18px">
+      <div class="lbl">ON SITE</div>
+      <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(40px, 4.8vw, 64px); line-height: 1.0; letter-spacing: -0.02em; max-width: 9.5em">The same crew,<br><span class="grad">start to finish.</span></h2>
+      <p style="margin: 0; color: #B9B9CC; font-size: 18px; max-width: 28em">No subcontracted install. The people who drew the room are the ones on the ladder, in the rack and behind the camera presets.</p>
+    </div>
+    <div class="cap" style="--d: -1.4s">CEILING PTZ, COMMISSIONED</div><div class="cap" style="--d: 3.6s">BENCH TEST BEFORE INSTALL</div><div class="cap" style="--d: 8.6s">MOUNTING ON BACKING</div><div class="cap" style="--d: 13.6s">TERMINATED BY HAND</div><div class="cap" style="--d: 18.6s">RACK BUILD</div><div class="cap" style="--d: 23.6s">CEILING WORK</div><div class="cap" style="--d: 28.6s">ABOVE THE CEILING</div><div class="cap" style="--d: 33.6s">CABLES HIDDEN</div><div class="cap" style="--d: 38.6s">OUR OWN CREW ON SITE</div>
+  </section>
+
+  <!-- STEPS -->
+  <section class="glow" aria-label="What happens next" style="border-top: 1px solid #1A1733">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 96px 32px">
+      <div class="lbl">WHAT HAPPENS NEXT</div>
+      <h2 style="margin: 12px 0 32px; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(32px, 3.6vw, 46px); line-height: 1.02; letter-spacing: -0.01em">From a walkthrough <span class="grad">to a working room.</span></h2>
+      <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px">
+        <li style="background: #12102A; border: 1px solid #211D3A; padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 8px">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8C7BE0">01</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 20px">Walkthrough</span>
+          <span style="font-size: 15px; color: #B9B9CC; line-height: 1.5">We look at how the room is used, sightlines for cameras, mic coverage and where control needs to live.</span>
+        </li>
+        <li style="background: #12102A; border: 1px solid #211D3A; padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 8px">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8C7BE0">02</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 20px">Design and install</span>
+          <span style="font-size: 15px; color: #B9B9CC; line-height: 1.5">Drawings, a fixed price, then the rack, displays, cameras, mics and panels, coordinated with your contractor.</span>
+        </li>
+        <li style="background: #12102A; border: 1px solid #211D3A; padding: 24px 24px 26px; display: flex; flex-direction: column; gap: 8px">
+          <span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #8C7BE0">03</span>
+          <span style="font-family: 'Archivo', sans-serif; font-weight: 700; font-size: 20px">Program and train</span>
+          <span style="font-size: 15px; color: #B9B9CC; line-height: 1.5">DSP tuning, camera presets and the touch-panel interface, then a hand-off session with your team.</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 7 · CONTACT -->
+  <section id="contact" class="glow-r" style="border-top: 1px solid #1A1733">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 104px 32px; display: flex; flex-wrap: wrap; gap: 56px">
+      <div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 20px">
+        <div class="lbl">START HERE</div>
+        <h2 style="margin: 0; font-family: 'Archivo', sans-serif; font-weight: 800; font-size: clamp(34px, 4vw, 52px); line-height: 1.02; letter-spacing: -0.01em">Send us <span class="grad">the room.</span></h2>
+        <p style="margin: 0; color: #B9B9CC">A rough size and a photo is enough to start. We'll come back with questions, then a site survey and a fixed scope before anything is ordered.</p>
+        <dl style="margin: 8px 0 0; display: grid; grid-template-columns: auto 1fr; gap: 10px 20px; font-family: 'IBM Plex Mono', monospace; font-size: 14px">
+          <dt style="color: #7A7A90">PHONE</dt><dd style="margin: 0">[PHONE]</dd>
+          <dt style="color: #7A7A90">EMAIL</dt><dd style="margin: 0">[EMAIL]</dd>
+          <dt style="color: #7A7A90">AREA</dt><dd style="margin: 0">[SERVICE AREA]</dd>
+        </dl>
+        <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px">
+          <a href="https://www.instagram.com/wavetech.inn" class="pill">Instagram</a>
+          <a href="https://www.linkedin.com/company/wavetech-innovations/" class="pill">LinkedIn</a>
+          <a href="https://www.facebook.com/WaveTechInnovations" class="pill">Facebook</a>
+        </div>
+      </div>
+      <div data-static="1" style="flex: 1 1 540px; min-width: 0; background: #12102A; border: 1px solid #211D3A; padding: 20px; box-shadow: 0 30px 80px rgba(0,0,0,.6)">
+        <iframe src="https://api.leadconnectorhq.com/widget/form/ir9Hi5bSDTWJiR6Zbaoo" style="width: 100%; border: none; display: block; min-height: 520px; height: 520px" id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-layout='{"id":"INLINE"}' data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Get In Touch" data-height="520" data-layout-iframe-id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-form-id="ir9Hi5bSDTWJiR6Zbaoo" title="Get In Touch"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top: 1px solid #1A1733; background: #090916">
+    <div style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: #7A7A90">
+      <span style="display: flex; align-items: center; gap: 14px"><img src="assets/wt-mark.png" alt="WaveTech" style="height: 28px; width: auto; display: block"><span>© 2026 WaveTech Innovations</span></span>
+      <span style="font-family: 'IBM Plex Mono', monospace">[SERVICE AREA]</span>
+    </div>
+  </footer>
+</div>
+</template>
+<div id="app"></div>
+<script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { sent: false, pi: 3 };
+  }
+  renderVals() {
+    const cells = [];
+    for (let i = 0; i < 36; i++) cells.push({ i });
+
+    // ---------- 3D room: x right, y DOWN, z toward the viewer; floor at y = 140 ----------
+    const hsl = (h, s, l) => 'hsl(' + h + ', ' + s + '%, ' + Math.max(2, Math.min(96, Math.round(l))) + '%)';
+    const mat = (h, s, l) => ({ front: hsl(h, s, l), back: hsl(h, s, l * .7), left: hsl(h, s, l * .82), right: hsl(h, s, l * .92), top: hsl(h, s, l * 1.35), bottom: hsl(h, s, l * .5) });
+    const face = (arr, w, h, x, y, z, rot, bg, r) => arr.push({ w, h, bg, r: r || 0, tf: 'translate3d(' + (x - w / 2) + 'px, ' + (y - h / 2) + 'px, ' + z + 'px) ' + rot });
+    const box = (arr, cx, cy, cz, w, h, d, m, r) => {
+      face(arr, w, h, cx, cy, cz + d / 2, '', m.front, r);
+      face(arr, w, h, cx, cy, cz - d / 2, 'rotateY(180deg)', m.back, r);
+      face(arr, d, h, cx + w / 2, cy, cz, 'rotateY(90deg)', m.right, 0);
+      face(arr, d, h, cx - w / 2, cy, cz, 'rotateY(-90deg)', m.left, 0);
+      face(arr, w, d, cx, cy - h / 2, cz, 'rotateX(90deg)', m.top, r);
+    };
+    const tf = (x, y, z, rot) => 'translate3d(' + x + 'px, ' + y + 'px, ' + z + 'px) ' + (rot || '');
+    const ctr = (w, h, x, y, z, rot) => 'translate3d(' + (x - w / 2) + 'px, ' + (y - h / 2) + 'px, ' + z + 'px) ' + (rot || '');
+
+    const roomFaces = [];
+    face(roomFaces, 760, 560, 0, 140, -40, 'rotateX(90deg)', 'radial-gradient(360px 240px at 50% 50%, #1A1A2C, #0D0D18 70%)', 0);
+    face(roomFaces, 760, 300, 0, -10, -320, '', 'linear-gradient(180deg, #12121F, #0B0B16)', 0);
+    const slab = mat(230, 10, 9);
+    box(roomFaces, -162, -58, -300, 306, 174, 40, slab, 0);
+    box(roomFaces, 162, -58, -300, 306, 174, 40, slab, 0);
+    // credenza under the displays, rack bay in the middle
+    const wood = mat(24, 20, 20);
+    box(roomFaces, 0, 112, -295, 520, 56, 50, wood, 3);
+    face(roomFaces, 140, 44, -170, 112, -269.6, '', hsl(24, 16, 15), 2);
+    face(roomFaces, 140, 44, 170, 112, -269.6, '', hsl(24, 16, 15), 2);
+    // round ceiling speakers (seen from above through the ceiling)
+    const spkBg = 'radial-gradient(circle, #CFCFDA 0 58%, #F2F2F7 61% 90%, #B4B4C4 92%)';
+    for (const [x, z] of [[-230, -80], [230, -80], [-230, 110], [230, 110]]) face(roomFaces, 44, 44, x, -178.4, z, 'rotateX(90deg)', spkBg, 22);
+    // table, pedestal, chairs
+    box(roomFaces, 0, 90, -10, 380, 10, 170, mat(24, 22, 22), 10);
+    box(roomFaces, 0, 117.5, -10, 80, 45, 70, mat(230, 8, 15), 0);
+    const seat = mat(230, 10, 24), post = mat(230, 6, 18);
+    for (const [x, z, dir] of [[-120, 105, 1], [0, 105, 1], [120, 105, 1], [-120, -125, -1], [0, -125, -1], [120, -125, -1]]) {
+      box(roomFaces, x, 106, z, 46, 6, 46, seat, 6);
+      box(roomFaces, x, 82, z + dir * 22, 46, 44, 6, seat, 6);
+      box(roomFaces, x, 123, z, 6, 28, 6, post, 0);
+      face(roomFaces, 36, 36, x, 137, z, 'rotateX(90deg)', hsl(230, 6, 20), 18);
+    }
+    for (const [x, dir] of [[-230, -1], [230, 1]]) {
+      box(roomFaces, x, 106, -10, 46, 6, 46, seat, 6);
+      box(roomFaces, x + dir * 22, 82, -10, 6, 44, 46, seat, 6);
+      box(roomFaces, x, 123, -10, 6, 28, 6, post, 0);
+      face(roomFaces, 36, 36, x, 137, -10, 'rotateX(90deg)', hsl(230, 6, 20), 18);
+    }
+    // ceiling mic arrays
+    const micWhite = mat(230, 10, 86);
+    box(roomFaces, -100, -172, 10, 64, 6, 64, micWhite, 4);
+    box(roomFaces, 100, -172, 10, 64, 6, 64, micWhite, 4);
+    // laptop base
+    box(roomFaces, -130, 88.5, 40, 64, 3, 44, mat(230, 8, 24), 4);
+
+    const panelFaces = [];
+    box(panelFaces, 0, -27, 0, 78, 54, 8, mat(230, 8, 11), 6);
+    const lidFaces = [];
+    box(lidFaces, 0, -21, 0, 64, 42, 3, mat(230, 8, 16), 3);
+    // cylinders: n slats around an axis, shaded by angle, with end discs
+    const cylY = (arr, cx, cy, cz, r, h, n0, hue, sat, lum, rTop) => {
+      const n = Math.min(n0, 10);
+      const chord = 2 * r * Math.tan(Math.PI / n) * 1.04;
+      for (let i = 0; i < n; i++) {
+        const a = i * 360 / n;
+        const l = lum * (0.62 + 0.38 * Math.cos((a - 50) * Math.PI / 180));
+        arr.push({ w: chord, h, r: 0, bg: hsl(hue, sat, l), tf: 'translate3d(' + (cx - chord / 2) + 'px, ' + (cy - h / 2) + 'px, ' + cz + 'px) rotateY(' + a + 'deg) translateZ(' + r + 'px)' });
+      }
+      face(arr, 2 * r, 2 * r, cx, cy - h / 2, cz, 'rotateX(90deg)', hsl(hue, sat, (rTop === undefined ? lum : rTop) * 1.3), r);
+      face(arr, 2 * r, 2 * r, cx, cy + h / 2, cz, 'rotateX(-90deg)', hsl(hue, sat, lum * .55), r);
+    };
+    const cylZ = (arr, cx, cy, cz, r, len, n0, hue, sat, lum) => {
+      const n = Math.min(n0, 10);
+      const chord = 2 * r * Math.tan(Math.PI / n) * 1.04;
+      for (let i = 0; i < n; i++) {
+        const a = i * 360 / n;
+        const l = lum * (0.62 + 0.38 * Math.cos((a - 200) * Math.PI / 180));
+        arr.push({ w: chord, h: len, r: 0, bg: hsl(hue, sat, l), tf: 'translate3d(' + (cx - chord / 2) + 'px, ' + (cy - len / 2) + 'px, ' + cz + 'px) rotateZ(' + a + 'deg) translateY(' + (-r) + 'px) rotateX(90deg)' });
+      }
+      face(arr, 2 * r, 2 * r, cx, cy, cz + len / 2, '', hsl(hue, sat, lum * .5), r);
+      face(arr, 2 * r, 2 * r, cx, cy, cz - len / 2, 'rotateY(180deg)', hsl(hue, sat, lum * .5), r);
+    };
+    // ---------- exploded LED cabinet: components built on a 560 × 315 plate, +z up out of the plate ----------
+    const PX = (x) => x + 280, PY = (y) => y + 157.5;
+    const fz = (arr, w, h, x, y, z, rot, bg, r) => arr.push({ w, h, bg, r: r || 0, clip: 'none', tf: 'translate3d(' + (PX(x) - w / 2) + 'px, ' + (PY(y) - h / 2) + 'px, ' + z + 'px) ' + rot });
+    const bz = (arr, cx, cy, cz, w, h, d, top, base, r, under) => {
+      const [H, S, L] = base;
+      fz(arr, w, h, cx, cy, cz + d / 2, '', top, r);
+      if (under) fz(arr, w, h, cx, cy, cz - d / 2, 'rotateY(180deg)', hsl(H, S, L * .4), r);
+      fz(arr, d, h, cx + w / 2, cy, cz, 'rotateY(90deg)', hsl(H, S, L * .85), 0);
+      fz(arr, d, h, cx - w / 2, cy, cz, 'rotateY(-90deg)', hsl(H, S, L * .7), 0);
+      fz(arr, w, d, cx, cy - h / 2, cz, 'rotateX(90deg)', hsl(H, S, L * .6), 0);
+      fz(arr, w, d, cx, cy + h / 2, cz, 'rotateX(-90deg)', hsl(H, S, L * .95), 0);
+    };
+    const cz = (arr, cx, cy, zc, r, len, n0, H, S, L, topBg) => {
+      const n = Math.min(n0, 8);
+      const chord = 2 * r * Math.tan(Math.PI / n) * 1.04;
+      for (let i = 0; i < n; i++) {
+        const a = i * 360 / n;
+        const l = L * (0.62 + 0.38 * Math.cos((a - 200) * Math.PI / 180));
+        arr.push({ w: chord, h: len, r: 0, bg: hsl(H, S, l), tf: 'translate3d(' + (PX(cx) - chord / 2) + 'px, ' + (PY(cy) - len / 2) + 'px, ' + zc + 'px) rotateZ(' + a + 'deg) translateY(' + (-r) + 'px) rotateX(90deg)' });
+      }
+      fz(arr, 2 * r, 2 * r, cx, cy, zc + len / 2, '', topBg || hsl(H, S, L * 1.2), r);
+    };
+    const PCB = 'repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 7px), repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 11px), #15161C';
+    const PCB2 = 'repeating-linear-gradient(0deg, rgba(255,255,255,.05) 0 1px, transparent 1px 8px), repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 12px), #121318';
+    const PINS = 'radial-gradient(circle, #D8B45A 0 1.3px, transparent 1.7px) 1px 1px / 4px 4px, #161616';
+    const PINROW = 'radial-gradient(circle, #D8B45A 0 1.2px, transparent 1.6px) 2px 50% / 4px 100% no-repeat padding-box, #F2F2F7';
+    const HOLES = 'radial-gradient(circle, #23252B 0 1.1px, transparent 1.5px) 1px 3px / 4px 9px, #F2F2F7';
+    const HOLES1 = 'radial-gradient(circle, #23252B 0 1.1px, transparent 1.5px) 1px 2px / 4px 8px, #F2F2F7';
+    const SILVER = 'linear-gradient(180deg, #D5D9E0, #AEB5C0)';
+    const PERF = 'radial-gradient(circle, #10141C 0 1.9px, transparent 2.4px) 0 0 / 9px 9px, #2A3140';
+    const PERF2 = 'radial-gradient(circle, #4A5262 0 1.3px, transparent 1.8px) 0 0 / 5px 5px, #9AA3B0';
+    const LEDS = 'radial-gradient(circle, #3A5078 0 1.1px, transparent 1.4px) 0 0 / 5px 5px, #0A0F18';
+    const gray = [228, 8, 26], black = [228, 6, 10], white = [228, 10, 88], silver = [220, 8, 70], blue = [196, 90, 48], pcbC = [228, 8, 9];
+    const standoffXs = [-262, -187, -112, -37, 37, 112, 187, 262];
+
+    // 5 · chassis (with its own side walls, so the assembled cabinet is a closed box)
+    const xChassis = [];
+    bz(xChassis, 0, 0, -4, 560, 315, 8, PERF, gray, 2);
+    const wallTop = 'linear-gradient(90deg, #3A4252, #2E3542)';
+    bz(xChassis, 0, -163.5, 23, 584, 12, 62, wallTop, [228, 8, 24], 1);
+    bz(xChassis, 0, 163.5, 23, 584, 12, 62, wallTop, [228, 8, 24], 1);
+    bz(xChassis, -286, 0, 23, 12, 339, 62, wallTop, [228, 8, 24], 1);
+    bz(xChassis, 286, 0, 23, 12, 339, 62, wallTop, [228, 8, 24], 1);
+    bz(xChassis, -120, 0, 3, 36, 76, 6, '#4A5365', [228, 8, 30], 6);
+    bz(xChassis, 120, 0, 3, 36, 76, 6, '#4A5365', [228, 8, 30], 6);
+    bz(xChassis, 0, -146, 4, 84, 22, 8, '#0DB5EC', blue, 2);
+    bz(xChassis, 0, 146, 4, 84, 22, 8, '#0DB5EC', blue, 2);
+    cz(xChassis, -255, -146, 6, 7, 12, 10, 220, 8, 62);
+    cz(xChassis, 255, -146, 6, 7, 12, 10, 220, 8, 62);
+    for (const y of [-60, 60]) cz(xChassis, -270, y, 3, 5, 6, 8, 220, 8, 55);
+    for (const x of [-150, 150]) cz(xChassis, x, -150, 3, 5, 6, 8, 220, 8, 55);
+    for (const [x, y] of [[-200, -80], [200, -80], [-200, 80], [200, 80]]) cz(xChassis, x, y, 2, 9, 4, 10, 228, 8, 36, '#1A1F2A');
+    bz(xChassis, 130, 120, 1.5, 56, 22, 3, PCB, pcbC, 1);
+    cz(xChassis, 116, 120, 5, 3, 4, 8, 0, 85, 55, '#FF5A4E');
+    cz(xChassis, 130, 120, 5, 3, 4, 8, 140, 70, 50, '#3BD27A');
+    cz(xChassis, 144, 120, 5, 3, 4, 8, 222, 90, 60, '#4F7BFF');
+    bz(xChassis, -150, 120, 2, 16, 14, 4, '#3BD27A', [140, 60, 40], 1);
+    for (const x of standoffXs) { cz(xChassis, x, -140, 7, 4, 14, 8, 220, 8, 62); cz(xChassis, x, 140, 7, 4, 14, 8, 220, 8, 62); }
+
+    // 4 · power supplies + PDU
+    const xPsu = [];
+    for (const sgn of [-1, 1]) {
+      const px = sgn * 120;
+      bz(xPsu, px, 0, 9, 175, 190, 18, PERF2, [228, 8, 62], 2);
+      bz(xPsu, px, 12, 19, 120, 30, 2, '#F2F2F7', white, 1);
+      bz(xPsu, px - 55, 76, 22, 36, 20, 8, PINS, black, 1);
+      bz(xPsu, px + 45, 76, 22, 44, 20, 8, PINROW, white, 1);
+      bz(xPsu, px + 50, -72, 21, 30, 14, 6, '#161616', black, 1);
+      for (let k = 0; k < 4; k++) cz(xPsu, px - 70 + k * 14, -70, 21, 3, 5, 6, 220, 8, 50);
+    }
+    bz(xPsu, 0, 0, 8, 64, 150, 16, 'repeating-linear-gradient(45deg, rgba(220,220,240,.45) 0 1px, transparent 1px 5px), #5B6676', [228, 8, 38], 1);
+    bz(xPsu, 0, -40, 20, 44, 16, 8, '#111', black, 1);
+    bz(xPsu, 0, 40, 20, 44, 16, 8, '#111', black, 1);
+    for (const sgn of [-1, 1]) {
+      bz(xPsu, sgn * 50, -30, 18, 40, 4, 4, '#D83A3A', [0, 70, 42], 2);
+      bz(xPsu, sgn * 50, -20, 18, 40, 4, 4, '#111', black, 2);
+    }
+
+    // 3 · receiving cards (modelled on a receiving card: six pin headers, BGA, RJ45, power header, caps, LEDs)
+    const xRc = [];
+    for (const cxr of [-62, 62]) {
+      bz(xRc, cxr, 0, 1.5, 118, 150, 3, PCB, pcbC, 2);
+      for (const x of [-40, -14, 12]) { bz(xRc, cxr + x, -55, 6.5, 16, 30, 7, PINS, black, 1); bz(xRc, cxr + x, 55, 6.5, 16, 30, 7, PINS, black, 1); }
+      bz(xRc, cxr - 6, 0, 4.5, 34, 34, 3, 'linear-gradient(135deg, #2A2A2E, #121214)', black, 1);
+      bz(xRc, cxr - 34, 8, 4, 14, 8, 2, '#1A1A1A', black, 0);
+      bz(xRc, cxr - 34, -6, 4, 14, 8, 2, '#1A1A1A', black, 0);
+      bz(xRc, cxr + 46, -4, 8, 22, 32, 10, SILVER, silver, 1);
+      bz(xRc, cxr + 30, 58, 6, 20, 10, 6, PINROW, white, 1);
+      cz(xRc, cxr + 24, -58, 5, 2.5, 4, 6, 0, 85, 55, '#FF5A4E');
+      cz(xRc, cxr + 32, -58, 5, 2.5, 4, 6, 140, 70, 50, '#3BD27A');
+      for (const y of [-14, 0, 14]) cz(xRc, cxr - 50, y, 6.5, 4, 7, 8, 228, 6, 18, '#0E0E10');
+      for (const [x, y] of [[-52, -68], [52, -68], [-52, 68], [52, 68]]) cz(xRc, cxr + x, y, 3.5, 3, 1, 8, 220, 8, 70);
+    }
+
+    // 2 · hub board
+    const xHub = [];
+    bz(xHub, 0, 0, 1.5, 540, 290, 3, PCB2, [228, 8, 8], 2);
+    for (const y of [-72, 72]) for (const x of [-200, -67, 67, 200]) bz(xHub, x, y, 6, 70, 18, 6, HOLES, white, 1);
+    for (const x of [-33, -11, 11, 33]) bz(xHub, x, 0, 7.5, 20, 22, 9, SILVER, silver, 1);
+    for (const x of [-62, 62]) bz(xHub, x, 0, 2, 122, 154, 4, '#0B0C10', [228, 6, 5], 2);
+    for (const sgn of [-1, 1]) { bz(xHub, sgn * 150, -128, 6.5, 26, 14, 7, HOLES1, white, 1); bz(xHub, sgn * 185, -128, 5.5, 12, 8, 5, HOLES1, white, 0); }
+    bz(xHub, 150, 128, 5.5, 16, 8, 5, HOLES1, white, 0);
+    for (const x of [-100, -80, -60, 60, 80, 100]) cz(xHub, x, -128, 6.5, 5, 7, 8, 228, 6, 18, '#0E0E10');
+    for (const x of standoffXs) { cz(xHub, x, -140, 4, 3.5, 2, 8, 220, 8, 70); cz(xHub, x, 140, 4, 3.5, 2, 8, 220, 8, 70); }
+
+    // 1 · LED face: one seamless surface with a hole where the lifted card sits; the dot period divides both tile sizes
+    const LEDTEX = 'radial-gradient(circle, #3A5078 0 1px, transparent 1.3px) 0 0 / 4.375px 4.375px, #0A0F18';
+    const xCards = [], xLift = [];
+    bz(xCards, 0, 0, 3, 560, 315, 6, LEDTEX, [222, 14, 7], 0);
+    xCards[0].clip = 'polygon(evenodd, 0 0, 560px 0, 560px 315px, 0 315px, 0 0, 140px 157.5px, 140px 315px, 280px 315px, 280px 157.5px, 140px 157.5px)';
+    fz(xCards, 140, 157.5, -70, 78.75, 0.2, '', '#0B0C10', 0);
+    bz(xLift, -70, 78.75, 3, 140, 157.5, 6, 'radial-gradient(circle, #3A5078 0 1px, transparent 1.3px) -140px -157.5px / 4.375px 4.375px, #0A0F18', [222, 14, 7], 0, true);
+
+    // cables between the layers (this group scales with the explosion)
+    const xRibbons = [];
+    bz(xRibbons, 150, 118, 118, 12, 2, 236, '#E6E6EE', white, 0);
+    bz(xRibbons, 0, -70, 174, 18, 2, 132, '#B9B9CC', [228, 10, 70], 0);
+    for (const sgn of [-1, 1]) {
+      bz(xRibbons, sgn * 150, -100, 172, 4, 4, 128, '#D83A3A', [0, 70, 42], 2);
+      bz(xRibbons, sgn * 140, -100, 172, 4, 4, 128, '#111', black, 2);
+      bz(xRibbons, sgn * 62, 70, 201, 100, 3, 76, '#D5D9DF', white, 0);
+    }
+    // PTZ camera, ceiling-mounted (upside down): ceiling plate, round base, yoke arms, rounded head, barrel lens
+    const camGray = [228, 8, 30], camDark = [228, 8, 20];
+    const baseFaces = [];
+    cylY(baseFaces, 0, -46, 0, 20, 4, 12, 228, 6, 36);            // ceiling plate
+    cylY(baseFaces, 0, -38, 0, 25, 12, 16, camDark[0], camDark[1], camDark[2]);   // base disc with the status LEDs
+    const armFaces = [];
+    const armMat = mat(camGray[0], camGray[1], camGray[2]);
+    box(armFaces, -22, -14, -2, 7, 38, 22, armMat, 3);
+    box(armFaces, 22, -14, -2, 7, 38, 22, armMat, 3);
+    box(armFaces, 0, -30, -2, 44, 6, 22, armMat, 3);            // bridge under the base
+    const headFaces = [];
+    box(headFaces, 0, 0, 0, 32, 26, 30, mat(camGray[0], camGray[1], camGray[2] * 1.05), 10);
+    cylZ(headFaces, 0, 0, 22, 10, 14, 14, 228, 8, 16);           // lens barrel, glass on its front
+
+    const ceilTf = ctr(760, 560, 0, -180, -40, 'rotateX(-90deg)');
+    const leftScreenTf = ctr(304, 172, -162, -58, -279.6, '');
+    const rightScreenTf = ctr(304, 172, 162, -58, -279.6, '');
+    const cam1Tf = tf(-300, -132, -190);
+    const cam2Tf = tf(300, -132, -190);
+    const mic1RingTf = ctr(50, 50, -100, -175.2, 10, 'rotateX(90deg)');
+    const mic2RingTf = ctr(50, 50, 100, -175.2, 10, 'rotateX(90deg)');
+    const panelTf = tf(140, 85, 48, 'rotateX(60deg)');
+    const panelScreenTf = ctr(70, 48, 0, -27, 4.2, '');
+    const lidTf = tf(-130, 87, 18, 'rotateX(14deg)');
+    const lidScreenTf = ctr(56, 34, 0, -21, 1.7, '');
+    const rackTf = ctr(92, 44, 0, 112, -269.4, '');
+
+    const tiles = [
+      { name: 'ROOM', bg: '#131326', av: '#3A3A5C' },
+      { name: 'REMOTE 1', bg: '#161630', av: '#4A3A6C' },
+      { name: 'REMOTE 2', bg: '#131326', av: '#3A4A6C' },
+      { name: 'PRESENTER', bg: '#161630', av: '#4A4A7C' }
+    ];
+    const events = [
+      { cls: 'ev1', n: '01', t: 'Walk in', b: 'Both walls show the meeting home screen, mics live, cameras on their home shots.' },
+      { cls: 'ev2', n: '02', t: 'Pick your sources', b: 'One tap puts the call on the left wall and the laptop on the right.' },
+      { cls: 'ev3', n: '03', t: 'Frame the room', b: 'Tap a camera preset and both ceiling cameras move to their saved shots.' },
+      { cls: 'ev4', n: '04', t: 'Mute the room', b: 'The ceiling mics go red and the far end sees it.' },
+      { cls: 'ev5', n: '05', t: 'Carry on', b: 'Unmute, finish the meeting, tap Shutdown. The room resets itself.' }
+    ];
+
+    const layers = [
+      { n: '1', dot: '#543BB9', name: 'Pixel cards', body: 'The LEDs themselves. Eight per cabinet, and each one lifts off the front without a cable.' },
+      { n: '2', dot: '#2DAA5E', name: 'Hub board', body: 'Feeds data and power to every pixel card.' },
+      { n: '3', dot: '#0DB5EC', name: 'Receiving cards', body: 'Two per cabinet. One runs the picture, the other stands by in case it fails.' },
+      { n: '4', dot: '#8D96A3', name: 'Power supplies', body: 'Two in parallel. If one fails, the other carries the cabinet.' },
+      { n: '5', dot: '#4A5365', name: 'Cabinet', body: 'A fan-free housing that doubles as the heat sink, with status lights on the back.' }
+    ];
+
+    const pitches = [
+      { label: '0.95', mm: 0.95, wall: '3840 × 2160', wallNote: '4K', ft: '~10 ft' },
+      { label: '1.27', mm: 1.266, wall: '2880 × 1620', wallNote: 'beyond Full HD', ft: '~13 ft' },
+      { label: '1.58', mm: 1.583, wall: '2304 × 1296', wallNote: 'beyond Full HD', ft: '~16 ft' },
+      { label: '1.90', mm: 1.90, wall: '1920 × 1080', wallNote: 'Full HD', ft: '~19 ft' },
+      { label: '2.53', mm: 2.533, wall: '1440 × 810', wallNote: 'below Full HD', ft: '~25 ft' },
+      { label: '3.17', mm: 3.167, wall: '1152 × 648', wallNote: 'below Full HD', ft: '~32 ft' },
+      { label: '3.80', mm: 3.80, wall: '960 × 540', wallNote: 'quarter HD', ft: '~38 ft' }
+    ];
+    const sel = pitches[this.state.pi];
+    const p = Object.assign({}, sel, { cellX: (sel.mm / 48 * 100).toFixed(3), cellY: (sel.mm / 27 * 100).toFixed(3) });
+    const pitchButtons = pitches.map((x, i) => {
+      const on = i === this.state.pi;
+      return { label: x.label, pressed: on ? 'true' : 'false', bg: on ? '#00C4EC' : 'transparent', bd: on ? '#00C4EC' : '#03485A', fg: on ? '#090916' : '#00C4EC', pick: () => this.setState({ pi: i }) };
+    });
+
+    const W = 100 / 24, H = 100 / 12;
+    const card = (c, r) => ({ x: (c * W).toFixed(3), y: (r * H).toFixed(3), w: W.toFixed(3), h: H.toFixed(3) });
+    const dark = '#05070B';
+    const cater = 'repeating-linear-gradient(90deg, #FF3B3B 0 2px, #22C55E 2px 4px, #3B6BFF 4px 6px, #05070B 6px 10px)';
+    const faults = [
+      Object.assign({ cls: 'rx1', bg: cater }, card(17, 0)),
+      Object.assign({ cls: 'rx2', bg: dark }, card(1, 3)),
+      { cls: 'rx3', bg: dark, x: '50', y: '33.333', w: '16.667', h: '16.667' },
+      Object.assign({ cls: 'rx4', bg: dark }, card(11, 8)),
+      Object.assign({ cls: 'rx5', bg: dark }, card(22, 11))
+    ];
+    const rescue = [
+      { cls: 'st1', n: '01', t: 'Flag', b: 'The wall tells us which cabinets are unhappy before anyone in the room notices.' },
+      { cls: 'st2', n: '02', t: 'Diagnose', b: 'Each fault is traced to its cause before a part is replaced.' },
+      { cls: 'st3', n: '03', t: 'Replace', b: 'Matched spares from your kit, fitted from the front of the wall.' },
+      { cls: 'st4', n: '04', t: 'Recalibrate', b: 'New parts are matched to their neighbours until the wall is seamless again.' },
+      { cls: 'st5', n: '05', t: 'Log', b: 'Every swap is recorded and the spares kit is refilled for next time.' }
+    ];
+    const scope = [
+      { phase: 'Site survey', includes: 'We measure the wall, check structure, power and data, and look at sightlines for cameras and mics.', gets: 'A survey report' },
+      { phase: 'Design', includes: 'Wall size and pitch, cabinet layout, processing, cameras, mics and control — all drawn before anything is ordered.', gets: 'Drawings and a fixed price' },
+      { phase: 'Installation', includes: 'Mounting, cabinets, cabling, rack, cameras, mics and panels, coordinated with your contractor.', gets: 'A finished room' },
+      { phase: 'Commissioning', includes: 'Calibration, seams, audio tuning, camera presets, the touch-panel interface and training.', gets: 'A commissioning report and as-builts' },
+      { phase: 'Service', includes: 'Maintenance visits, spares on hand, remote diagnostics and on-site response.', gets: 'An annual service agreement' }
+    ];
+    return {
+      cells, layers, xChassis, xPsu, xRc, xHub, xCards, xLift, xRibbons,
+      roomFaces, panelFaces, lidFaces, baseFaces, armFaces, headFaces, ceilTf, leftScreenTf, rightScreenTf, cam1Tf, cam2Tf, mic1RingTf, mic2RingTf, panelTf, panelScreenTf, lidTf, lidScreenTf, rackTf, tiles, events,
+      p, pitchButtons, faults, rescue, scope,
+      submitLabel: this.state.sent ? 'Thanks — we’ll be in touch' : 'Request a site survey',
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState({ sent: true }); }
+    };
+  }
+}
+DC.mount(Component, {});
+</script>
+</body>
+</html>
