@@ -1,4 +1,4 @@
-<!-- WaveTech Innovations — /emergency-maintenance — build v2026.11.02.3 — paste into one Custom HTML/Javascript element -->
+<!-- WaveTech Innovations — /emergency-maintenance — build v2026.11.02.4 — paste into one Custom HTML/Javascript element -->
 <link rel="icon" href="assets/wt-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
@@ -204,6 +204,8 @@ input::placeholder,textarea::placeholder{color:#5E5E74}
 html,body{background:#090916!important}
 html{overflow-x:clip}
 #app{position:relative;width:100vw;margin-left:calc(50% - 50vw);box-sizing:border-box;overflow-x:clip}
+/* the new site is the only content on the page: hide every other builder section, at every width */
+.c-section:not(:has(#app)),.hl_page-creator--section:not(:has(#app)),body>section:not(:has(#app)){display:none!important}
 /* the scroll scenes pin with position:sticky; no ancestor may clip or scroll */
 #app *{overflow-anchor:auto}
 .c-section,.c-row,.c-column,.c-wrapper,.hl_page-creator--section,.hl_page-creator--row,.hl_page-creator--col{overflow:visible!important}
@@ -355,12 +357,12 @@ html{overflow-x:clip}
   <footer style="border-top: 1px solid #1A1733; background: #090916">
     <div style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: #7A7A90">
       <span style="display: flex; align-items: center; gap: 14px"><img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/wt-mark.png" alt="WaveTech" style="height: 28px; width: auto; display: block"><span>© 2026 WaveTech Innovations</span></span>
-      <span style="font-family: 'IBM Plex Mono', monospace">TEAMS ACROSS THE US · WE TRAVEL <span style="opacity: .55; margin-left: 14px" title="site build">v2026.11.02.3</span></span>
+      <span style="font-family: 'IBM Plex Mono', monospace">TEAMS ACROSS THE US · WE TRAVEL <span style="opacity: .55; margin-left: 14px" title="site build">v2026.11.02.4</span></span>
     </div>
   </footer>
 </div>
 </template>
-<div id="app" data-build="v2026.11.02.3"></div>
+<div id="app" data-build="v2026.11.02.4"></div>
 <script>
 /* WaveTech site runtime — expands the page template (sc-for / sc-if / [[holes]] / on* handlers)
    from the page's Component class, and re-renders with a DOM morph when state changes. */
@@ -549,6 +551,21 @@ html{overflow-x:clip}
       app = document.getElementById('app');
       inst = new Component(props || {});
       draw();
+      // Builder pages: anything that is not the section holding this site gets removed (old sections,
+      // including ones set to mobile-only). Chat widgets and scripts outside sections are left alone.
+      try {
+        var node = app, SEC = /(^|\s)(c-section|hl_page-creator--section)(\s|$)/;
+        while (node && node !== document.body) {
+          var par = node.parentElement; if (!par) break;
+          var sib = Array.prototype.slice.call(par.children);
+          for (var i = 0; i < sib.length; i++) {
+            var el = sib[i];
+            if (el === node || el.contains(app)) continue;
+            if (SEC.test(el.className || '') || el.tagName === 'SECTION') el.style.display = 'none';
+          }
+          node = par;
+        }
+      } catch (e) {}
     },
     scroll: scrollEngine
   };

@@ -185,6 +185,21 @@
       app = document.getElementById('app');
       inst = new Component(props || {});
       draw();
+      // Builder pages: anything that is not the section holding this site gets removed (old sections,
+      // including ones set to mobile-only). Chat widgets and scripts outside sections are left alone.
+      try {
+        var node = app, SEC = /(^|\s)(c-section|hl_page-creator--section)(\s|$)/;
+        while (node && node !== document.body) {
+          var par = node.parentElement; if (!par) break;
+          var sib = Array.prototype.slice.call(par.children);
+          for (var i = 0; i < sib.length; i++) {
+            var el = sib[i];
+            if (el === node || el.contains(app)) continue;
+            if (SEC.test(el.className || '') || el.tagName === 'SECTION') el.style.display = 'none';
+          }
+          node = par;
+        }
+      } catch (e) {}
     },
     scroll: scrollEngine
   };
