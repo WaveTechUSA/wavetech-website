@@ -1,8 +1,5 @@
-<!-- WaveTech Innovations — /emergency-maintenance — build v2026.11.23.1 — paste into one Custom HTML/Javascript element -->
-<link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/favicon-32.png">
-<link rel="icon" type="image/png" sizes="64x64" href="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/favicon-64.png">
-<link rel="icon" type="image/png" sizes="512x512" href="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/favicon-512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/apple-touch-icon.png">
+<!-- WaveTech Innovations — /emergency-maintenance — build v2026.11.02.4 — paste into one Custom HTML/Javascript element -->
+<link rel="icon" href="assets/wt-mark.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 <style>
@@ -360,70 +357,12 @@ html{overflow-x:clip}
   <footer style="border-top: 1px solid #1A1733; background: #090916">
     <div style="max-width: 1280px; margin: 0 auto; padding: 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; font-size: 14px; color: #7A7A90">
       <span style="display: flex; align-items: center; gap: 14px"><img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/wt-mark.png" alt="WaveTech" style="height: 28px; width: auto; display: block"><span>© 2026 WaveTech Innovations</span></span>
-      <span style="font-family: 'IBM Plex Mono', monospace">TEAMS ACROSS THE US · WE TRAVEL <span style="opacity: .55; margin-left: 14px" title="site build">v2026.11.23.1</span></span>
+      <span style="font-family: 'IBM Plex Mono', monospace">TEAMS ACROSS THE US · WE TRAVEL <span style="opacity: .55; margin-left: 14px" title="site build">v2026.11.02.4</span></span>
     </div>
   </footer>
 </div>
 </template>
-<script type="application/ld+json">
-{
- "@context": "https://schema.org",
- "@graph": [
-  {
-   "@type": "Organization",
-   "@id": "https://wavetech-usa.com/#org",
-   "name": "WaveTech Innovations",
-   "url": "https://wavetech-usa.com/",
-   "logo": "https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/favicon-512.png",
-   "email": "info@wavetech-usa.com",
-   "telephone": "+1-201-912-2931",
-   "contactPoint": [
-    {
-     "@type": "ContactPoint",
-     "telephone": "+1-201-912-2931",
-     "contactType": "sales",
-     "areaServed": [
-      "US",
-      "International"
-     ],
-     "availableLanguage": "en"
-    },
-    {
-     "@type": "ContactPoint",
-     "telephone": "+1-929-359-0219",
-     "contactType": "technical support",
-     "areaServed": [
-      "US",
-      "International"
-     ],
-     "availableLanguage": "en"
-    }
-   ],
-   "sameAs": [
-    "https://www.instagram.com/wavetech.inn",
-    "https://www.linkedin.com/company/wavetech-innovations/",
-    "https://www.facebook.com/WaveTechInnovations"
-   ]
-  },
-  {
-   "@type": "Service",
-   "@id": "https://wavetech-usa.com/emergency-maintenance#service",
-   "name": "LED video wall and AV emergency maintenance",
-   "serviceType": "LED video wall and AV emergency maintenance",
-   "provider": {
-    "@id": "https://wavetech-usa.com/#org"
-   },
-   "areaServed": [
-    "US",
-    "International"
-   ],
-   "url": "https://wavetech-usa.com/emergency-maintenance",
-   "description": "Video walls and rooms kept running, including systems we didn’t install: dead pixels, dark modules and failed cabinets traced to the cause and fixed on site. Scheduled maintenance, spares on hand, remote diagnostics."
-  }
- ]
-}
-</script>
-<div id="app" data-build="v2026.11.23.1"></div>
+<div id="app" data-build="v2026.11.02.4"></div>
 <script>
 /* WaveTech site runtime — expands the page template (sc-for / sc-if / [[holes]] / on* handlers)
    from the page's Component class, and re-renders with a DOM morph when state changes. */
@@ -626,12 +565,6 @@ html{overflow-x:clip}
           }
           node = par;
         }
-      } catch (e) {}
-      // Favicon: drop any icon the host page declared (the builder's stretched logo) so ours is the only candidate.
-      try {
-        var ours = /favicon-\d+\.png|apple-touch-icon\.png/;
-        Array.prototype.slice.call(document.querySelectorAll('link[rel~="icon"],link[rel="shortcut icon"],link[rel="apple-touch-icon"]'))
-          .forEach(function (l) { if (!ours.test(l.getAttribute('href') || '')) l.parentNode.removeChild(l); });
       } catch (e) {}
     },
     scroll: scrollEngine

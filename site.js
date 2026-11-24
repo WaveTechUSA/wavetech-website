@@ -200,12 +200,6 @@
           node = par;
         }
       } catch (e) {}
-      // Favicon: drop any icon the host page declared (the builder's stretched logo) so ours is the only candidate.
-      try {
-        var ours = /favicon-\d+\.png|apple-touch-icon\.png/;
-        Array.prototype.slice.call(document.querySelectorAll('link[rel~="icon"],link[rel="shortcut icon"],link[rel="apple-touch-icon"]'))
-          .forEach(function (l) { if (!ours.test(l.getAttribute('href') || '')) l.parentNode.removeChild(l); });
-      } catch (e) {}
     },
     scroll: scrollEngine
   };
