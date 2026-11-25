@@ -12,7 +12,7 @@ const BREAKOUT = `html,body{background:#090916!important}html{overflow-x:clip}
 #site{width:100vw;margin-left:calc(50% - 50vw)}
 .c-section:not(:has(#site)),.hl_page-creator--section:not(:has(#site)),body>section:not(:has(#site)){display:none!important}
 .c-section,.c-row,.c-column,.c-wrapper,.hl_page-creator--section,.hl_page-creator--row,.hl_page-creator--col{overflow:visible!important;max-width:none!important;padding:0!important;margin:0!important}`;
-const VERSION = PREVIEW ? 'rebuild preview 4' : 'v2026.11.24.4';
+const VERSION = PREVIEW ? 'rebuild preview 4' : 'v2026.11.25.1';
 const read = f => fs.readFileSync(f, 'utf8');
 const part = n => read(path.join(PARTS, n));
 
