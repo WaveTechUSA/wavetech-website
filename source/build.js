@@ -12,7 +12,7 @@ const BREAKOUT = `html,body{background:#090916!important}html{overflow-x:clip}
 #site{width:100vw;margin-left:calc(50% - 50vw)}
 .c-section:not(:has(#site)),.hl_page-creator--section:not(:has(#site)),body>section:not(:has(#site)){display:none!important}
 .c-section,.c-row,.c-column,.c-wrapper,.hl_page-creator--section,.hl_page-creator--row,.hl_page-creator--col{overflow:visible!important;max-width:none!important;padding:0!important;margin:0!important}`;
-const VERSION = PREVIEW ? 'rebuild preview 4' : 'v2026.11.24.3';
+const VERSION = PREVIEW ? 'rebuild preview 4' : 'v2026.11.24.4';
 const read = f => fs.readFileSync(f, 'utf8');
 const part = n => read(path.join(PARTS, n));
 
@@ -240,7 +240,7 @@ ${bleed('AV integration', ['The whole room,', 'one touch panel'], 'Displays, cam
     <ol class="w-list">${EVENTS.map(([t, b], i) => `<li class="ev${i + 1}"><span class="num">0${i + 1}</span><span><b>${t}</b><span class="t">${b}</span></span></li>`).join('')}</ol>
   </div>
   <figure class="w-scene-fig" aria-label="A conference room: two video walls, two ceiling cameras, ceiling speakers and microphone arrays, a table with a touch panel and a laptop. As the page scrolls, the walls change source, the cameras move and the microphones mute and unmute.">
-    ${part('room.html')}
+    <div class="w-room3d"><img class="w-room-still" src="assets/room-still.jpg" alt="" loading="lazy"><canvas aria-hidden="true"></canvas><span class="w-room-badge">Room muted</span></div>
     <figcaption class="w-meta"><span>Two video walls, two ceiling cameras, ceiling mics and speakers, one touch panel</span><span class="w-hide-m">Every tap changes the room</span></figcaption>
   </figure>
 </div></div></section>
@@ -320,6 +320,12 @@ ${contact()}`;
 /* ---- assemble ---- */
 const CSS = read(path.join(SRC, 'site.css')) + '\n/* scenes */\n' + sceneCss();
 const JS = read(path.join(SRC, 'app.js'));
+const THREE_LIBS = `<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/environments/RoomEnvironment.js"></script>
+<script>
+${read(path.join(SRC, 'room3d.js'))}
+</script>`;
 const LIBS = `<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>`;
 const FONTS = `<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -345,6 +351,7 @@ ${CSS}
   const main = `<script>document.documentElement.classList.add('sd');</script>
 <div id="site" data-page="${key}">${nav(key)}<main>${body()}</main>${footer()}</div>
 ${LIBS}
+${key === 'av' ? THREE_LIBS : ''}
 <script>window.WT_SCROLL=${JSON.stringify(table)};</script>
 <script>
 ${JS}

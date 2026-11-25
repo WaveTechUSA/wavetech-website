@@ -1,6 +1,6 @@
 # WaveTech Innovations — website
 
-The source of record for wavetech-usa.com. Current build: **v2026.11.24.3** (the rebuild).
+The source of record for wavetech-usa.com. Current build: **v2026.11.24.4** (the rebuild).
 
 ```
 index.html, video-walls.html, av-integration.html, emergency-maintenance.html
@@ -56,7 +56,8 @@ cp dist/*.html ..  &&  cp dist/ghl/*.html ../ghl/      # then commit
 ## How it works
 - Scroll scenes (wall lighting up, exploded cabinet, room, five faults) are CSS keyframes held paused and
   scrubbed by GSAP ScrollTrigger (loaded from cdnjs). Scrolling itself is the browser's own; there is no smooth-scroll library.
-- On phones the two 3D scenes are replaced by pre-rendered frames (`assets/m-*.jpg`).
+- The conference room on the AV page is a real 3D scene (three.js, loaded from jsDelivr; `source/src/room3d.js`). If a browser has no WebGL it shows `assets/room-still.jpg` instead.
+- On phones the exploded cabinet is replaced by pre-rendered frames (`assets/m-cab-*.jpg`).
 - The paste blocks add a few rules that break out of the builder's centred column and hide any other section on the page.
 
 ## Still placeholder

@@ -11,7 +11,6 @@
 <style>
 /* WaveTech rebuild. Layout: big type on near-black, full-width rounded media, one scroll-driven moment per page. */
 :root{
-  color-scheme:dark;
   --bg:#090916; --surface:#12102A; --raised:#1E1A38; --line:#1A1733; --line-2:#2E2850;
   --fg:#EEEEF8; --fg-2:#B9B9CC; --fg-3:#7A7A90;
   --accent:#00C4EC; --accent-ink:#090916; --violet:#543BB9; --lav:#8C7BE0; --grad:linear-gradient(90deg,#0DB5EC 0%,#543BB9 100%); --ok:#7BD69B; --warn:#F4C77A;
@@ -324,6 +323,28 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 #site .w-menu a:not(.w-btn)::after{content:"";width:10px;height:10px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);transform:rotate(45deg);flex:none;margin-right:4px}
 #site .w-menu a:not(.w-btn):active{background:rgba(0,196,236,.16)}
 
+/* embeds keep their own (light) colour scheme so their transparent backgrounds stay transparent */
+#site iframe{color-scheme:light;background:transparent}
+.w-form{background:transparent;border:0;border-radius:0;overflow:visible}
+/* video-wall hero: headline sits clear of the header, wall fits what is left */
+@media (min-width:761px){
+  .vw-hero .w-stage{justify-content:flex-start!important;padding-top:104px!important}
+  .vw-hero .w-scene-head{flex-wrap:nowrap}
+  .vw-hero .w-scene-head .w-h1{flex:1 1 auto;min-width:0;font-size:clamp(34px, min(5vw, 9.2vh), 86px)}
+  .vw-hero .w-caps{flex:0 0 320px}
+  #site .w-wallfig{margin-top:clamp(16px, 3vh, 36px)}
+  .w-wallfig-cap{margin-top:clamp(14px, 2.6vh, 30px)}
+}
+/* 3D room */
+.w-room3d{position:relative;width:100%;aspect-ratio:3/2;max-height:calc(100svh - 150px);border-radius:var(--r-lg);border:1px solid var(--line);overflow:hidden;background:radial-gradient(70% 60% at 50% 55%,#191536,#0b0b1a 75%)}
+.w-room3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.w-room-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.w-room3d.is-live .w-room-still{display:none}
+.w-room-badge{position:absolute;left:50%;top:18px;transform:translateX(-50%);padding:8px 16px;border-radius:999px;background:#ff3b3b;color:#fff;font-size:14px;font-weight:600;opacity:0;pointer-events:none;white-space:nowrap}
+@media (max-width:1000px){.w-room3d{aspect-ratio:16/10;max-height:46svh}}
+@media (max-width:760px){.w-room3d{aspect-ratio:4/3;max-height:34svh}}
+@media (max-width:760px){.track-av .w-list li{padding:7px 0}.w-room3d{aspect-ratio:3/2}}
+
 /* scenes */
 
 .leds{background-color:#0A0F18;background-image:radial-gradient(circle,#3A5078 0 1.1px,transparent 1.4px);background-size:5px 5px}
@@ -615,10 +636,11 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 <footer class="w-foot"><div class="w-wrap w-foot-row">
   <span class="w-foot-brand"><img src="assets/wt-mark.png" alt="WaveTech"><span>© 2026 WaveTech Innovations</span></span>
   <span class="w-foot-tag">“Beyond integration. Into innovation.”</span>
-  <span class="w-foot-links"><span>Teams across the US. We travel.</span><span class="w-meta">v2026.11.24.3</span></span>
+  <span class="w-foot-links"><span>Teams across the US. We travel.</span><span class="w-meta">v2026.11.24.4</span></span>
 </div></footer></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 <script>window.WT_SCROLL={"tracks":{"--hero":".track-hero","--x":".track-x","--av":".track-av","--svc":".track-s"},"items":[{"sel":".lit","tl":"--hero","k0":"contain","a":0.08,"k1":"contain","b":0.85},{"sel":".cap-a","tl":"--hero","k0":"contain","a":0.4,"k1":"contain","b":0.55},{"sel":".cap-b","tl":"--hero","k0":"contain","a":0.55,"k1":"contain","b":0.7},{"sel":".lay","tl":"--x","k0":"contain","a":0.08,"k1":"contain","b":0.58},{"sel":".rib","tl":"--x","k0":"contain","a":0.08,"k1":"contain","b":0.58},{"sel":".lift","tl":"--x","k0":"contain","a":0.4,"k1":"contain","b":0.7},{"sel":".zline","tl":"--x","k0":"contain","a":0.08,"k1":"contain","b":0.58},{"sel":".lab","tl":"--x","k0":"contain","a":0.48,"k1":"contain","b":0.66},{"sel":".pan1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".tilt1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pan2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".tilt2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".lA","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".lC","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".rA","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".rB","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".ring","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".badge","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pgR","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pgC","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pgA","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bL0","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bL1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bR0","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bR2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bP2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bMute","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".ev1","tl":"--av","k0":"contain","a":0.02,"k1":"contain","b":0.2},{"sel":".ev2","tl":"--av","k0":"contain","a":0.3,"k1":"contain","b":0.48},{"sel":".ev3","tl":"--av","k0":"contain","a":0.54,"k1":"contain","b":0.62},{"sel":".ev4","tl":"--av","k0":"contain","a":0.66,"k1":"contain","b":0.76},{"sel":".ev5","tl":"--av","k0":"contain","a":0.86,"k1":"contain","b":0.96},{"sel":".rx1","tl":"--svc","k0":"contain","a":0.08,"k1":"contain","b":0.14},{"sel":".rx2","tl":"--svc","k0":"contain","a":0.16,"k1":"contain","b":0.22},{"sel":".rx3","tl":"--svc","k0":"contain","a":0.24,"k1":"contain","b":0.3},{"sel":".rx4","tl":"--svc","k0":"contain","a":0.32,"k1":"contain","b":0.38},{"sel":".rx5","tl":"--svc","k0":"contain","a":0.4,"k1":"contain","b":0.46},{"sel":".flag","tl":"--svc","k0":"contain","a":0.48,"k1":"contain","b":0.54},{"sel":".ok","tl":"--svc","k0":"contain","a":0.52,"k1":"contain","b":0.6},{"sel":".st1","tl":"--svc","k0":"contain","a":0,"k1":"contain","b":0.06},{"sel":".st2","tl":"--svc","k0":"contain","a":0.06,"k1":"contain","b":0.14},{"sel":".st3","tl":"--svc","k0":"contain","a":0.14,"k1":"contain","b":0.26},{"sel":".st4","tl":"--svc","k0":"contain","a":0.4,"k1":"contain","b":0.52},{"sel":".st5","tl":"--svc","k0":"contain","a":0.56,"k1":"contain","b":0.66},{"sel":".mfr1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfr2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfr3","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfc1","tl":"--x","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfc2","tl":"--x","k0":"contain","a":0,"k1":"contain","b":1}]};</script>
 <script>
 /* WaveTech site behaviour. Libraries: GSAP + ScrollTrigger (scrubbed scenes, reveals), Lenis (smooth wheel scroll). */
@@ -745,13 +767,14 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
   });
 
   /* ---------- room scene scales to the space it has ---------- */
-  function fitRoom() {
-    $$('.roomwrap').forEach(function (r) {
-      if (window.innerWidth <= 760) { r.style.zoom = ''; return; }
-      var col = r.parentElement.getBoundingClientRect().width || 900;
-      var byH = (window.innerHeight - 170) / 820, byW = col / 1000;
-      r.style.zoom = String(Math.max(0.42, Math.min(1, byH, byW)).toFixed(3));
-    });
+  /* the hero wall takes whatever height is left under the headline, so it never runs off the screen */
+  function fitWall() {
+    var fig = $('.w-wallfig'); if (!fig) return;
+    if (window.innerWidth <= 760) { fig.style.width = ''; return; }
+    var stage = fig.closest('.w-stage'), head = $('.w-scene-head', stage), cap = $('.w-wallfig-cap', fig);
+    var avail = stage.clientHeight - 96 - head.offsetHeight - (cap ? cap.offsetHeight + 44 : 0) - 70;
+    var maxW = fig.parentElement.clientWidth;
+    fig.style.width = Math.round(Math.max(280, Math.min(maxW, avail * 1.72))) + 'px';
   }
   /* exploded cabinet scales to its column so nothing is cut off */
   function fitCab() {
@@ -761,7 +784,9 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
       x.style.zoom = String(Math.max(0.4, Math.min(1, col / 720, (window.innerHeight - (window.innerWidth <= 1000 ? 640 : 190)) / 690)).toFixed(3));
     });
   }
-  function fitAll() { fitRoom(); fitCab(); }
+  function fitAll() { fitWall(); fitCab(); }
+  window.addEventListener('load', fitAll);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
   fitAll(); window.addEventListener('resize', fitAll);
 
   /* ---------- scroll-driven scenes: the page's keyframes, scrubbed by ScrollTrigger ---------- */
@@ -774,7 +799,9 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
       var track = $(table.tracks[key]); if (!track) return;
       var items = table.items.filter(function (it) { return it.tl === key; }).map(function (it) { return { a: it.a, b: it.b, nodes: $$(it.sel, track) }; }).filter(function (it) { return it.nodes.length; });
       var state = { p: 0 };
+      var isRoom = key === '--av';
       function apply() {
+        if (isRoom && window.WT_ROOM) window.WT_ROOM.set(state.p);
         for (var i = 0; i < items.length; i++) {
           var it = items[i], local = it.b > it.a ? clamp((state.p - it.a) / (it.b - it.a)) : (state.p >= it.a ? 1 : 0);
           var d = (-local * 0.999).toFixed(4) + 's';

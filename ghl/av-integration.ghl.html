@@ -1,11 +1,10 @@
-<!-- WaveTech Innovations — /av-integration — build v2026.11.24.3 — paste into one Custom HTML/Javascript element -->
+<!-- WaveTech Innovations — /av-integration — build v2026.11.24.4 — paste into one Custom HTML/Javascript element -->
 <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/favicon-64.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600;700&display=swap">
 <style>
 /* WaveTech rebuild. Layout: big type on near-black, full-width rounded media, one scroll-driven moment per page. */
 :root{
-  color-scheme:dark;
   --bg:#090916; --surface:#12102A; --raised:#1E1A38; --line:#1A1733; --line-2:#2E2850;
   --fg:#EEEEF8; --fg-2:#B9B9CC; --fg-3:#7A7A90;
   --accent:#00C4EC; --accent-ink:#090916; --violet:#543BB9; --lav:#8C7BE0; --grad:linear-gradient(90deg,#0DB5EC 0%,#543BB9 100%); --ok:#7BD69B; --warn:#F4C77A;
@@ -318,6 +317,28 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 #site .w-menu a:not(.w-btn)::after{content:"";width:10px;height:10px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);transform:rotate(45deg);flex:none;margin-right:4px}
 #site .w-menu a:not(.w-btn):active{background:rgba(0,196,236,.16)}
 
+/* embeds keep their own (light) colour scheme so their transparent backgrounds stay transparent */
+#site iframe{color-scheme:light;background:transparent}
+.w-form{background:transparent;border:0;border-radius:0;overflow:visible}
+/* video-wall hero: headline sits clear of the header, wall fits what is left */
+@media (min-width:761px){
+  .vw-hero .w-stage{justify-content:flex-start!important;padding-top:104px!important}
+  .vw-hero .w-scene-head{flex-wrap:nowrap}
+  .vw-hero .w-scene-head .w-h1{flex:1 1 auto;min-width:0;font-size:clamp(34px, min(5vw, 9.2vh), 86px)}
+  .vw-hero .w-caps{flex:0 0 320px}
+  #site .w-wallfig{margin-top:clamp(16px, 3vh, 36px)}
+  .w-wallfig-cap{margin-top:clamp(14px, 2.6vh, 30px)}
+}
+/* 3D room */
+.w-room3d{position:relative;width:100%;aspect-ratio:3/2;max-height:calc(100svh - 150px);border-radius:var(--r-lg);border:1px solid var(--line);overflow:hidden;background:radial-gradient(70% 60% at 50% 55%,#191536,#0b0b1a 75%)}
+.w-room3d canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.w-room-still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.w-room3d.is-live .w-room-still{display:none}
+.w-room-badge{position:absolute;left:50%;top:18px;transform:translateX(-50%);padding:8px 16px;border-radius:999px;background:#ff3b3b;color:#fff;font-size:14px;font-weight:600;opacity:0;pointer-events:none;white-space:nowrap}
+@media (max-width:1000px){.w-room3d{aspect-ratio:16/10;max-height:46svh}}
+@media (max-width:760px){.w-room3d{aspect-ratio:4/3;max-height:34svh}}
+@media (max-width:760px){.track-av .w-list li{padding:7px 0}.w-room3d{aspect-ratio:3/2}}
+
 /* scenes */
 
 .leds{background-color:#0A0F18;background-image:radial-gradient(circle,#3A5078 0 1.1px,transparent 1.4px);background-size:5px 5px}
@@ -515,754 +536,7 @@ html,body{background:#090916!important}html{overflow-x:clip}
     <ol class="w-list"><li class="ev1"><span class="num">01</span><span><b>Walk in</b><span class="t">Both walls show the meeting home screen, mics live, cameras on their home shots.</span></span></li><li class="ev2"><span class="num">02</span><span><b>Pick your sources</b><span class="t">One tap puts the call on the left wall and the laptop on the right.</span></span></li><li class="ev3"><span class="num">03</span><span><b>Frame the room</b><span class="t">Tap a camera preset and both ceiling cameras move to their saved shots.</span></span></li><li class="ev4"><span class="num">04</span><span><b>Mute the room</b><span class="t">The ceiling mics go red and the far end sees it.</span></span></li><li class="ev5"><span class="num">05</span><span><b>Carry on</b><span class="t">Unmute, finish the meeting, tap Shutdown. The room resets itself.</span></span></li></ol>
   </div>
   <figure class="w-scene-fig" aria-label="A conference room: two video walls, two ceiling cameras, ceiling speakers and microphone arrays, a table with a touch panel and a laptop. As the page scrolls, the walls change source, the cameras move and the microphones mute and unmute.">
-    <div class="roomwrap" style="position: relative; height: 820px; perspective: 2200px; perspective-origin: 50% 40%; overflow: hidden; border: 1px solid #1A1733; background: radial-gradient(600px 340px at 50% 60%, #161027, #090916 70%); box-shadow: 0 30px 80px rgba(0,0,0,.6)"><div class="mframes" aria-hidden="true"><img class="mf mfr1" src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/m-room-1.jpg" alt=""><img class="mf mfr2" src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/m-room-2.jpg" alt=""><img class="mf mfr3" src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/m-room-3.jpg" alt=""></div>
-          <div aria-hidden="true" style="position: absolute; left: 14px; top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #00C4EC; letter-spacing: .08em">ROOM SYSTEM</div>
-          <div aria-hidden="true" style="position: absolute; right: 14px; top: 12px; font-family: 'IBM Plex Mono', monospace; font-size: 11px; color: #7A7A90">SCROLL TO RUN THE ROOM</div>
-
-          <div class="view">
-            <div class="p3">
-
-              
-                <div class="face" style="width: 760px; height: 560px; background: radial-gradient(360px 240px at 50% 50%, #1A1A2C, #0D0D18 70%); border-radius: 0px; transform: translate3d(-380px, -140px, -40px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 760px; height: 300px; background: linear-gradient(180deg, #12121F, #0B0B16); border-radius: 0px; transform: translate3d(-380px, -160px, -320px) "></div>
-              
-                <div class="face" style="width: 306px; height: 174px; background: hsl(230, 10%, 9%); border-radius: 0px; transform: translate3d(-315px, -145px, -280px) "></div>
-              
-                <div class="face" style="width: 306px; height: 174px; background: hsl(230, 10%, 6%); border-radius: 0px; transform: translate3d(-315px, -145px, -320px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 40px; height: 174px; background: hsl(230, 10%, 8%); border-radius: 0px; transform: translate3d(-29px, -145px, -300px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 40px; height: 174px; background: hsl(230, 10%, 7%); border-radius: 0px; transform: translate3d(-335px, -145px, -300px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 306px; height: 40px; background: hsl(230, 10%, 12%); border-radius: 0px; transform: translate3d(-315px, -165px, -300px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 306px; height: 174px; background: hsl(230, 10%, 9%); border-radius: 0px; transform: translate3d(9px, -145px, -280px) "></div>
-              
-                <div class="face" style="width: 306px; height: 174px; background: hsl(230, 10%, 6%); border-radius: 0px; transform: translate3d(9px, -145px, -320px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 40px; height: 174px; background: hsl(230, 10%, 8%); border-radius: 0px; transform: translate3d(295px, -145px, -300px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 40px; height: 174px; background: hsl(230, 10%, 7%); border-radius: 0px; transform: translate3d(-11px, -145px, -300px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 306px; height: 40px; background: hsl(230, 10%, 12%); border-radius: 0px; transform: translate3d(9px, -165px, -300px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 520px; height: 56px; background: hsl(24, 20%, 20%); border-radius: 3px; transform: translate3d(-260px, 84px, -270px) "></div>
-              
-                <div class="face" style="width: 520px; height: 56px; background: hsl(24, 20%, 14%); border-radius: 3px; transform: translate3d(-260px, 84px, -320px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 50px; height: 56px; background: hsl(24, 20%, 18%); border-radius: 0px; transform: translate3d(235px, 84px, -295px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 50px; height: 56px; background: hsl(24, 20%, 16%); border-radius: 0px; transform: translate3d(-285px, 84px, -295px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 520px; height: 50px; background: hsl(24, 20%, 27%); border-radius: 3px; transform: translate3d(-260px, 59px, -295px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 140px; height: 44px; background: hsl(24, 16%, 15%); border-radius: 2px; transform: translate3d(-240px, 90px, -269.6px) "></div>
-              
-                <div class="face" style="width: 140px; height: 44px; background: hsl(24, 16%, 15%); border-radius: 2px; transform: translate3d(100px, 90px, -269.6px) "></div>
-              
-                <div class="face" style="width: 44px; height: 44px; background: radial-gradient(circle, #CFCFDA 0 58%, #F2F2F7 61% 90%, #B4B4C4 92%); border-radius: 22px; transform: translate3d(-252px, -200.4px, -80px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 44px; height: 44px; background: radial-gradient(circle, #CFCFDA 0 58%, #F2F2F7 61% 90%, #B4B4C4 92%); border-radius: 22px; transform: translate3d(208px, -200.4px, -80px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 44px; height: 44px; background: radial-gradient(circle, #CFCFDA 0 58%, #F2F2F7 61% 90%, #B4B4C4 92%); border-radius: 22px; transform: translate3d(-252px, -200.4px, 110px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 44px; height: 44px; background: radial-gradient(circle, #CFCFDA 0 58%, #F2F2F7 61% 90%, #B4B4C4 92%); border-radius: 22px; transform: translate3d(208px, -200.4px, 110px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 380px; height: 10px; background: hsl(24, 22%, 22%); border-radius: 10px; transform: translate3d(-190px, 85px, 75px) "></div>
-              
-                <div class="face" style="width: 380px; height: 10px; background: hsl(24, 22%, 15%); border-radius: 10px; transform: translate3d(-190px, 85px, -95px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 170px; height: 10px; background: hsl(24, 22%, 20%); border-radius: 0px; transform: translate3d(105px, 85px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 170px; height: 10px; background: hsl(24, 22%, 18%); border-radius: 0px; transform: translate3d(-275px, 85px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 380px; height: 170px; background: hsl(24, 22%, 30%); border-radius: 10px; transform: translate3d(-190px, 0px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 80px; height: 45px; background: hsl(230, 8%, 15%); border-radius: 0px; transform: translate3d(-40px, 95px, 25px) "></div>
-              
-                <div class="face" style="width: 80px; height: 45px; background: hsl(230, 8%, 11%); border-radius: 0px; transform: translate3d(-40px, 95px, -45px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 70px; height: 45px; background: hsl(230, 8%, 14%); border-radius: 0px; transform: translate3d(5px, 95px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 70px; height: 45px; background: hsl(230, 8%, 12%); border-radius: 0px; transform: translate3d(-75px, 95px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 80px; height: 70px; background: hsl(230, 8%, 20%); border-radius: 0px; transform: translate3d(-40px, 60px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-143px, 103px, 128px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-143px, 103px, 82px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(-120px, 103px, 105px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-166px, 103px, 105px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-143px, 80px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-143px, 60px, 130px) "></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-143px, 60px, 124px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(-100px, 60px, 127px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-146px, 60px, 127px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-143px, 57px, 127px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(-123px, 109px, 108px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(-123px, 109px, 102px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(-120px, 109px, 105px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(-126px, 109px, 105px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(-123px, 106px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(-138px, 119px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-23px, 103px, 128px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-23px, 103px, 82px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(0px, 103px, 105px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-46px, 103px, 105px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-23px, 80px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-23px, 60px, 130px) "></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-23px, 60px, 124px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(20px, 60px, 127px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-26px, 60px, 127px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-23px, 57px, 127px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(-3px, 109px, 108px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(-3px, 109px, 102px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(0px, 109px, 105px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(-6px, 109px, 105px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(-3px, 106px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(-18px, 119px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(97px, 103px, 128px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(97px, 103px, 82px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(120px, 103px, 105px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(74px, 103px, 105px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(97px, 80px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(97px, 60px, 130px) "></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(97px, 60px, 124px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(140px, 60px, 127px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(94px, 60px, 127px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(97px, 57px, 127px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(117px, 109px, 108px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(117px, 109px, 102px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(120px, 109px, 105px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(114px, 109px, 105px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(117px, 106px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(102px, 119px, 105px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-143px, 103px, -102px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-143px, 103px, -148px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(-120px, 103px, -125px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-166px, 103px, -125px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-143px, 80px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-143px, 60px, -144px) "></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-143px, 60px, -150px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(-100px, 60px, -147px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-146px, 60px, -147px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-143px, 57px, -147px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(-123px, 109px, -122px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(-123px, 109px, -128px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(-120px, 109px, -125px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(-126px, 109px, -125px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(-123px, 106px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(-138px, 119px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-23px, 103px, -102px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-23px, 103px, -148px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(0px, 103px, -125px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-46px, 103px, -125px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-23px, 80px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-23px, 60px, -144px) "></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-23px, 60px, -150px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(20px, 60px, -147px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-26px, 60px, -147px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-23px, 57px, -147px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(-3px, 109px, -122px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(-3px, 109px, -128px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(0px, 109px, -125px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(-6px, 109px, -125px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(-3px, 106px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(-18px, 119px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(97px, 103px, -102px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(97px, 103px, -148px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(120px, 103px, -125px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(74px, 103px, -125px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(97px, 80px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(97px, 60px, -144px) "></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(97px, 60px, -150px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(140px, 60px, -147px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(94px, 60px, -147px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(97px, 57px, -147px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(117px, 109px, -122px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(117px, 109px, -128px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(120px, 109px, -125px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(114px, 109px, -125px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(117px, 106px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(102px, 119px, -125px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-253px, 103px, 13px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-253px, 103px, -33px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(-230px, 103px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-276px, 103px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-253px, 80px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(-255px, 60px, 13px) "></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(-255px, 60px, -33px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(-272px, 60px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(-278px, 60px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(-255px, 37px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(-233px, 109px, -7px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(-233px, 109px, -13px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(-230px, 109px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(-236px, 109px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(-233px, 106px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(-248px, 119px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(207px, 103px, 13px) "></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(207px, 103px, -33px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(230px, 103px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 6px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(184px, 103px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(207px, 80px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 24%); border-radius: 6px; transform: translate3d(249px, 60px, 13px) "></div>
-              
-                <div class="face" style="width: 6px; height: 44px; background: hsl(230, 10%, 17%); border-radius: 6px; transform: translate3d(249px, 60px, -33px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 22%); border-radius: 0px; transform: translate3d(232px, 60px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 46px; height: 44px; background: hsl(230, 10%, 20%); border-radius: 0px; transform: translate3d(226px, 60px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 46px; background: hsl(230, 10%, 32%); border-radius: 6px; transform: translate3d(249px, 37px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 18%); border-radius: 0px; transform: translate3d(227px, 109px, -7px) "></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 13%); border-radius: 0px; transform: translate3d(227px, 109px, -13px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 17%); border-radius: 0px; transform: translate3d(230px, 109px, -10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 28px; background: hsl(230, 6%, 15%); border-radius: 0px; transform: translate3d(224px, 109px, -10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 6px; height: 6px; background: hsl(230, 6%, 24%); border-radius: 0px; transform: translate3d(227px, 106px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 36px; height: 36px; background: hsl(230, 6%, 20%); border-radius: 18px; transform: translate3d(212px, 119px, -10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 86%); border-radius: 4px; transform: translate3d(-132px, -175px, 42px) "></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 60%); border-radius: 4px; transform: translate3d(-132px, -175px, -22px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 79%); border-radius: 0px; transform: translate3d(-100px, -175px, 10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 71%); border-radius: 0px; transform: translate3d(-164px, -175px, 10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 64px; background: hsl(230, 10%, 96%); border-radius: 4px; transform: translate3d(-132px, -207px, 10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 86%); border-radius: 4px; transform: translate3d(68px, -175px, 42px) "></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 60%); border-radius: 4px; transform: translate3d(68px, -175px, -22px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 79%); border-radius: 0px; transform: translate3d(100px, -175px, 10px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 6px; background: hsl(230, 10%, 71%); border-radius: 0px; transform: translate3d(36px, -175px, 10px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 64px; background: hsl(230, 10%, 96%); border-radius: 4px; transform: translate3d(68px, -207px, 10px) rotateX(90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 3px; background: hsl(230, 8%, 24%); border-radius: 4px; transform: translate3d(-162px, 87px, 62px) "></div>
-              
-                <div class="face" style="width: 64px; height: 3px; background: hsl(230, 8%, 17%); border-radius: 4px; transform: translate3d(-162px, 87px, 18px) rotateY(180deg)"></div>
-              
-                <div class="face" style="width: 44px; height: 3px; background: hsl(230, 8%, 22%); border-radius: 0px; transform: translate3d(-120px, 87px, 40px) rotateY(90deg)"></div>
-              
-                <div class="face" style="width: 44px; height: 3px; background: hsl(230, 8%, 20%); border-radius: 0px; transform: translate3d(-184px, 87px, 40px) rotateY(-90deg)"></div>
-              
-                <div class="face" style="width: 64px; height: 44px; background: hsl(230, 8%, 32%); border-radius: 4px; transform: translate3d(-162px, 65px, 40px) rotateX(90deg)"></div>
-              
-              <div class="face2" style="width: 760px; height: 560px; background: rgba(120,120,170,.05); border: 1px solid rgba(180,180,220,.12); transform: translate3d(-380px, -460px, -40px) rotateX(-90deg)"></div>
-
-              
-              <div class="face" style="width: 304px; height: 172px; background: #000; overflow: hidden; transform: translate3d(-314px, -144px, -279.6px) ">
-                <div class="lA" style="position: absolute; inset: 0; background: radial-gradient(70% 90% at 20% 80%, rgba(176,82,43,.75), transparent 60%), radial-gradient(60% 80% at 45% 40%, rgba(107,45,92,.9), transparent 65%), radial-gradient(70% 70% at 90% 20%, rgba(30,58,138,.8), transparent 60%), linear-gradient(135deg, #1A0F2E, #2E1A4A 50%, #15213F)">
-                  <div style="position: absolute; left: 14px; top: 12px; width: 118px; padding: 8px 9px; box-sizing: border-box; border-radius: 6px; background: rgba(20,12,30,.72); display: flex; gap: 8px">
-                    <div style="width: 30px; height: 30px; flex: none; background: repeating-conic-gradient(#F2F2F7 0 25%, #1A1A24 0 50%) 0 0 / 6px 6px; border: 2px solid #F2F2F7; box-sizing: border-box"></div>
-                    <div style="display: flex; flex-direction: column; gap: 1px; color: #F2F2F7; font-family: 'IBM Plex Sans', sans-serif">
-                      <span style="font-size: 5px; letter-spacing: .04em; opacity: .85">MONDAY, JUNE 12</span>
-                      <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 15px; line-height: 1">8:41 AM</span>
-                      <span style="font-size: 5.5px; margin-top: 2px">Conference Room A</span>
-                      <span style="font-size: 5px; opacity: .8">Join your meeting with this room</span>
-                    </div>
-                  </div>
-                  <div style="position: absolute; left: 14px; bottom: 12px; display: flex; align-items: center; gap: 5px; color: #F2F2F7; font-family: 'IBM Plex Sans', sans-serif; font-size: 5.5px"><span style="width: 9px; height: 9px; border-radius: 50%; background: #F2F2F7"></span>Add this room to a meeting from your device</div>
-                </div>
-                <div class="lC" style="position: absolute; inset: 0; background: #0B0B14; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-rows: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 6px 6px 22px; box-sizing: border-box">
-                  
-                    <div style="position: relative; background: #131326; border-radius: 3px; overflow: hidden">
-                      <span style="position: absolute; left: 50%; top: 42%; width: 30px; height: 30px; border-radius: 50%; background: #3A3A5C; transform: translate(-50%, -50%)"></span>
-                      <span style="position: absolute; left: 50%; top: 42%; width: 56px; height: 56px; border-radius: 50% 50% 0 0; background: #3A3A5C; transform: translate(-50%, 10px)"></span>
-                      <span style="position: absolute; left: 5px; bottom: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #EEEEF8; background: rgba(0,0,0,.5); padding: 0 3px">ROOM</span>
-                    </div>
-                  
-                    <div style="position: relative; background: #161630; border-radius: 3px; overflow: hidden">
-                      <span style="position: absolute; left: 50%; top: 42%; width: 30px; height: 30px; border-radius: 50%; background: #4A3A6C; transform: translate(-50%, -50%)"></span>
-                      <span style="position: absolute; left: 50%; top: 42%; width: 56px; height: 56px; border-radius: 50% 50% 0 0; background: #4A3A6C; transform: translate(-50%, 10px)"></span>
-                      <span style="position: absolute; left: 5px; bottom: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #EEEEF8; background: rgba(0,0,0,.5); padding: 0 3px">REMOTE 1</span>
-                    </div>
-                  
-                    <div style="position: relative; background: #131326; border-radius: 3px; overflow: hidden">
-                      <span style="position: absolute; left: 50%; top: 42%; width: 30px; height: 30px; border-radius: 50%; background: #3A4A6C; transform: translate(-50%, -50%)"></span>
-                      <span style="position: absolute; left: 50%; top: 42%; width: 56px; height: 56px; border-radius: 50% 50% 0 0; background: #3A4A6C; transform: translate(-50%, 10px)"></span>
-                      <span style="position: absolute; left: 5px; bottom: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #EEEEF8; background: rgba(0,0,0,.5); padding: 0 3px">REMOTE 2</span>
-                    </div>
-                  
-                    <div style="position: relative; background: #161630; border-radius: 3px; overflow: hidden">
-                      <span style="position: absolute; left: 50%; top: 42%; width: 30px; height: 30px; border-radius: 50%; background: #4A4A7C; transform: translate(-50%, -50%)"></span>
-                      <span style="position: absolute; left: 50%; top: 42%; width: 56px; height: 56px; border-radius: 50% 50% 0 0; background: #4A4A7C; transform: translate(-50%, 10px)"></span>
-                      <span style="position: absolute; left: 5px; bottom: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #EEEEF8; background: rgba(0,0,0,.5); padding: 0 3px">PRESENTER</span>
-                    </div>
-                  
-                  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 18px; background: #1A1733; display: flex; align-items: center; justify-content: center; gap: 8px"><span style="width: 10px; height: 10px; border-radius: 50%; background: #B9B9CC"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #B9B9CC"></span><span style="width: 8px; height: 8px; border-radius: 50%; background: #FF3B3B"></span></div>
-                  <div class="badge" style="position: absolute; left: 50%; top: 6px; transform: translateX(-50%); background: #FF3B3B; color: #FFFFFF; font-family: 'IBM Plex Mono', monospace; font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 3px">ROOM MUTED</div>
-                </div>
-              </div>
-
-              
-              <div class="face" style="width: 304px; height: 172px; background: #000; overflow: hidden; transform: translate3d(10px, -144px, -279.6px) ">
-                <div class="rA" style="position: absolute; inset: 0; background: radial-gradient(70% 90% at 10% 90%, rgba(176,82,43,.45), transparent 60%), radial-gradient(60% 80% at 35% 50%, rgba(107,45,92,.8), transparent 65%), radial-gradient(70% 70% at 85% 25%, rgba(30,58,138,.9), transparent 60%), linear-gradient(135deg, #1A0F2E, #2E1A4A 50%, #15213F)">
-                  <div style="position: absolute; right: 12px; top: 12px; bottom: 12px; width: 78px; display: flex; flex-direction: column; gap: 4px; font-family: 'IBM Plex Sans', sans-serif; color: #F2F2F7">
-                    <div style="padding: 7px 8px; border-radius: 5px; background: rgba(20,12,30,.72); border-left: 3px solid #22D36B; display: flex; flex-direction: column; gap: 2px"><span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 9px">Available</span><span style="font-size: 5px; opacity: .8">9:00 AM – 10:00 AM</span></div>
-                    <div style="padding: 6px 8px; border-radius: 5px; background: rgba(20,12,30,.55); display: flex; flex-direction: column; gap: 1px"><span style="font-size: 6px; font-weight: 600">Daily standup</span><span style="font-size: 5px; opacity: .8">10:00 AM – 10:30 AM</span></div>
-                    <div style="padding: 6px 8px; border-radius: 5px; background: rgba(20,12,30,.55); display: flex; flex-direction: column; gap: 1px"><span style="font-size: 6px; font-weight: 600">Design review</span><span style="font-size: 5px; opacity: .8">11:00 AM – 12:00 PM</span></div>
-                    <div style="padding: 6px 8px; border-radius: 5px; background: rgba(20,12,30,.55); display: flex; flex-direction: column; gap: 1px"><span style="font-size: 6px; font-weight: 600">Client call</span><span style="font-size: 5px; opacity: .8">2:00 PM – 3:00 PM</span></div>
-                  </div>
-                </div>
-                <div class="rB" style="position: absolute; inset: 0; background: #0B0B14; padding: 14px 16px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px">
-                  <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 16px; color: #EEEEF8">QUARTERLY REVIEW</span>
-                  <span style="font-family: 'IBM Plex Mono', monospace; font-size: 8px; color: #00C4EC">LAPTOP</span>
-                  <div style="flex: 1; display: flex; align-items: flex-end; gap: 6px; padding-top: 4px">
-                    <span style="flex: 1; height: 30%; background: #543BB9"></span><span style="flex: 1; height: 55%; background: #0DB5EC"></span><span style="flex: 1; height: 42%; background: #543BB9"></span><span style="flex: 1; height: 78%; background: #0DB5EC"></span><span style="flex: 1; height: 64%; background: #543BB9"></span><span style="flex: 1; height: 92%; background: #0DB5EC"></span>
-                  </div>
-                </div>
-              </div>
-
-              
-              <div class="p3" style="transform: translate3d(-300px, -132px, -190px) ">
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 31%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(0deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 36%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(36deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 35%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(72deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 30%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(108deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 21%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(144deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 14%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(180deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 9%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(216deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 10%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(252deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 15%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(288deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 23%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(324deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 40px; height: 40px; background: hsl(228, 6%, 47%); border-radius: 20px; transform: translate3d(-20px, -68px, 0px) rotateX(90deg)"></div>
-                
-                  <div class="face" style="width: 40px; height: 40px; background: hsl(228, 6%, 20%); border-radius: 20px; transform: translate3d(-20px, -64px, 0px) rotateX(-90deg)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 17%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(0deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 20%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(36deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 19%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(72deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 16%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(108deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 12%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(144deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 8%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(180deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 5%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(216deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 5%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(252deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 8%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(288deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 13%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(324deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 50px; height: 50px; background: hsl(228, 8%, 26%); border-radius: 25px; transform: translate3d(-25px, -69px, 0px) rotateX(90deg)"></div>
-                
-                  <div class="face" style="width: 50px; height: 50px; background: hsl(228, 8%, 11%); border-radius: 25px; transform: translate3d(-25px, -57px, 0px) rotateX(-90deg)"></div>
-                
-                <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 5px #22D36B; transform: translate3d(8px, -37px, 24.4px)"></div>
-                <div class="p3 pan1">
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 30%); border-radius: 3px; transform: translate3d(-25.5px, -33px, 9px) "></div>
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 21%); border-radius: 3px; transform: translate3d(-25.5px, -33px, -13px) rotateY(180deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 28%); border-radius: 0px; transform: translate3d(-29.5px, -33px, -2px) rotateY(90deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 25%); border-radius: 0px; transform: translate3d(-36.5px, -33px, -2px) rotateY(-90deg)"></div>
-                  
-                    <div class="face" style="width: 7px; height: 22px; background: hsl(228, 8%, 41%); border-radius: 3px; transform: translate3d(-25.5px, -44px, -2px) rotateX(90deg)"></div>
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 30%); border-radius: 3px; transform: translate3d(18.5px, -33px, 9px) "></div>
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 21%); border-radius: 3px; transform: translate3d(18.5px, -33px, -13px) rotateY(180deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 28%); border-radius: 0px; transform: translate3d(14.5px, -33px, -2px) rotateY(90deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 25%); border-radius: 0px; transform: translate3d(7.5px, -33px, -2px) rotateY(-90deg)"></div>
-                  
-                    <div class="face" style="width: 7px; height: 22px; background: hsl(228, 8%, 41%); border-radius: 3px; transform: translate3d(18.5px, -44px, -2px) rotateX(90deg)"></div>
-                  
-                    <div class="face" style="width: 44px; height: 6px; background: hsl(228, 8%, 30%); border-radius: 3px; transform: translate3d(-22px, -33px, 9px) "></div>
-                  
-                    <div class="face" style="width: 44px; height: 6px; background: hsl(228, 8%, 21%); border-radius: 3px; transform: translate3d(-22px, -33px, -13px) rotateY(180deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 6px; background: hsl(228, 8%, 28%); border-radius: 0px; transform: translate3d(11px, -33px, -2px) rotateY(90deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 6px; background: hsl(228, 8%, 25%); border-radius: 0px; transform: translate3d(-33px, -33px, -2px) rotateY(-90deg)"></div>
-                  
-                    <div class="face" style="width: 44px; height: 22px; background: hsl(228, 8%, 41%); border-radius: 3px; transform: translate3d(-22px, -44px, -2px) rotateX(90deg)"></div>
-                  
-                  <div class="p3 tilt1">
-                    
-                      <div class="face" style="width: 32px; height: 26px; background: hsl(228, 8%, 32%); border-radius: 10px; transform: translate3d(-16px, -13px, 15px) "></div>
-                    
-                      <div class="face" style="width: 32px; height: 26px; background: hsl(228, 8%, 22%); border-radius: 10px; transform: translate3d(-16px, -13px, -15px) rotateY(180deg)"></div>
-                    
-                      <div class="face" style="width: 30px; height: 26px; background: hsl(228, 8%, 29%); border-radius: 0px; transform: translate3d(1px, -13px, 0px) rotateY(90deg)"></div>
-                    
-                      <div class="face" style="width: 30px; height: 26px; background: hsl(228, 8%, 26%); border-radius: 0px; transform: translate3d(-31px, -13px, 0px) rotateY(-90deg)"></div>
-                    
-                      <div class="face" style="width: 32px; height: 30px; background: hsl(228, 8%, 43%); border-radius: 10px; transform: translate3d(-16px, -28px, 0px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 4%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(0deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 4%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(36deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 6%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(72deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 10%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(108deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 13%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(144deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 16%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(180deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 16%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(216deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 14%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(252deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 10%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(288deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 7%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(324deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 20px; height: 20px; background: hsl(228, 8%, 8%); border-radius: 10px; transform: translate3d(-10px, -10px, 29px) "></div>
-                    
-                      <div class="face" style="width: 20px; height: 20px; background: hsl(228, 8%, 8%); border-radius: 10px; transform: translate3d(-10px, -10px, 15px) rotateY(180deg)"></div>
-                    
-                    <div class="face" style="width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 40% 36%, #5A74A8 0 7%, #0E1726 20%, #090916 58%, #3A4A6C 68%, #0A0F18 76%); transform: translate3d(-9px, -9px, 29.2px)"></div>
-                    <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #FF3B3B; box-shadow: 0 0 5px #FF3B3B; transform: translate3d(10px, -9px, 15.2px)"></div>
-                  </div>
-                </div>
-              </div>
-              
-              <div class="p3" style="transform: translate3d(300px, -132px, -190px) ">
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 31%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(0deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 36%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(36deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 35%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(72deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 30%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(108deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 21%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(144deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 14%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(180deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 9%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(216deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 10%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(252deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 15%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(288deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 13.516659363288904px; height: 4px; background: hsl(228, 6%, 23%); border-radius: 0px; transform: translate3d(-6.758329681644452px, -48px, 0px) rotateY(324deg) translateZ(20px)"></div>
-                
-                  <div class="face" style="width: 40px; height: 40px; background: hsl(228, 6%, 47%); border-radius: 20px; transform: translate3d(-20px, -68px, 0px) rotateX(90deg)"></div>
-                
-                  <div class="face" style="width: 40px; height: 40px; background: hsl(228, 6%, 20%); border-radius: 20px; transform: translate3d(-20px, -64px, 0px) rotateX(-90deg)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 17%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(0deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 20%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(36deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 19%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(72deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 16%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(108deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 12%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(144deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 8%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(180deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 5%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(216deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 5%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(252deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 8%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(288deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 16.89582420411113px; height: 12px; background: hsl(228, 8%, 13%); border-radius: 0px; transform: translate3d(-8.447912102055565px, -44px, 0px) rotateY(324deg) translateZ(25px)"></div>
-                
-                  <div class="face" style="width: 50px; height: 50px; background: hsl(228, 8%, 26%); border-radius: 25px; transform: translate3d(-25px, -69px, 0px) rotateX(90deg)"></div>
-                
-                  <div class="face" style="width: 50px; height: 50px; background: hsl(228, 8%, 11%); border-radius: 25px; transform: translate3d(-25px, -57px, 0px) rotateX(-90deg)"></div>
-                
-                <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 5px #22D36B; transform: translate3d(8px, -37px, 24.4px)"></div>
-                <div class="p3 pan2">
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 30%); border-radius: 3px; transform: translate3d(-25.5px, -33px, 9px) "></div>
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 21%); border-radius: 3px; transform: translate3d(-25.5px, -33px, -13px) rotateY(180deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 28%); border-radius: 0px; transform: translate3d(-29.5px, -33px, -2px) rotateY(90deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 25%); border-radius: 0px; transform: translate3d(-36.5px, -33px, -2px) rotateY(-90deg)"></div>
-                  
-                    <div class="face" style="width: 7px; height: 22px; background: hsl(228, 8%, 41%); border-radius: 3px; transform: translate3d(-25.5px, -44px, -2px) rotateX(90deg)"></div>
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 30%); border-radius: 3px; transform: translate3d(18.5px, -33px, 9px) "></div>
-                  
-                    <div class="face" style="width: 7px; height: 38px; background: hsl(228, 8%, 21%); border-radius: 3px; transform: translate3d(18.5px, -33px, -13px) rotateY(180deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 28%); border-radius: 0px; transform: translate3d(14.5px, -33px, -2px) rotateY(90deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 38px; background: hsl(228, 8%, 25%); border-radius: 0px; transform: translate3d(7.5px, -33px, -2px) rotateY(-90deg)"></div>
-                  
-                    <div class="face" style="width: 7px; height: 22px; background: hsl(228, 8%, 41%); border-radius: 3px; transform: translate3d(18.5px, -44px, -2px) rotateX(90deg)"></div>
-                  
-                    <div class="face" style="width: 44px; height: 6px; background: hsl(228, 8%, 30%); border-radius: 3px; transform: translate3d(-22px, -33px, 9px) "></div>
-                  
-                    <div class="face" style="width: 44px; height: 6px; background: hsl(228, 8%, 21%); border-radius: 3px; transform: translate3d(-22px, -33px, -13px) rotateY(180deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 6px; background: hsl(228, 8%, 28%); border-radius: 0px; transform: translate3d(11px, -33px, -2px) rotateY(90deg)"></div>
-                  
-                    <div class="face" style="width: 22px; height: 6px; background: hsl(228, 8%, 25%); border-radius: 0px; transform: translate3d(-33px, -33px, -2px) rotateY(-90deg)"></div>
-                  
-                    <div class="face" style="width: 44px; height: 22px; background: hsl(228, 8%, 41%); border-radius: 3px; transform: translate3d(-22px, -44px, -2px) rotateX(90deg)"></div>
-                  
-                  <div class="p3 tilt2">
-                    
-                      <div class="face" style="width: 32px; height: 26px; background: hsl(228, 8%, 32%); border-radius: 10px; transform: translate3d(-16px, -13px, 15px) "></div>
-                    
-                      <div class="face" style="width: 32px; height: 26px; background: hsl(228, 8%, 22%); border-radius: 10px; transform: translate3d(-16px, -13px, -15px) rotateY(180deg)"></div>
-                    
-                      <div class="face" style="width: 30px; height: 26px; background: hsl(228, 8%, 29%); border-radius: 0px; transform: translate3d(1px, -13px, 0px) rotateY(90deg)"></div>
-                    
-                      <div class="face" style="width: 30px; height: 26px; background: hsl(228, 8%, 26%); border-radius: 0px; transform: translate3d(-31px, -13px, 0px) rotateY(-90deg)"></div>
-                    
-                      <div class="face" style="width: 32px; height: 30px; background: hsl(228, 8%, 43%); border-radius: 10px; transform: translate3d(-16px, -28px, 0px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 4%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(0deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 4%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(36deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 6%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(72deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 10%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(108deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 13%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(144deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 16%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(180deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 16%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(216deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 14%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(252deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 10%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(288deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 6.758329681644452px; height: 14px; background: hsl(228, 8%, 7%); border-radius: 0px; transform: translate3d(-3.379164840822226px, -7px, 22px) rotateZ(324deg) translateY(-10px) rotateX(90deg)"></div>
-                    
-                      <div class="face" style="width: 20px; height: 20px; background: hsl(228, 8%, 8%); border-radius: 10px; transform: translate3d(-10px, -10px, 29px) "></div>
-                    
-                      <div class="face" style="width: 20px; height: 20px; background: hsl(228, 8%, 8%); border-radius: 10px; transform: translate3d(-10px, -10px, 15px) rotateY(180deg)"></div>
-                    
-                    <div class="face" style="width: 18px; height: 18px; border-radius: 50%; background: radial-gradient(circle at 40% 36%, #5A74A8 0 7%, #0E1726 20%, #090916 58%, #3A4A6C 68%, #0A0F18 76%); transform: translate3d(-9px, -9px, 29.2px)"></div>
-                    <div class="face" style="width: 3px; height: 3px; border-radius: 50%; background: #FF3B3B; box-shadow: 0 0 5px #FF3B3B; transform: translate3d(10px, -9px, 15.2px)"></div>
-                  </div>
-                </div>
-              </div>
-
-              
-              <div class="face2 ring" style="width: 50px; height: 50px; border-radius: 50%; transform: translate3d(-125px, -200.2px, 10px) rotateX(90deg)"></div>
-              <div class="face2 ring" style="width: 50px; height: 50px; border-radius: 50%; transform: translate3d(75px, -200.2px, 10px) rotateX(90deg)"></div>
-
-              
-              <div class="p3" style="transform: translate3d(140px, 85px, 48px) rotateX(60deg)">
-                
-                  <div class="face" style="width: 78px; height: 54px; background: hsl(230, 8%, 11%); border-radius: 6px; transform: translate3d(-39px, -54px, 4px) "></div>
-                
-                  <div class="face" style="width: 78px; height: 54px; background: hsl(230, 8%, 8%); border-radius: 6px; transform: translate3d(-39px, -54px, -4px) rotateY(180deg)"></div>
-                
-                  <div class="face" style="width: 8px; height: 54px; background: hsl(230, 8%, 10%); border-radius: 0px; transform: translate3d(35px, -54px, 0px) rotateY(90deg)"></div>
-                
-                  <div class="face" style="width: 8px; height: 54px; background: hsl(230, 8%, 9%); border-radius: 0px; transform: translate3d(-43px, -54px, 0px) rotateY(-90deg)"></div>
-                
-                  <div class="face" style="width: 78px; height: 8px; background: hsl(230, 8%, 15%); border-radius: 6px; transform: translate3d(-39px, -58px, 0px) rotateX(90deg)"></div>
-                
-                <div class="face" style="width: 70px; height: 48px; background: #12102A; border-radius: 3px; overflow: hidden; transform: translate3d(-35px, -51px, 4.2px) ">
-                  <div style="position: absolute; left: 0; right: 0; top: 0; height: 9px; background: #1A1733; display: flex; align-items: center; gap: 5px; padding: 0 4px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px; color: #B9B9CC"><span class="pgR" style="position: absolute; left: 4px; color: #00C4EC">ROUTING</span><span class="pgC" style="position: absolute; left: 4px; color: #00C4EC">CAMERAS</span><span class="pgA" style="position: absolute; left: 4px; color: #00C4EC">AUDIO</span><span style="margin-left: auto">WAVETECH</span></div>
-                  <div class="pgR" style="position: absolute; left: 0; right: 0; top: 9px; bottom: 0; padding: 3px 4px; display: flex; flex-direction: column; gap: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px">
-                    <div style="display: flex; align-items: center; gap: 2px"><span style="width: 16px; color: #B9B9CC">L WALL</span><span class="bL0 bon" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">MEET</span><span class="bL1 bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CALL</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">LAPTOP</span></div>
-                    <div style="display: flex; align-items: center; gap: 2px"><span style="width: 16px; color: #B9B9CC">R WALL</span><span class="bR0 bon" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">MEET</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CALL</span><span class="bR2 bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">LAPTOP</span></div>
-                    <div style="display: flex; align-items: center; gap: 2px; margin-top: auto"><span class="bidle" style="flex: 1; height: 8px; border-radius: 2px; display: flex; align-items: center; justify-content: center; color: #FF6B6B">SHUTDOWN</span></div>
-                  </div>
-                  <div class="pgC" style="position: absolute; left: 0; right: 0; top: 9px; bottom: 0; padding: 3px 4px; display: flex; flex-direction: column; gap: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px">
-                    <div style="display: flex; gap: 2px"><span class="bon" style="flex: 1; height: 9px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CAM 1</span><span class="bidle" style="flex: 1; height: 9px; border-radius: 2px; display: flex; align-items: center; justify-content: center">CAM 2</span></div>
-                    <div style="display: flex; gap: 2px"><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P1</span><span class="bP2 bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P2</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P3</span><span class="bidle" style="flex: 1; height: 11px; border-radius: 2px; display: flex; align-items: center; justify-content: center">P4</span></div>
-                    <div style="margin-top: auto; color: #B9B9CC">HOLD TO SAVE A PRESET</div>
-                  </div>
-                  <div class="pgA" style="position: absolute; left: 0; right: 0; top: 9px; bottom: 0; padding: 3px 4px; display: flex; gap: 3px; font-family: 'IBM Plex Mono', monospace; font-size: 4.5px">
-                    <div style="flex: 1; display: flex; flex-direction: column; gap: 2px">
-                      <div style="display: flex; align-items: center; gap: 2px"><span style="width: 14px; color: #B9B9CC">CEIL</span><span style="flex: 1; height: 4px; background: #1A1733; border-radius: 2px"><span style="display: block; width: 70%; height: 100%; background: #0DB5EC; border-radius: 2px"></span></span></div>
-                      <div style="display: flex; align-items: center; gap: 2px"><span style="width: 14px; color: #B9B9CC">FOH</span><span style="flex: 1; height: 4px; background: #1A1733; border-radius: 2px"><span style="display: block; width: 55%; height: 100%; background: #0DB5EC; border-radius: 2px"></span></span></div>
-                      <div style="display: flex; align-items: center; gap: 2px"><span style="width: 14px; color: #B9B9CC">MIC</span><span style="flex: 1; height: 4px; background: #1A1733; border-radius: 2px"><span style="display: block; width: 62%; height: 100%; background: #0DB5EC; border-radius: 2px"></span></span></div>
-                    </div>
-                    <span class="bMute bidle" style="width: 22px; border-radius: 2px; display: flex; align-items: center; justify-content: center; text-align: center">ROOM MUTE</span>
-                  </div>
-                </div>
-              </div>
-
-              
-              <div class="p3" style="transform: translate3d(-130px, 87px, 18px) rotateX(14deg)">
-                
-                  <div class="face" style="width: 64px; height: 42px; background: hsl(230, 8%, 16%); border-radius: 3px; transform: translate3d(-32px, -42px, 1.5px) "></div>
-                
-                  <div class="face" style="width: 64px; height: 42px; background: hsl(230, 8%, 11%); border-radius: 3px; transform: translate3d(-32px, -42px, -1.5px) rotateY(180deg)"></div>
-                
-                  <div class="face" style="width: 3px; height: 42px; background: hsl(230, 8%, 15%); border-radius: 0px; transform: translate3d(30.5px, -42px, 0px) rotateY(90deg)"></div>
-                
-                  <div class="face" style="width: 3px; height: 42px; background: hsl(230, 8%, 13%); border-radius: 0px; transform: translate3d(-33.5px, -42px, 0px) rotateY(-90deg)"></div>
-                
-                  <div class="face" style="width: 64px; height: 3px; background: hsl(230, 8%, 22%); border-radius: 3px; transform: translate3d(-32px, -43.5px, 0px) rotateX(90deg)"></div>
-                
-                <div class="face" style="width: 56px; height: 34px; background: #0B0B14; overflow: hidden; transform: translate3d(-28px, -38px, 1.7px) ; padding: 4px 5px; box-sizing: border-box; display: flex; flex-direction: column; gap: 2px">
-                  <span style="font-family: 'Archivo', sans-serif; font-weight: 800; font-size: 5px; color: #EEEEF8">QUARTERLY REVIEW</span>
-                  <div style="flex: 1; display: flex; align-items: flex-end; gap: 2px"><span style="flex: 1; height: 30%; background: #543BB9"></span><span style="flex: 1; height: 55%; background: #0DB5EC"></span><span style="flex: 1; height: 42%; background: #543BB9"></span><span style="flex: 1; height: 78%; background: #0DB5EC"></span><span style="flex: 1; height: 64%; background: #543BB9"></span><span style="flex: 1; height: 92%; background: #0DB5EC"></span></div>
-                </div>
-              </div>
-
-              
-              <div class="face" style="width: 92px; height: 44px; background: rgba(10,10,20,.92); border: 1px solid #2A2A44; border-radius: 2px; transform: translate3d(-46px, 90px, -269.4px) ">
-                <span style="position: absolute; left: 5px; top: 4px; font-family: 'IBM Plex Mono', monospace; font-size: 5px; color: #00C4EC">CORE · DSP · SWITCH</span>
-                <span style="position: absolute; left: 5px; top: 13px; width: 80px; height: 5px; background: #1A1733; border-radius: 1px"></span>
-                <span style="position: absolute; left: 5px; top: 20px; width: 80px; height: 5px; background: #1A1733; border-radius: 1px"></span>
-                <span style="position: absolute; left: 5px; top: 27px; width: 80px; height: 5px; background: #1A1733; border-radius: 1px"></span>
-                <span style="position: absolute; left: 5px; bottom: 4px; display: flex; gap: 3px"><span style="width: 4px; height: 4px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 4px #22D36B"></span><span style="width: 4px; height: 4px; border-radius: 50%; background: #22D36B; box-shadow: 0 0 4px #22D36B"></span><span style="width: 4px; height: 4px; border-radius: 50%; background: #0DB5EC; box-shadow: 0 0 4px #0DB5EC"></span><span style="width: 4px; height: 4px; border-radius: 50%; background: #0DB5EC; box-shadow: 0 0 4px #0DB5EC"></span></span>
-                <span style="position: absolute; inset: 0; background: linear-gradient(115deg, rgba(255,255,255,.08), transparent 45%)"></span>
-              </div>
-            </div>
-          </div>
-        </div>
+    <div class="w-room3d"><img class="w-room-still" src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/room-still.jpg" alt="" loading="lazy"><canvas aria-hidden="true"></canvas><span class="w-room-badge">Room muted</span></div>
     <figcaption class="w-meta"><span>Two video walls, two ceiling cameras, ceiling mics and speakers, one touch panel</span><span class="w-hide-m">Every tap changes the room</span></figcaption>
   </figure>
 </div></div></section>
@@ -1304,10 +578,228 @@ html,body{background:#090916!important}html{overflow-x:clip}
 <footer class="w-foot"><div class="w-wrap w-foot-row">
   <span class="w-foot-brand"><img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/wt-mark.png" alt="WaveTech"><span>© 2026 WaveTech Innovations</span></span>
   <span class="w-foot-tag">“Beyond integration. Into innovation.”</span>
-  <span class="w-foot-links"><span>Teams across the US. We travel.</span><span class="w-meta">v2026.11.24.3</span></span>
+  <span class="w-foot-links"><span>Teams across the US. We travel.</span><span class="w-meta">v2026.11.24.4</span></span>
 </div></footer></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/geometries/RoundedBoxGeometry.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.146.0/examples/js/environments/RoomEnvironment.js"></script>
+<script>
+/* The conference room, rendered with three.js. window.WT_ROOM.set(p) drives it from scroll progress 0..1:
+   walls change source, the ceiling cameras move to presets, the mics mute and unmute, the touch panel follows. */
+(function () {
+  'use strict';
+  var host = document.querySelector('.w-room3d');
+  if (!host || !window.THREE) return;
+  var T = window.THREE, canvas = host.querySelector('canvas'), badge = host.querySelector('.w-room-badge');
+  var renderer;
+  try { renderer = new T.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, powerPreference: 'high-performance' }); }
+  catch (e) { return; }                     // no WebGL: the still image underneath stays
+  host.classList.add('is-live');
+  renderer.outputEncoding = T.sRGBEncoding;
+  renderer.toneMapping = T.ACESFilmicToneMapping; renderer.toneMappingExposure = 0.92;
+  renderer.shadowMap.enabled = true; renderer.shadowMap.type = T.PCFSoftShadowMap;
+
+  var scene = new T.Scene();
+  var cam = new T.PerspectiveCamera(30, 1.5, 0.1, 100);
+  if (T.RoomEnvironment) { var pm = new T.PMREMGenerator(renderer); scene.environment = pm.fromScene(new T.RoomEnvironment(), 0.04).texture; }
+
+  /* ---------- helpers ---------- */
+  var RB = T.RoundedBoxGeometry;
+  function box(w, h, d, r, mat) { var g = RB ? new RB(w, h, d, 4, Math.min(r, w / 2, h / 2, d / 2)) : new T.BoxGeometry(w, h, d); var m = new T.Mesh(g, mat); m.castShadow = true; m.receiveShadow = true; return m; }
+  function cyl(rt, rb, h, mat, seg) { var m = new T.Mesh(new T.CylinderGeometry(rt, rb, h, seg || 40), mat); m.castShadow = true; m.receiveShadow = true; return m; }
+  function std(color, rough, metal, extra) { var o = { color: color, roughness: rough, metalness: metal || 0, envMapIntensity: 0.32 }; if (extra) for (var k in extra) o[k] = extra[k]; return new T.MeshStandardMaterial(o); }
+  function add(obj, x, y, z, parent) { obj.position.set(x, y, z); (parent || scene).add(obj); return obj; }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function sm(a, b, x) { var t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); }
+  function keyed(stops, p) { // stops: [[p, v], ...] with smooth ease between
+    if (p <= stops[0][0]) return stops[0][1];
+    for (var i = 1; i < stops.length; i++) if (p <= stops[i][0]) { var a = stops[i - 1], b = stops[i]; return lerp(a[1], b[1], sm(a[0], b[0], p)); }
+    return stops[stops.length - 1][1];
+  }
+
+  /* ---------- materials ---------- */
+  var mFloor = std(0x0d0d1c, 0.95), mWall = std(0x0c0c1a, 0.95), mWood = std(0x5a3d2b, 0.5, 0.0), mWoodDark = std(0x30221a, 0.6);
+  var mFabric = std(0x2c2f3c, 0.85), mMetal = std(0x23252d, 0.4, 0.6), mBlack = std(0x09090d, 0.35, 0.3), mWhite = std(0xb9b9c8, 0.6), mBezel = std(0x060609, 0.3, 0.4);
+
+  /* ---------- room shell ---------- */
+  scene.fog = new T.Fog(0x0b0b1a, 11, 19);
+  var floor = new T.Mesh(new T.CircleGeometry(30, 64), mFloor); floor.rotation.x = -Math.PI / 2; floor.receiveShadow = true; scene.add(floor);
+  var back = box(8.4, 3.2, 0.2, 0.02, mWall); add(back, 0, 1.6, -3.1); back.castShadow = false;
+  var rug = new T.Mesh(new T.PlaneGeometry(6.2, 3.6), std(0x111126, 1)); rug.rotation.x = -Math.PI / 2; rug.receiveShadow = true; add(rug, 0, 0.004, 0.25);
+
+  /* ---------- display content (drawn on canvases, no outside images) ---------- */
+  function mkCanvas(w, h) { var c = document.createElement('canvas'); c.width = w; c.height = h; return c; }
+  var F = "600 {s}px Archivo, 'Helvetica Neue', Arial, sans-serif";
+  function font(ctx, s, w) { ctx.font = (w || 600) + ' ' + s + 'px Archivo, "Helvetica Neue", Arial, sans-serif'; }
+  function rr(ctx, x, y, w, h, r) { ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + h, r); ctx.arcTo(x + w, y + h, x, y + h, r); ctx.arcTo(x, y + h, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath(); }
+  function wallpaper(ctx, W, H) {
+    var g = ctx.createLinearGradient(0, 0, W, H); g.addColorStop(0, '#1a1f55'); g.addColorStop(0.55, '#3a2a78'); g.addColorStop(1, '#141a44'); ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+    var r = ctx.createRadialGradient(W * 0.3, H * 0.95, 10, W * 0.3, H * 0.95, W * 0.6); r.addColorStop(0, 'rgba(226,120,70,.75)'); r.addColorStop(1, 'rgba(226,120,70,0)'); ctx.fillStyle = r; ctx.fillRect(0, 0, W, H);
+  }
+  function drawHome(ctx, W, H) {
+    wallpaper(ctx, W, H);
+    ctx.fillStyle = 'rgba(8,8,20,.72)'; rr(ctx, 60, 60, 520, 250, 22); ctx.fill();
+    ctx.fillStyle = '#b9b9cc'; font(ctx, 22, 500); ctx.fillText('Monday, June 12', 96, 112);
+    ctx.fillStyle = '#fff'; font(ctx, 78, 700); ctx.fillText('8:41 AM', 94, 196);
+    font(ctx, 26, 600); ctx.fillText('Conference Room A', 96, 244);
+    ctx.fillStyle = '#b9b9cc'; font(ctx, 20, 400); ctx.fillText('Join your meeting with this room', 96, 280);
+    ctx.fillStyle = '#fff'; font(ctx, 22, 500); ctx.beginPath(); ctx.arc(84, H - 70, 12, 0, 7); ctx.fill(); ctx.fillText('Add this room to a meeting from your device', 112, H - 62);
+  }
+  function drawSchedule(ctx, W, H) {
+    wallpaper(ctx, W, H);
+    var x = W - 470, y = 70;
+    ctx.fillStyle = 'rgba(8,8,20,.78)'; rr(ctx, x, y, 400, 120, 18); ctx.fill(); ctx.fillStyle = '#22d36b'; rr(ctx, x, y, 10, 120, 5); ctx.fill();
+    ctx.fillStyle = '#fff'; font(ctx, 40, 700); ctx.fillText('Available', x + 34, y + 58); ctx.fillStyle = '#b9b9cc'; font(ctx, 20, 400); ctx.fillText('9:00 AM – 10:00 AM', x + 34, y + 94);
+    [['Daily standup', '10:00 AM – 10:30 AM'], ['Design review', '11:00 AM – 12:00 PM'], ['Client call', '2:00 PM – 3:00 PM']].forEach(function (m, i) {
+      var yy = y + 144 + i * 104; ctx.fillStyle = 'rgba(8,8,20,.6)'; rr(ctx, x, yy, 400, 88, 16); ctx.fill();
+      ctx.fillStyle = '#fff'; font(ctx, 26, 600); ctx.fillText(m[0], x + 26, yy + 38); ctx.fillStyle = '#b9b9cc'; font(ctx, 19, 400); ctx.fillText(m[1], x + 26, yy + 68);
+    });
+  }
+  function drawCall(ctx, W, H) {
+    ctx.fillStyle = '#0b0b14'; ctx.fillRect(0, 0, W, H);
+    var cols = ['#27406e', '#5a3a7a', '#2f5d57', '#6a4a35'], names = ['Maya', 'Jordan', 'Priya', 'Sam'], gw = (W - 60) / 2, gh = (H - 110) / 2;
+    for (var i = 0; i < 4; i++) {
+      var x = 20 + (i % 2) * (gw + 20), y = 20 + Math.floor(i / 2) * (gh + 20);
+      var g = ctx.createLinearGradient(x, y, x, y + gh); g.addColorStop(0, cols[i]); g.addColorStop(1, '#14141f'); ctx.fillStyle = g; rr(ctx, x, y, gw, gh, 18); ctx.fill();
+      ctx.fillStyle = 'rgba(255,255,255,.86)'; ctx.beginPath(); ctx.arc(x + gw / 2, y + gh * 0.42, gh * 0.17, 0, 7); ctx.fill();
+      ctx.beginPath(); ctx.ellipse(x + gw / 2, y + gh * 0.98, gh * 0.34, gh * 0.34, 0, Math.PI, 0); ctx.fill();
+      ctx.fillStyle = 'rgba(8,8,20,.7)'; rr(ctx, x + 14, y + gh - 46, 120, 32, 8); ctx.fill(); ctx.fillStyle = '#fff'; font(ctx, 20, 600); ctx.fillText(names[i], x + 26, y + gh - 24);
+    }
+    ctx.fillStyle = '#16162a'; ctx.fillRect(0, H - 60, W, 60);
+    ['#2e2e48', '#2e2e48', '#ff3b3b', '#2e2e48'].forEach(function (c, i) { ctx.fillStyle = c; ctx.beginPath(); ctx.arc(W / 2 - 90 + i * 60, H - 30, 18, 0, 7); ctx.fill(); });
+  }
+  function drawDeck(ctx, W, H) {
+    ctx.fillStyle = '#0d1022'; ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#fff'; font(ctx, 56, 700); ctx.fillText('Quarterly review', 70, 120);
+    ctx.fillStyle = '#8c8ca6'; font(ctx, 24, 400); ctx.fillText('Revenue by region', 72, 162);
+    var bars = [0.34, 0.5, 0.42, 0.68, 0.6, 0.86, 1], bw = (W - 200) / bars.length, base = H - 80, maxH = H - 280;
+    bars.forEach(function (b, i) { var g = ctx.createLinearGradient(0, base - maxH, 0, base); g.addColorStop(0, i > 4 ? '#0db5ec' : '#543bb9'); g.addColorStop(1, i > 4 ? '#0a7fb0' : '#3a2a8a'); ctx.fillStyle = g; rr(ctx, 80 + i * bw, base - maxH * b, bw - 26, maxH * b, 10); ctx.fill(); });
+    ctx.fillStyle = '#2a2d4a'; ctx.fillRect(70, base + 8, W - 140, 3);
+  }
+  function Screen(a, b) {
+    this.c = mkCanvas(1024, 576); this.ctx = this.c.getContext('2d');
+    this.a = mkCanvas(1024, 576); a(this.a.getContext('2d'), 1024, 576);
+    this.b = mkCanvas(1024, 576); b(this.b.getContext('2d'), 1024, 576);
+    this.tex = new T.CanvasTexture(this.c); this.tex.encoding = T.sRGBEncoding; this.tex.anisotropy = 8; this.mix = -1;
+  }
+  Screen.prototype.set = function (m) { m = Math.round(m * 40) / 40; if (m === this.mix) return false; this.mix = m; var x = this.ctx; x.globalAlpha = 1; x.drawImage(this.a, 0, 0); if (m > 0) { x.globalAlpha = m; x.drawImage(this.b, 0, 0); } this.tex.needsUpdate = true; return true; };
+
+  /* ---------- displays ---------- */
+  var DW = 3.0, DH = DW * 9 / 16;
+  function display(x, scr) {
+    var g = new T.Group();
+    g.add(box(DW + 0.08, DH + 0.08, 0.09, 0.02, mBezel));
+    var face = new T.Mesh(new T.PlaneGeometry(DW, DH), new T.MeshBasicMaterial({ map: scr.tex, toneMapped: false })); face.position.z = 0.047; g.add(face);
+    add(g, x, 1.78, -2.94); return g;
+  }
+  var sL = new Screen(drawHome, drawCall), sR = new Screen(drawSchedule, drawDeck);
+  display(-1.56, sL); display(1.56, sR);
+  var glowL = new T.PointLight(0x7a66ff, 1.0, 8, 2); add(glowL, -1.5, 1.7, -1.6);
+  var glowR = new T.PointLight(0x7a66ff, 1.0, 8, 2); add(glowR, 1.5, 1.7, -1.6);
+
+  /* ---------- credenza with a rack bay ---------- */
+  add(box(5.4, 0.62, 0.52, 0.03, mWood), 0, 0.41, -2.62);
+  add(box(1.5, 0.46, 0.02, 0.01, mWoodDark), -1.75, 0.41, -2.355); add(box(1.5, 0.46, 0.02, 0.01, mWoodDark), 1.75, 0.41, -2.355);
+  add(box(1.2, 0.46, 0.02, 0.01, std(0x05060c, 0.2, 0.2)), 0, 0.41, -2.355);
+  for (var ri = 0; ri < 4; ri++) { add(box(1.05, 0.06, 0.012, 0.004, std(0x1a1d2c, 0.4, 0.5)), 0, 0.57 - ri * 0.1, -2.34); var led = new T.Mesh(new T.CircleGeometry(0.012, 12), new T.MeshBasicMaterial({ color: ri === 1 ? 0x0db5ec : 0x22d36b })); add(led, -0.44, 0.57 - ri * 0.1, -2.332); }
+
+  /* ---------- table and chairs ---------- */
+  var top = box(3.9, 0.07, 1.55, 0.035, mWood); add(top, 0, 0.75, 0.25);
+  add(box(1.5, 0.66, 0.5, 0.03, mMetal), 0, 0.38, 0.25);
+  function chair(x, z, rot) {
+    var g = new T.Group();
+    add(box(0.5, 0.09, 0.5, 0.04, mFabric), 0, 0.47, 0, g);
+    var b = box(0.5, 0.52, 0.08, 0.04, mFabric); b.rotation.x = -0.12; add(b, 0, 0.78, -0.25, g);
+    add(cyl(0.03, 0.03, 0.4, mMetal, 16), 0, 0.24, 0, g);
+    add(cyl(0.26, 0.28, 0.03, mMetal, 32), 0, 0.03, 0, g);
+    g.rotation.y = rot; add(g, x, 0, z); return g;
+  }
+  [-1.2, 0, 1.2].forEach(function (x) { chair(x, -0.92, 0); chair(x, 1.42, Math.PI); });
+  chair(-2.5, 0.25, Math.PI / 2); chair(2.5, 0.25, -Math.PI / 2);
+
+  /* ---------- touch panel and laptop on the table ---------- */
+  var pc = mkCanvas(640, 400), pctx = pc.getContext('2d'), ptex = new T.CanvasTexture(pc); ptex.encoding = T.sRGBEncoding; ptex.anisotropy = 8;
+  var panel = new T.Group(); panel.add(box(0.5, 0.33, 0.03, 0.012, mBezel));
+  var pf = new T.Mesh(new T.PlaneGeometry(0.46, 0.29), new T.MeshBasicMaterial({ map: ptex, toneMapped: false })); pf.position.z = 0.016; panel.add(pf);
+  panel.rotation.set(-1.02, -0.35, 0); panel.rotation.order = 'YXZ'; add(panel, 1.05, 0.9, 0.62);
+  add(box(0.14, 0.02, 0.1, 0.008, mBezel), 1.05, 0.79, 0.57);
+  var pState = '';
+  function btn(x, y, w, h, label, on, color) { pctx.fillStyle = on ? (color || '#0db5ec') : '#1e1a38'; rr(pctx, x, y, w, h, 10); pctx.fill(); pctx.fillStyle = on ? (color ? '#fff' : '#090916') : '#c9c9db'; pctx.font = '600 20px Archivo, Arial, sans-serif'; pctx.textAlign = 'center'; pctx.fillText(label, x + w / 2, y + h / 2 + 7); pctx.textAlign = 'left'; }
+  function drawPanel(p) {
+    var l = p < 0.32 ? 0 : 1, r = p < 0.44 ? 0 : 2, cam = p >= 0.58 ? (p >= 0.84 ? 3 : 2) : (p >= 0.26 ? 1 : 0), mute = p >= 0.7 && p < 0.86;
+    var key = [l, r, cam, mute].join(); if (key === pState) return false; pState = key;
+    pctx.fillStyle = '#0c0c1c'; pctx.fillRect(0, 0, 640, 400);
+    pctx.fillStyle = '#00c4ec'; pctx.font = '600 17px Archivo, Arial, sans-serif'; pctx.fillText('ROUTING', 24, 36); pctx.fillText('CAMERAS', 24, 222); pctx.fillStyle = '#8c8ca6'; pctx.fillText('WAVETECH', 524, 36);
+    ['L WALL', 'R WALL'].forEach(function (n, i) { var y = 54 + i * 70; pctx.fillStyle = '#b9b9cc'; pctx.font = '500 17px Archivo, Arial, sans-serif'; pctx.fillText(n, 24, y + 36); var sel = i === 0 ? l : r; ['MEET', 'CALL', 'LAPTOP'].forEach(function (b, k) { btn(120 + k * 124, y, 112, 56, b, sel === k); }); });
+    btn(500, 54, 116, 126, 'SHUTDOWN', false);
+    ['P1', 'P2', 'P3', 'P4'].forEach(function (b, k) { btn(24 + k * 94, 240, 82, 56, b, cam === k + 1 || (cam === 0 && k === 0)); });
+    btn(420, 240, 196, 56, mute ? 'ROOM MUTED' : 'MUTE ROOM', mute, '#ff3b3b');
+    pctx.fillStyle = '#8c8ca6'; pctx.font = '400 16px Archivo, Arial, sans-serif'; pctx.fillText('Hold to save a preset', 24, 336);
+    ptex.needsUpdate = true; return true;
+  }
+  var lap = new T.Group(); lap.add(add(box(0.42, 0.018, 0.29, 0.008, std(0x6d7380, 0.4, 0.7)), 0, 0, 0, lap));
+  var lid = new T.Group(); var lidM = box(0.42, 0.28, 0.012, 0.006, std(0x8d93a0, 0.4, 0.7)); lidM.position.y = 0.14; lid.add(lidM);
+  var lc = mkCanvas(512, 320); drawDeck(lc.getContext('2d'), 512, 320); var ltex = new T.CanvasTexture(lc); ltex.encoding = T.sRGBEncoding;
+  var lf = new T.Mesh(new T.PlaneGeometry(0.39, 0.25), new T.MeshBasicMaterial({ map: ltex, toneMapped: false })); lf.position.set(0, 0.14, 0.007); lid.add(lf);
+  lid.position.set(0, 0.009, -0.145); lid.rotation.x = -0.28; lap.add(lid); lap.rotation.y = 0.35; add(lap, -1.2, 0.795, 0.55);
+
+  /* ---------- ceiling: speakers, mic arrays, PTZ cameras (the ceiling itself is left open) ---------- */
+  var CY = 2.86;
+  [[-2.5, -0.9], [2.5, -0.9], [-2.5, 1.3], [2.5, 1.3]].forEach(function (s) { var d = cyl(0.19, 0.19, 0.03, mWhite, 48); d.castShadow = false; add(d, s[0], CY, s[1]); add(cyl(0.14, 0.14, 0.032, std(0xc8c8d6, 0.9), 48), s[0], CY - 0.002, s[1]).castShadow = false; });
+  var ringMat = new T.MeshBasicMaterial({ color: 0x22d36b });
+  [-1.05, 1.05].forEach(function (x) { var m = box(0.6, 0.04, 0.6, 0.02, mWhite); m.castShadow = false; add(m, x, CY, 0.3); var ring = new T.Mesh(new T.TorusGeometry(0.2, 0.014, 12, 64), ringMat); ring.rotation.x = Math.PI / 2; add(ring, x, CY - 0.024, 0.3); });
+  var micGlow = new T.PointLight(0x22d36b, 0.35, 3.5, 2); add(micGlow, 0, 2.5, 0.3);
+  function ptz(x) {
+    var g = new T.Group(); g.add(add(cyl(0.15, 0.15, 0.07, mMetal), 0, 0, 0, g));
+    var pan = new T.Group(); add(pan, 0, -0.06, 0, g);
+    add(cyl(0.12, 0.13, 0.06, mBlack), 0, 0, 0, pan);
+    add(box(0.035, 0.22, 0.12, 0.012, mMetal), -0.15, -0.13, 0, pan); add(box(0.035, 0.22, 0.12, 0.012, mMetal), 0.15, -0.13, 0, pan);
+    var tilt = new T.Group(); add(tilt, 0, -0.17, 0, pan);
+    var head = new T.Mesh(new T.SphereGeometry(0.125, 40, 28), mMetal); head.castShadow = true; tilt.add(head);
+    var barrel = cyl(0.075, 0.085, 0.1, mBlack); barrel.rotation.x = Math.PI / 2; add(barrel, 0, 0, 0.11, tilt);
+    var lens = new T.Mesh(new T.CircleGeometry(0.06, 40), new T.MeshPhysicalMaterial({ color: 0x0a1630, roughness: 0.05, metalness: 0.9, clearcoat: 1 })); add(lens, 0, 0, 0.161, tilt);
+    var tally = new T.Mesh(new T.CircleGeometry(0.012, 12), new T.MeshBasicMaterial({ color: 0x22d36b })); add(tally, 0.06, 0.07, 0.1, tilt);
+    add(g, x, CY - 0.02, -2.2); return { pan: pan, tilt: tilt };
+  }
+  var c1 = ptz(-2.95), c2 = ptz(2.95);
+  var D = Math.PI / 180;
+  var PAN1 = [[0, 14], [0.16, 14], [0.26, 44], [0.48, 44], [0.58, -8], [0.74, -8], [0.84, 26], [1, 26]], TILT1 = [[0, 24], [0.16, 24], [0.26, 14], [0.48, 14], [0.58, 40], [0.74, 40], [0.84, 28], [1, 28]];
+  var PAN2 = [[0, -14], [0.16, -14], [0.26, -46], [0.48, -46], [0.58, 6], [0.74, 6], [0.84, -24], [1, -24]], TILT2 = [[0, 24], [0.16, 24], [0.26, 16], [0.48, 16], [0.58, 42], [0.74, 42], [0.84, 30], [1, 30]];
+
+  /* ---------- light ---------- */
+  scene.add(new T.HemisphereLight(0x7078d8, 0x06060e, 0.22));
+  var sun = new T.DirectionalLight(0xdfe4ff, 0.75); sun.position.set(2.5, 7, 4.5); sun.castShadow = true; sun.shadow.mapSize.set(2048, 2048);
+  sun.shadow.camera.left = -6; sun.shadow.camera.right = 6; sun.shadow.camera.top = 6; sun.shadow.camera.bottom = -6; sun.shadow.camera.far = 20; sun.shadow.bias = -0.0005; sun.shadow.radius = 5; scene.add(sun);
+
+  /* ---------- frame ---------- */
+  var P = 0, dirty = true, raf = 0, colA = new T.Color(0x7a66ff), colCall = new T.Color(0x4a5fb0), colDeck = new T.Color(0x2a55c0), cg = new T.Color(0x22d36b), cr = new T.Color(0xff3b3b);
+  function size() {
+    var w = host.clientWidth, h = host.clientHeight; if (!w || !h) return;
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2)); renderer.setSize(w, h, false);
+    cam.aspect = w / h; cam.fov = cam.aspect < 1.25 ? 40 : 30; cam.updateProjectionMatrix(); dirty = true; kick();
+  }
+  function frame() {
+    raf = 0; if (!dirty) return; dirty = false;
+    var p = P, ang = lerp(0.62, 0.44, sm(0, 1, p)), dist = cam.aspect < 1.25 ? 12.0 : 9.7;
+    cam.position.set(Math.sin(ang) * dist, 2.75, Math.cos(ang) * dist); cam.lookAt(0, 1.18, -0.9);
+    var ml = sm(0.3, 0.4, p), mr = sm(0.42, 0.52, p);
+    sL.set(ml); sR.set(mr); glowL.color.copy(colA).lerp(colCall, ml); glowR.color.copy(colA).lerp(colDeck, mr);
+    c1.pan.rotation.y = keyed(PAN1, p) * D; c1.tilt.rotation.x = keyed(TILT1, p) * D; c2.pan.rotation.y = keyed(PAN2, p) * D; c2.tilt.rotation.x = keyed(TILT2, p) * D;
+    var mute = sm(0.68, 0.71, p) * (1 - sm(0.85, 0.88, p)); ringMat.color.copy(cg).lerp(cr, mute); micGlow.color.copy(ringMat.color);
+    if (badge) badge.style.opacity = String(mute);
+    drawPanel(p);
+    renderer.render(scene, cam);
+  }
+  function kick() { if (!raf) raf = requestAnimationFrame(frame); }
+  window.WT_ROOM = { set: function (p) { if (p !== P) { P = p; dirty = true; kick(); } }, render: function () { dirty = true; frame(); } };
+  size(); window.addEventListener('resize', size);
+  if (window.ResizeObserver) new ResizeObserver(size).observe(host);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { sL = sL; sL.a.getContext('2d') && drawHome(sL.a.getContext('2d'), 1024, 576); drawCall(sL.b.getContext('2d'), 1024, 576); drawSchedule(sR.a.getContext('2d'), 1024, 576); drawDeck(sR.b.getContext('2d'), 1024, 576); sL.mix = -1; sR.mix = -1; pState = ''; dirty = true; kick(); });
+})();
+
+</script>
 <script>window.WT_SCROLL={"tracks":{"--hero":".track-hero","--x":".track-x","--av":".track-av","--svc":".track-s"},"items":[{"sel":".lit","tl":"--hero","k0":"contain","a":0.08,"k1":"contain","b":0.85},{"sel":".cap-a","tl":"--hero","k0":"contain","a":0.4,"k1":"contain","b":0.55},{"sel":".cap-b","tl":"--hero","k0":"contain","a":0.55,"k1":"contain","b":0.7},{"sel":".lay","tl":"--x","k0":"contain","a":0.08,"k1":"contain","b":0.58},{"sel":".rib","tl":"--x","k0":"contain","a":0.08,"k1":"contain","b":0.58},{"sel":".lift","tl":"--x","k0":"contain","a":0.4,"k1":"contain","b":0.7},{"sel":".zline","tl":"--x","k0":"contain","a":0.08,"k1":"contain","b":0.58},{"sel":".lab","tl":"--x","k0":"contain","a":0.48,"k1":"contain","b":0.66},{"sel":".pan1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".tilt1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pan2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".tilt2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".lA","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".lC","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".rA","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".rB","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".ring","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".badge","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pgR","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pgC","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".pgA","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bL0","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bL1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bR0","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bR2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bP2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".bMute","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".ev1","tl":"--av","k0":"contain","a":0.02,"k1":"contain","b":0.2},{"sel":".ev2","tl":"--av","k0":"contain","a":0.3,"k1":"contain","b":0.48},{"sel":".ev3","tl":"--av","k0":"contain","a":0.54,"k1":"contain","b":0.62},{"sel":".ev4","tl":"--av","k0":"contain","a":0.66,"k1":"contain","b":0.76},{"sel":".ev5","tl":"--av","k0":"contain","a":0.86,"k1":"contain","b":0.96},{"sel":".rx1","tl":"--svc","k0":"contain","a":0.08,"k1":"contain","b":0.14},{"sel":".rx2","tl":"--svc","k0":"contain","a":0.16,"k1":"contain","b":0.22},{"sel":".rx3","tl":"--svc","k0":"contain","a":0.24,"k1":"contain","b":0.3},{"sel":".rx4","tl":"--svc","k0":"contain","a":0.32,"k1":"contain","b":0.38},{"sel":".rx5","tl":"--svc","k0":"contain","a":0.4,"k1":"contain","b":0.46},{"sel":".flag","tl":"--svc","k0":"contain","a":0.48,"k1":"contain","b":0.54},{"sel":".ok","tl":"--svc","k0":"contain","a":0.52,"k1":"contain","b":0.6},{"sel":".st1","tl":"--svc","k0":"contain","a":0,"k1":"contain","b":0.06},{"sel":".st2","tl":"--svc","k0":"contain","a":0.06,"k1":"contain","b":0.14},{"sel":".st3","tl":"--svc","k0":"contain","a":0.14,"k1":"contain","b":0.26},{"sel":".st4","tl":"--svc","k0":"contain","a":0.4,"k1":"contain","b":0.52},{"sel":".st5","tl":"--svc","k0":"contain","a":0.56,"k1":"contain","b":0.66},{"sel":".mfr1","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfr2","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfr3","tl":"--av","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfc1","tl":"--x","k0":"contain","a":0,"k1":"contain","b":1},{"sel":".mfc2","tl":"--x","k0":"contain","a":0,"k1":"contain","b":1}]};</script>
 <script>
 /* WaveTech site behaviour. Libraries: GSAP + ScrollTrigger (scrubbed scenes, reveals), Lenis (smooth wheel scroll). */
@@ -1434,13 +926,14 @@ html,body{background:#090916!important}html{overflow-x:clip}
   });
 
   /* ---------- room scene scales to the space it has ---------- */
-  function fitRoom() {
-    $$('.roomwrap').forEach(function (r) {
-      if (window.innerWidth <= 760) { r.style.zoom = ''; return; }
-      var col = r.parentElement.getBoundingClientRect().width || 900;
-      var byH = (window.innerHeight - 170) / 820, byW = col / 1000;
-      r.style.zoom = String(Math.max(0.42, Math.min(1, byH, byW)).toFixed(3));
-    });
+  /* the hero wall takes whatever height is left under the headline, so it never runs off the screen */
+  function fitWall() {
+    var fig = $('.w-wallfig'); if (!fig) return;
+    if (window.innerWidth <= 760) { fig.style.width = ''; return; }
+    var stage = fig.closest('.w-stage'), head = $('.w-scene-head', stage), cap = $('.w-wallfig-cap', fig);
+    var avail = stage.clientHeight - 96 - head.offsetHeight - (cap ? cap.offsetHeight + 44 : 0) - 70;
+    var maxW = fig.parentElement.clientWidth;
+    fig.style.width = Math.round(Math.max(280, Math.min(maxW, avail * 1.72))) + 'px';
   }
   /* exploded cabinet scales to its column so nothing is cut off */
   function fitCab() {
@@ -1450,7 +943,9 @@ html,body{background:#090916!important}html{overflow-x:clip}
       x.style.zoom = String(Math.max(0.4, Math.min(1, col / 720, (window.innerHeight - (window.innerWidth <= 1000 ? 640 : 190)) / 690)).toFixed(3));
     });
   }
-  function fitAll() { fitRoom(); fitCab(); }
+  function fitAll() { fitWall(); fitCab(); }
+  window.addEventListener('load', fitAll);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
   fitAll(); window.addEventListener('resize', fitAll);
 
   /* ---------- scroll-driven scenes: the page's keyframes, scrubbed by ScrollTrigger ---------- */
@@ -1463,7 +958,9 @@ html,body{background:#090916!important}html{overflow-x:clip}
       var track = $(table.tracks[key]); if (!track) return;
       var items = table.items.filter(function (it) { return it.tl === key; }).map(function (it) { return { a: it.a, b: it.b, nodes: $$(it.sel, track) }; }).filter(function (it) { return it.nodes.length; });
       var state = { p: 0 };
+      var isRoom = key === '--av';
       function apply() {
+        if (isRoom && window.WT_ROOM) window.WT_ROOM.set(state.p);
         for (var i = 0; i < items.length; i++) {
           var it = items[i], local = it.b > it.a ? clamp((state.p - it.a) / (it.b - it.a)) : (state.p >= it.a ? 1 : 0);
           var d = (-local * 0.999).toFixed(4) + 's';

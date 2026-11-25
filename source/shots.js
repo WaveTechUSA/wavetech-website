@@ -12,12 +12,13 @@ async function wire(pg){
  await pg.route(/cdnjs\.cloudflare\.com.*gsap\.min\.js/,r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(NM+'/gsap/dist/gsap.min.js')}));
  await pg.route(/cdnjs\.cloudflare\.com.*ScrollTrigger\.min\.js/,r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(NM+'/gsap/dist/ScrollTrigger.min.js')}));
  await pg.route(/cdn\.jsdelivr\.net.*lenis/,r=>r.fulfill({contentType:'text/javascript',body:fs.readFileSync(NM+'/lenis/dist/lenis.min.js')}));
+ await pg.route(/cdn\.jsdelivr\.net\/npm\/three@[^/]+\/(.*)$/,r=>{const m=r.request().url().match(/three@[^/]+\/(.*)$/);r.fulfill({contentType:'text/javascript',body:fs.readFileSync(NM+'/three/'+m[1])})});
  await pg.route(/fonts\.googleapis\.com/,r=>r.fulfill({contentType:'text/css',body:FONTCSS}));
  await pg.route(/fonts\.gstatic\.com\/local\//,r=>{const n=r.request().url().split('/').pop();r.fulfill({contentType:'font/woff2',body:fs.readFileSync(LOCAL[n]),headers:{'access-control-allow-origin':'*'}})});
  await pg.route(/msgsndr|snapwidget|leadconnector/,r=>r.fulfill({status:200,contentType:'text/html',body:''}));
 }
 module.exports={wire,srv};
-if(require.main===module)(async()=>{await new Promise(r=>srv.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+srv.address().port;const b=await chromium.launch();fs.mkdirSync(OUT,{recursive:true});
+if(require.main===module)(async()=>{await new Promise(r=>srv.listen(0,'127.0.0.1',r));const base='http://127.0.0.1:'+srv.address().port;const b=await chromium.launch({args:['--use-gl=swiftshader','--enable-unsafe-swiftshader','--ignore-gpu-blocklist']});fs.mkdirSync(OUT,{recursive:true});
 for(const p of pages){const c=await b.newContext({viewport:{width:W,height:H},isMobile:W<600,hasTouch:W<600,deviceScaleFactor:1});const pg=await c.newPage();await wire(pg);
 const errs=[];pg.on('pageerror',e=>errs.push(String(e)));pg.on('console',m=>{if(m.type()==='error')errs.push(m.text())});
 await pg.goto(base+'/'+p+'.html',{waitUntil:'load'});await pg.waitForTimeout(2200);

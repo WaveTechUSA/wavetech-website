@@ -122,13 +122,14 @@
   });
 
   /* ---------- room scene scales to the space it has ---------- */
-  function fitRoom() {
-    $$('.roomwrap').forEach(function (r) {
-      if (window.innerWidth <= 760) { r.style.zoom = ''; return; }
-      var col = r.parentElement.getBoundingClientRect().width || 900;
-      var byH = (window.innerHeight - 170) / 820, byW = col / 1000;
-      r.style.zoom = String(Math.max(0.42, Math.min(1, byH, byW)).toFixed(3));
-    });
+  /* the hero wall takes whatever height is left under the headline, so it never runs off the screen */
+  function fitWall() {
+    var fig = $('.w-wallfig'); if (!fig) return;
+    if (window.innerWidth <= 760) { fig.style.width = ''; return; }
+    var stage = fig.closest('.w-stage'), head = $('.w-scene-head', stage), cap = $('.w-wallfig-cap', fig);
+    var avail = stage.clientHeight - 96 - head.offsetHeight - (cap ? cap.offsetHeight + 44 : 0) - 70;
+    var maxW = fig.parentElement.clientWidth;
+    fig.style.width = Math.round(Math.max(280, Math.min(maxW, avail * 1.72))) + 'px';
   }
   /* exploded cabinet scales to its column so nothing is cut off */
   function fitCab() {
@@ -138,7 +139,9 @@
       x.style.zoom = String(Math.max(0.4, Math.min(1, col / 720, (window.innerHeight - (window.innerWidth <= 1000 ? 640 : 190)) / 690)).toFixed(3));
     });
   }
-  function fitAll() { fitRoom(); fitCab(); }
+  function fitAll() { fitWall(); fitCab(); }
+  window.addEventListener('load', fitAll);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitAll);
   fitAll(); window.addEventListener('resize', fitAll);
 
   /* ---------- scroll-driven scenes: the page's keyframes, scrubbed by ScrollTrigger ---------- */
@@ -151,7 +154,9 @@
       var track = $(table.tracks[key]); if (!track) return;
       var items = table.items.filter(function (it) { return it.tl === key; }).map(function (it) { return { a: it.a, b: it.b, nodes: $$(it.sel, track) }; }).filter(function (it) { return it.nodes.length; });
       var state = { p: 0 };
+      var isRoom = key === '--av';
       function apply() {
+        if (isRoom && window.WT_ROOM) window.WT_ROOM.set(state.p);
         for (var i = 0; i < items.length; i++) {
           var it = items[i], local = it.b > it.a ? clamp((state.p - it.a) / (it.b - it.a)) : (state.p >= it.a ? 1 : 0);
           var d = (-local * 0.999).toFixed(4) + 's';
