@@ -1,6 +1,6 @@
 # WaveTech Innovations — website
 
-The source of record for wavetech-usa.com. Current build: **v2026.11.24.2** (the rebuild).
+The source of record for wavetech-usa.com. Current build: **v2026.11.24.3** (the rebuild).
 
 ```
 index.html, video-walls.html, av-integration.html, emergency-maintenance.html

@@ -1,4 +1,4 @@
-<!-- WaveTech Innovations — /emergency-maintenance — build v2026.11.24.2 — paste into one Custom HTML/Javascript element -->
+<!-- WaveTech Innovations — /emergency-maintenance — build v2026.11.24.3 — paste into one Custom HTML/Javascript element -->
 <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/favicon-64.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;600;700&display=swap">
@@ -306,6 +306,18 @@ body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-
 }
 @media (max-width:760px){.w-bleed--full .w-bleed-ph{background-position:38% 30%}}
 
+/* nav links read as buttons */
+.w-nav-links{gap:10px}
+#site .w-nav-links a{display:inline-flex;align-items:center;min-height:42px;padding:0 18px;border-radius:999px;border:1px solid #03485A;color:var(--accent);font-weight:600;background:rgba(0,196,236,.04);transition:background-color .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+#site .w-nav-links a:hover{background:rgba(0,196,236,.14);border-color:var(--accent);color:#fff}
+#site .w-nav-links a[aria-current="page"]{background:var(--accent);border-color:var(--accent);color:#090916}
+@media (max-width:1180px){#site .w-nav-links a{padding:0 13px;font-size:14px}.w-nav-links{gap:6px}}
+.w-burger{width:auto;padding:0 16px;gap:10px;border-color:#03485A;color:var(--accent);background:rgba(0,196,236,.06)}
+.w-burger b{font-size:15px;font-weight:600}
+#site .w-menu a:not(.w-btn){display:flex;align-items:center;justify-content:space-between;gap:16px;font-size:clamp(22px, 6.4vw, 30px);padding:16px 20px;margin-bottom:10px;border:1px solid #03485A;border-radius:16px;background:rgba(0,196,236,.05);color:var(--fg)}
+#site .w-menu a:not(.w-btn)::after{content:"";width:10px;height:10px;border-top:2px solid var(--accent);border-right:2px solid var(--accent);transform:rotate(45deg);flex:none;margin-right:4px}
+#site .w-menu a:not(.w-btn):active{background:rgba(0,196,236,.16)}
+
 /* scenes */
 
 .leds{background-color:#0A0F18;background-image:radial-gradient(circle,#3A5078 0 1.1px,transparent 1.4px);background-size:5px 5px}
@@ -479,7 +491,7 @@ html,body{background:#090916!important}html{overflow-x:clip}
     <a href="/emergency-maintenance" aria-current="page">Emergency and maintenance</a>
   </nav>
   <a class="w-btn w-btn--solid w-nav-cta" href="#contact">Get a site survey</a>
-  <button class="w-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+  <button class="w-burger" type="button" aria-label="Menu" aria-expanded="false"><b>Menu</b><span></span></button>
 </div></header>
 <div class="w-menu" aria-label="Menu">
   <a href="/home">Home</a><a href="/video-walls">Video walls</a><a href="/av-integration">AV integration</a><a href="/emergency-maintenance">Emergency and maintenance</a>
@@ -594,12 +606,12 @@ html,body{background:#090916!important}html{overflow-x:clip}
       <div><dt>Area</dt><dd>United States</dd></div>
     </dl>
   </div>
-  <div class="w-form"><iframe src="https://api.leadconnectorhq.com/widget/form/ir9Hi5bSDTWJiR6Zbaoo" id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Get In Touch" data-height="760" data-layout-iframe-id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-form-id="ir9Hi5bSDTWJiR6Zbaoo" title="Get In Touch"></iframe></div>
+  <div class="w-form"><iframe src="https://api.leadconnectorhq.com/widget/form/ir9Hi5bSDTWJiR6Zbaoo" id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-layout='{"id":"INLINE"}' data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Get In Touch" data-height="760" data-layout-iframe-id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-form-id="ir9Hi5bSDTWJiR6Zbaoo" title="Get In Touch"></iframe></div>
 </div></section></main>
 <footer class="w-foot"><div class="w-wrap w-foot-row">
   <span class="w-foot-brand"><img src="https://cdn.jsdelivr.net/gh/WaveTechUSA/wavetech-website@main/assets/wt-mark.png" alt="WaveTech"><span>© 2026 WaveTech Innovations</span></span>
   <span class="w-foot-tag">“Beyond integration. Into innovation.”</span>
-  <span class="w-foot-links"><span>Teams across the US. We travel.</span><span class="w-meta">v2026.11.24.2</span></span>
+  <span class="w-foot-links"><span>Teams across the US. We travel.</span><span class="w-meta">v2026.11.24.3</span></span>
 </div></footer></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>

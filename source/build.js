@@ -12,7 +12,7 @@ const BREAKOUT = `html,body{background:#090916!important}html{overflow-x:clip}
 #site{width:100vw;margin-left:calc(50% - 50vw)}
 .c-section:not(:has(#site)),.hl_page-creator--section:not(:has(#site)),body>section:not(:has(#site)){display:none!important}
 .c-section,.c-row,.c-column,.c-wrapper,.hl_page-creator--section,.hl_page-creator--row,.hl_page-creator--col{overflow:visible!important;max-width:none!important;padding:0!important;margin:0!important}`;
-const VERSION = PREVIEW ? 'rebuild preview 4' : 'v2026.11.24.2';
+const VERSION = PREVIEW ? 'rebuild preview 4' : 'v2026.11.24.3';
 const read = f => fs.readFileSync(f, 'utf8');
 const part = n => read(path.join(PARTS, n));
 
@@ -45,7 +45,7 @@ const nav = cur => `
     <a href="${PAGES.svc}"${cur === 'svc' ? ' aria-current="page"' : ''}>Emergency and maintenance</a>
   </nav>
   <a class="w-btn w-btn--solid w-nav-cta" href="#contact">Get a site survey</a>
-  <button class="w-burger" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>
+  <button class="w-burger" type="button" aria-label="Menu" aria-expanded="false"><b>Menu</b><span></span></button>
 </div></header>
 <div class="w-menu" aria-label="Menu">
   <a href="${PAGES.home}">Home</a><a href="${PAGES.vw}">Video walls</a><a href="${PAGES.av}">AV integration</a><a href="${PAGES.svc}">Emergency and maintenance</a>
@@ -54,7 +54,7 @@ const nav = cur => `
 
 const formEmbed = PREVIEW
   ? `<div class="w-embed-note"><b>Lead form</b><span>Your live "Get In Touch" form sits here on the real site. This preview host can't embed it.</span></div>`
-  : `<iframe src="https://api.leadconnectorhq.com/widget/form/ir9Hi5bSDTWJiR6Zbaoo" id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-layout="{'id':'INLINE'}" data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Get In Touch" data-height="760" data-layout-iframe-id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-form-id="ir9Hi5bSDTWJiR6Zbaoo" title="Get In Touch"></iframe>`;
+  : `<iframe src="https://api.leadconnectorhq.com/widget/form/ir9Hi5bSDTWJiR6Zbaoo" id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-layout='{"id":"INLINE"}' data-trigger-type="alwaysShow" data-activation-type="alwaysActivated" data-deactivation-type="neverDeactivate" data-form-name="Get In Touch" data-height="760" data-layout-iframe-id="inline-ir9Hi5bSDTWJiR6Zbaoo" data-form-id="ir9Hi5bSDTWJiR6Zbaoo" title="Get In Touch"></iframe>`;
 
 const contact = () => `
 <section class="w-sec" id="contact"><div class="w-wrap w-contact">
